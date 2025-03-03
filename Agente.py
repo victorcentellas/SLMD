@@ -37,23 +37,18 @@ def get_mock_magnetometer():
     }
 
 def get_mock_barometer():
-    return round(260 + (1000 * (time.time() % 1)), 3)
+    return {"presion": round(260 + (1000 * (time.time() % 1)), 3)}
 
 def get_mock_gps():
-    hora_mock = datetime.utcnow().strftime("%H%M%S")
-    lat_mock = round(40.0 + (0.01 * (time.time() % 10)), 6)
-    lon_mock = round(-3.0 + (0.01 * (time.time() % 10)), 6)
-    return {"hora": hora_mock, "latitud": lat_mock, "longitud": lon_mock}
+    return {
+        "hora": datetime.utcnow().strftime("%H%M%S"),
+        "latitud": round(40.0 + (0.01 * (time.time() % 10)), 6),
+        "longitud": round(-3.0 + (0.01 * (time.time() % 10)), 6)
+    }
 
-
-
-def publish_data(client, base_topic, data):
-    """Publica cada valor en su subtopico correspondiente."""
-    if isinstance(data, dict):
-        for key, value in data.items():
-            publish_data(client, f"{base_topic}/{key}", value)
-    else:
-        client.publish(base_topic, json.dumps(data))
+def publish_data(client, topic, data):
+    """Publica el JSON en el tópico correspondiente."""
+    client.publish(topic, json.dumps(data))
 
 def main():
     client = mqtt.Client()
@@ -62,7 +57,7 @@ def main():
     client.loop_start()
     
     while True:
-        sensores = {
+        metricas = {
             "acelerometro": get_mock_accelerometer(),
             "giroscopio": get_mock_gyroscope(),
             "magnetometro": get_mock_magnetometer(),
@@ -72,7 +67,7 @@ def main():
         
         base_topic = f"sensor/{AGENT_ID}"
         
-        for sensor, data in sensores.items():
+        for sensor, data in metricas.items():
             publish_data(client, f"{base_topic}/{sensor}", data)
         
         print("Publicado en MQTT para el agente:", AGENT_ID)
