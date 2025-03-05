@@ -14,8 +14,8 @@ log {
     default {
       enable = true
       formatter = text
-      level = debug
-      path = "./log/emqx.log"
+      level = warning
+      path = "${EMQX_LOG_DIR}"
       payload_encode = text
       rotation_count = 10
       rotation_size = "50MB"

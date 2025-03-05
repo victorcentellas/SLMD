@@ -16,10 +16,10 @@ services:
       - EMQX_DASHBOARD__LISTENER__HTTP=18083
       - EMQX_AUTH__USER__1__USERNAME=user1
       - EMQX_AUTH__USER__1__PASSWORD=clave123
-      - EMQX_NODE__COOKIE=secretcookie  # Agregamos esta línea
-      - EMQX_NODE__DATA_DIR=/opt/emqx/data  # Agregamos esta línea
-      - EMQX_NODE__LOG_DIR=/opt/emqx/log  # Agregamos esta línea
-
-    volumes:         
+      - EMQX_DEFAULT_LOG_HANDLER= file
+      - EMQX_LOG_DIR=/opt/emqx/log
+      - EMQX_DATA_DIR=/opt/emqx/data
+      
+    volumes:
       - ./emqx/data:/opt/emqx/data
       - ./emqx/log:/opt/emqx/log

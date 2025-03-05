@@ -14,10 +14,10 @@ log {
     default {
       enable = true
       formatter = text
-      level = debug
-      path = "./log/emqx.log"
+      level = warning
+      path = "${EMQX_LOG_DIR}/emqx.log"
       payload_encode = text
-      rotation_count = 10
+      rotation_count = 1
       rotation_size = "50MB"
       time_offset = system
       timestamp_format = auto

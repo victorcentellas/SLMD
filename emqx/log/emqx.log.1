@@ -1,0 +1,1211 @@
+{"time":1741198860180040,"level":"critical","msg":"received_terminate_signal","pid":"<0.2059.0>","line":47}
+{"time":1741198879354900,"level":"warning","msg":"unknown_env_vars: [\"EMQX_DASHBOARD__LISTENER__HTTP\"]","pid":"<0.2378.0>"}
+{"time":1741198879522996,"level":"warning","msg":"alarm_is_activated","pid":"<0.2626.0>","name":"high_system_memory_usage","message":"77.96% mem usage","line":428}
+{"time":1741198922381943,"level":"debug","msg":"cluster_rpc_apply_result","entrypoint":"emqx:update_config/3","tnx_id":9,"kind":"initiate","result":"{ok,#{config => #{file => #{default => #{time_offset => \"system\",path => \"./log/emqx.log\",level => all,chars_limit => unlimited,single_line => true,formatter => json,drop_mode_qlen => 3000,flush_qlen => 8000,sync_mode_qlen => 100,enable => true,with_mfa => false,timestamp_format => auto,payload_encode => text,burst_limit => #{enable => true,max_count => 10000,window_time => 1000},max_depth => 100,overload_kill => #{enable => true,mem_size => 31457280,qlen => 20000,restart_after => 5000},supervisor_reports => error,rotation_count => 1,rotation_size => 52428800}},console => #{time_offset => \"system\",level => warning,chars_limit => unlimited,single_line => true,formatter => text,drop_mode_qlen => 3000,flush_qlen => 8000,sync_mode_qlen => 100,enable => true,with_mfa => false,timestamp_format => auto,payload_encode => text,burst_limit => #{enable => true,max_count => 10000,window_time => 1000},max_depth => 100,overload_kill => #{enable => true,mem_size => 31457280,qlen => 20000,restart_after => 5000},supervisor_reports => error},throttling => #{msgs => [authentication_failure,authorization_permission_denied,cannot_publish_to_topic_due_to_not_authorized,cannot_publish_to_topic_due_to_quota_exceeded,connection_rejected_due_to_license_limit_reached,data_bridge_buffer_overflow,dropped_msg_due_to_mqueue_is_full,external_broker_crashed,failed_to_fetch_crl,failed_to_retain_message,handle_resource_metrics_failed,retain_failed_for_payload_size_exceeded_limit,retain_failed_for_rate_exceeded_limit,retained_delete_failed_for_rate_exceeded_limit,socket_receive_paused_by_rate_limit,transformation_failed,transformation_eval_operation_failure,transformation_eval_operation_exception,payload_encode_failed,payload_decode_failed,payload_decode_schema_not_found,payload_encode_schema_not_found,payload_decode_schema_failure,payload_encode_schema_failure,payload_decode_error,validation_failed,validation_sql_check_throw,validation_sql_check_failure,validation_schema_check_schema_not_found,validation_schema_check_failure,unrecoverable_resource_error],time_window => 60}},post_config_update => #{kind => initiate},raw_config => #{<<\"console\">> => #{<<\"enable\">> => true,<<\"formatter\">> => <<\"text\">>,<<\"level\">> => <<\"warning\">>,<<\"payload_encode\">> => <<\"text\">>,<<\"time_offset\">> => <<\"system\">>,<<\"timestamp_format\">> => <<\"auto\">>},<<\"file\">> => #{<<\"default\">> => #{<<\"enable\">> => true,<<\"formatter\">> => <<\"json\">>,<<\"level\">> => <<\"all\">>,<<\"path\">> => <<\"./log/emqx.log\">>,<<\"payload_encode\">> => <<\"text\">>,<<\"rotation_count\">> => 1,<<\"rotation_size\">> => <<\"50MB\">>,<<\"time_offset\">> => <<\"system\">>,<<\"timestamp_format\">> => <<\"auto\">>}},<<\"throttling\">> => #{<<\"time_window\">> => <<\"1m\">>}}}}","pid":"<0.2396.0>","line":683}
+{"time":1741198933225113,"level":"debug","msg":"raw_bin_received","bin":"101D00044D51545404C2003C0000000575736572310008636C617665313233","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":31,"pid":"<0.3164.0>","line":777}
+{"time":1741198933225465,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"CONNECT(Q0, R0, D0, ClientId=, ProtoName=MQTT, ProtoVsn=4, CleanStart=true, KeepAlive=60, Username=user1, Password=******)","line":558}
+{"time":1741198933226268,"level":"debug","msg":"insert_channel_info","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","pid":"<0.3164.0>","line":180}
+{"time":1741198933226371,"level":"debug","msg":"mqtt_packet_sent","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"CONNACK(Q0, R0, D0, AckFlags=0, ReasonCode=0)","line":893}
+{"time":1741198933227111,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3061003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6163656C65726F6D6574726F7B2278223A202D382E3739312C202279223A202D382E3738392C20227A223A202D382E3738397D3068003673656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6769726F73636F70696F7B2278223A202D313039382E3634372C202279223A202D313039382E3633362C20227A223A202D313039382E3632367D306A003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6D61676E65746F6D6574726F7B2278223A202D323639312E3630362C202279223A202D323639312E3538372C20227A223A202D323639312E3536397D304B003573656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6261726F6D6574726F7B2270726573696F6E223A203438352E3335337D3070002F73656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6770737B22686F7261223A2022313832323133222C20226C617469747564223A2034302E3033323236322C20226C6F6E6769747564223A202D322E3936373733387D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":504,"pid":"<0.3164.0>","line":777}
+{"time":1741198933227282,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro, PacketId=undefined, Payload(text)={\"x\": -8.791, \"y\": -8.789, \"z\": -8.789})","line":575}
+{"time":1741198933227544,"level":"debug","msg":"authorization_module_ignore","authorize_type":"client_info","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_client_info","line":600}
+{"time":1741198933227702,"level":"debug","msg":"authorization_matched_allow","authorize_type":"file","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_file","line":616}
+{"time":1741198933227801,"level":"info","msg":"authorization_permission_allowed","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","source":"file","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","line":187}
+{"time":1741198933227930,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -8.791, \"y\": -8.789, \"z\": -8.789}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198933228043,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio, PacketId=undefined, Payload(text)={\"x\": -1098.647, \"y\": -1098.636, \"z\": -1098.626})","line":575}
+{"time":1741198933228199,"level":"debug","msg":"authorization_module_ignore","authorize_type":"client_info","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_client_info","line":600}
+{"time":1741198933228265,"level":"debug","msg":"authorization_matched_allow","authorize_type":"file","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_file","line":616}
+{"time":1741198933228364,"level":"info","msg":"authorization_permission_allowed","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","username":"user1","source":"file","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","line":187}
+{"time":1741198933228418,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -1098.647, \"y\": -1098.636, \"z\": -1098.626}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198933228563,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro, PacketId=undefined, Payload(text)={\"x\": -2691.606, \"y\": -2691.587, \"z\": -2691.569})","line":575}
+{"time":1741198933228768,"level":"debug","msg":"authorization_module_ignore","authorize_type":"client_info","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_client_info","line":600}
+{"time":1741198933228851,"level":"debug","msg":"authorization_matched_allow","authorize_type":"file","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_file","line":616}
+{"time":1741198933228930,"level":"info","msg":"authorization_permission_allowed","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","source":"file","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","line":187}
+{"time":1741198933229037,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -2691.606, \"y\": -2691.587, \"z\": -2691.569}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198933229144,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro, PacketId=undefined, Payload(text)={\"presion\": 485.353})","line":575}
+{"time":1741198933229600,"level":"debug","msg":"authorization_module_ignore","authorize_type":"client_info","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_client_info","line":600}
+{"time":1741198933229726,"level":"debug","msg":"authorization_matched_allow","authorize_type":"file","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_file","line":616}
+{"time":1741198933229796,"level":"info","msg":"authorization_permission_allowed","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","username":"user1","source":"file","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","line":187}
+{"time":1741198933229854,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"presion\": 485.353}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198933229928,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps, PacketId=undefined, Payload(text)={\"hora\": \"182213\", \"latitud\": 40.032262, \"longitud\": -2.967738})","line":575}
+{"time":1741198933230067,"level":"debug","msg":"authorization_module_ignore","authorize_type":"client_info","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_client_info","line":600}
+{"time":1741198933230104,"level":"debug","msg":"authorization_matched_allow","authorize_type":"file","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps","clientid":"zwC8PuLemZQ9ehiH","username":"user1","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","module":"emqx_authz_file","line":616}
+{"time":1741198933230148,"level":"info","msg":"authorization_permission_allowed","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps","clientid":"zwC8PuLemZQ9ehiH","username":"user1","source":"file","action":"PUBLISH(Q0,R0)","peername":"172.19.0.1:38714","tag":"AUTHZ","pid":"<0.3164.0>","line":187}
+{"time":1741198933230183,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"hora\": \"182213\", \"latitud\": 40.032262, \"longitud\": -2.967738}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198934227631,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3061003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6163656C65726F6D6574726F7B2278223A202D382E3735392C202279223A202D382E3735382C20227A223A202D382E3735387D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":99,"pid":"<0.3164.0>","line":777}
+{"time":1741198934227841,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro, PacketId=undefined, Payload(text)={\"x\": -8.759, \"y\": -8.758, \"z\": -8.758})","line":575}
+{"time":1741198934228117,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -8.759, \"y\": -8.758, \"z\": -8.758}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198934267916,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3068003673656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6769726F73636F70696F7B2278223A202D313039342E3731332C202279223A202D313039342E3730342C20227A223A202D313039342E3639377D3069003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6D61676E65746F6D6574726F7B2278223A202D323638312E3938342C202279223A202D323638312E39372C20227A223A202D323638312E3935347D304B003573656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6261726F6D6574726F7B2270726573696F6E223A203438362E3333347D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":290,"pid":"<0.3164.0>","line":777}
+{"time":1741198934268134,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio, PacketId=undefined, Payload(text)={\"x\": -1094.713, \"y\": -1094.704, \"z\": -1094.697})","line":575}
+{"time":1741198934268689,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -1094.713, \"y\": -1094.704, \"z\": -1094.697}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198934269033,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro, PacketId=undefined, Payload(text)={\"x\": -2681.984, \"y\": -2681.97, \"z\": -2681.954})","line":575}
+{"time":1741198934269359,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -2681.984, \"y\": -2681.97, \"z\": -2681.954}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198934269528,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro, PacketId=undefined, Payload(text)={\"presion\": 486.334})","line":575}
+{"time":1741198934269933,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"presion\": 486.334}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198935228227,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3061003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6163656C65726F6D6574726F7B2278223A202D382E3732372C202279223A202D382E3732352C20227A223A202D382E3732357D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":99,"pid":"<0.3164.0>","line":777}
+{"time":1741198935228491,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro, PacketId=undefined, Payload(text)={\"x\": -8.727, \"y\": -8.725, \"z\": -8.725})","line":575}
+{"time":1741198935229061,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -8.727, \"y\": -8.725, \"z\": -8.725}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198935230115,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3068003673656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6769726F73636F70696F7B2278223A202D313039302E3630392C202279223A202D313039302E3539362C20227A223A202D313039302E3538367D3069003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6D61676E65746F6D6574726F7B2278223A202D323637312E3839382C202279223A202D323637312E38372C20227A223A202D323637312E3833397D304B003573656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6261726F6D6574726F7B2270726573696F6E223A203438372E3336377D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":290,"pid":"<0.3164.0>","line":777}
+{"time":1741198935230409,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio, PacketId=undefined, Payload(text)={\"x\": -1090.609, \"y\": -1090.596, \"z\": -1090.586})","line":575}
+{"time":1741198935230848,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -1090.609, \"y\": -1090.596, \"z\": -1090.586}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198935231114,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro, PacketId=undefined, Payload(text)={\"x\": -2671.898, \"y\": -2671.87, \"z\": -2671.839})","line":575}
+{"time":1741198935231536,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -2671.898, \"y\": -2671.87, \"z\": -2671.839}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198935231688,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro, PacketId=undefined, Payload(text)={\"presion\": 487.367})","line":575}
+{"time":1741198935231853,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"presion\": 487.367}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198935232058,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3070002F73656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6770737B22686F7261223A2022313832323135222C20226C617469747564223A2034302E3035323239372C20226C6F6E6769747564223A202D322E3934373730337D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":114,"pid":"<0.3164.0>","line":777}
+{"time":1741198935232208,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps, PacketId=undefined, Payload(text)={\"hora\": \"182215\", \"latitud\": 40.052297, \"longitud\": -2.947703})","line":575}
+{"time":1741198935232446,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/gps","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"hora\": \"182215\", \"latitud\": 40.052297, \"longitud\": -2.947703}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198936229297,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"3061003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6163656C65726F6D6574726F7B2278223A202D382E3639342C202279223A202D382E3639332C20227A223A202D382E3639337D3068003673656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6769726F73636F70696F7B2278223A202D313038362E3539332C202279223A202D313038362E3538352C20227A223A202D313038362E3537387D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":205,"pid":"<0.3164.0>","line":777}
+{"time":1741198936229497,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro, PacketId=undefined, Payload(text)={\"x\": -8.694, \"y\": -8.693, \"z\": -8.693})","line":575}
+{"time":1741198936229699,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/acelerometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -8.694, \"y\": -8.693, \"z\": -8.693}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198936229819,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio, PacketId=undefined, Payload(text)={\"x\": -1086.593, \"y\": -1086.585, \"z\": -1086.578})","line":575}
+{"time":1741198936230036,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/giroscopio","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -1086.593, \"y\": -1086.585, \"z\": -1086.578}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198936230144,"level":"debug","msg":"raw_bin_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","bin":"306A003873656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6D61676E65746F6D6574726F7B2278223A202D323636322E3039382C202279223A202D323636322E3038342C20227A223A202D323636322E3037337D304B003573656E736F722F62626232373232662D356631392D343066622D383361622D3336646235663565666132342F6261726F6D6574726F7B2270726573696F6E223A203438382E3336337D","peername":"172.19.0.1:38714","type":"hex","tag":"MQTT","size":185,"pid":"<0.3164.0>","line":777}
+{"time":1741198936230223,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro, PacketId=undefined, Payload(text)={\"x\": -2662.098, \"y\": -2662.084, \"z\": -2662.073})","line":575}
+{"time":1741198936230384,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/magnetometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"x\": -2662.098, \"y\": -2662.084, \"z\": -2662.073}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198936230469,"level":"debug","msg":"mqtt_packet_received","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"MQTT","pid":"<0.3164.0>","packet":"PUBLISH(Q0, R0, D0, Topic=sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro, PacketId=undefined, Payload(text)={\"presion\": 488.363})","line":575}
+{"time":1741198936230562,"level":"debug","msg":"publish_to","payload_encode":"text","topic":"sensor/bbb2722f-5f19-40fb-83ab-36db5f5efa24/barometro","clientid":"zwC8PuLemZQ9ehiH","payload":"{\"presion\": 488.363}","username":"user1","peername":"172.19.0.1:38714","tag":"PUBLISH","pid":"<0.3164.0>","line":87}
+{"time":1741198936338443,"level":"debug","msg":"emqx_connection_terminated","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","tag":"SOCKET","reason":"{shutdown,tcp_closed}","pid":"<0.3164.0>","line":661}
+{"time":1741198936338642,"level":"info","msg":"terminate","clientid":"zwC8PuLemZQ9ehiH","username":"user1","peername":"172.19.0.1:38714","reason":"{shutdown,tcp_closed}","pid":"<0.3164.0>","line":666}
+{"time":1741198936339069,"level":"debug","msg":"emqx_cm_clean_down","client_id":"zwC8PuLemZQ9ehiH","pid":"<0.2600.0>","line":850}
+2025-03-05T18:23:24.761612+00:00 [debug] msg: cluster_rpc_apply_result, result: {ok,#{config => #{file => #{default => #{time_offset => "system",path => "./log/emqx.log",level => debug,chars_limit => unlimited,single_line => true,formatter => text,drop_mode_qlen => 3000,flush_qlen => 8000,sync_mode_qlen => 100,enable => true,with_mfa => false,timestamp_format => auto,payload_encode => text,burst_limit => #{enable => true,max_count => 10000,window_time => 1000},max_depth => 100,overload_kill => #{enable => true,mem_size => 31457280,qlen => 20000,restart_after => 5000},supervisor_reports => error,rotation_count => 10,rotation_size => 52428800}},console => #{time_offset => "system",level => warning,chars_limit => unlimited,single_line => true,formatter => text,drop_mode_qlen => 3000,flush_qlen => 8000,sync_mode_qlen => 100,enable => true,with_mfa => false,timestamp_format => auto,payload_encode => text,burst_limit => #{enable => true,max_count => 10000,window_time => 1000},max_depth => 100,overload_kill => #{enable => true,mem_size => 31457280,qlen => 20000,restart_after => 5000},supervisor_reports => error},throttling => #{msgs => [authentication_failure,authorization_permission_denied,cannot_publish_to_topic_due_to_not_authorized,cannot_publish_to_topic_due_to_quota_exceeded,connection_rejected_due_to_license_limit_reached,data_bridge_buffer_overflow,dropped_msg_due_to_mqueue_is_full,external_broker_crashed,failed_to_fetch_crl,failed_to_retain_message,handle_resource_metrics_failed,retain_failed_for_payload_size_exceeded_limit,retain_failed_for_rate_exceeded_limit,retained_delete_failed_for_rate_exceeded_limit,socket_receive_paused_by_rate_limit,transformation_failed,transformation_eval_operation_failure,transformation_eval_operation_exception,payload_encode_failed,payload_decode_failed,payload_decode_schema_not_found,payload_encode_schema_not_found,payload_decode_schema_failure,payload_encode_schema_failure,payload_decode_error,validation_failed,validation_sql_check_throw,validation_sql_check_failure,validation_schema_check_schema_not_found,validation_schema_check_failure,unrecoverable_resource_error],time_window => 60}},post_config_update => #{kind => initiate},raw_config => #{<<"console">> => #{<<"enable">> => true,<<"formatter">> => <<"text">>,<<"level">> => <<"warning">>,<<"payload_encode">> => <<"text">>,<<"time_offset">> => <<"system">>,<<"timestamp_format">> => <<"auto">>},<<"file">> => #{<<"default">> => #{<<"enable">> => true,<<"formatter">> => <<"text">>,<<"level">> => <<"debug">>,<<"path">> => <<"./log/emqx.log">>,<<"payload_encode">> => <<"text">>,<<"rotation_count">> => 10,<<"rotation_size">> => <<"50MB">>,<<"time_offset">> => <<"system">>,<<"timestamp_format">> => <<"auto">>}},<<"throttling">> => #{<<"time_window">> => <<"1m">>}}}}, kind: initiate, tnx_id: 10, entrypoint: <<"emqx:update_config/3">>
+2025-03-05T18:23:32.155135+00:00 [critical] msg: received_terminate_signal
+2025-03-05T18:23:32.157167+00:00 [debug] msg: stopping_app, app: os_mon
+2025-03-05T18:23:32.163142+00:00 [notice] Application: os_mon. Exited: stopped. Type: permanent.
+2025-03-05T18:23:32.163558+00:00 [debug] msg: stopping_app, app: jq
+2025-03-05T18:23:32.168054+00:00 [notice] Application: jq. Exited: stopped. Type: permanent.
+2025-03-05T18:23:32.168333+00:00 [notice] msg: stopping_emqx_apps
+2025-03-05T18:23:32.174310+00:00 [debug] msg: stopping_app, app: emqx_telemetry
+2025-03-05T18:23:32.181150+00:00 [notice] Application: emqx_telemetry. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.181456+00:00 [debug] msg: stopping_app, app: emqx_psk
+2025-03-05T18:23:32.189374+00:00 [notice] Application: emqx_psk. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.189623+00:00 [debug] msg: stopping_app, app: emqx_connector_jwt
+2025-03-05T18:23:32.193743+00:00 [notice] Application: emqx_connector_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.194053+00:00 [debug] msg: stopping_app, app: quicer
+2025-03-05T18:23:32.199366+00:00 [notice] Application: quicer. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.199671+00:00 [debug] msg: stopping_app, app: emqx_gateway_mqttsn
+2025-03-05T18:23:32.199918+00:00 [notice] Application: emqx_gateway_mqttsn. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.200042+00:00 [debug] msg: stopping_app, app: emqx_gateway_exproto
+2025-03-05T18:23:32.200175+00:00 [notice] Application: emqx_gateway_exproto. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.200821+00:00 [debug] msg: stopping_app, app: emqx_gateway_lwm2m
+2025-03-05T18:23:32.200966+00:00 [notice] Application: emqx_gateway_lwm2m. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.201197+00:00 [debug] msg: stopping_app, app: emqx_gateway_coap
+2025-03-05T18:23:32.201646+00:00 [notice] Application: emqx_gateway_coap. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.201922+00:00 [debug] msg: stopping_app, app: emqx_gateway_stomp
+2025-03-05T18:23:32.202323+00:00 [notice] Application: emqx_gateway_stomp. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.202481+00:00 [debug] msg: stopping_app, app: emqx_gateway
+2025-03-05T18:23:32.211862+00:00 [notice] Application: emqx_gateway. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.212153+00:00 [debug] msg: stopping_app, app: emqx_auth_mysql
+2025-03-05T18:23:32.218225+00:00 [notice] Application: emqx_auth_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.218614+00:00 [debug] msg: stopping_app, app: emqx_mysql
+2025-03-05T18:23:32.220657+00:00 [notice] Application: emqx_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.220890+00:00 [debug] msg: stopping_app, app: emqx_auth_http
+2025-03-05T18:23:32.232081+00:00 [notice] Application: emqx_auth_http. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.233373+00:00 [debug] msg: stopping_app, app: emqx_auth_postgresql
+2025-03-05T18:23:32.240369+00:00 [notice] Application: emqx_auth_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.240898+00:00 [debug] msg: stopping_app, app: emqx_auth_mongodb
+2025-03-05T18:23:32.246739+00:00 [notice] Application: emqx_auth_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.247100+00:00 [debug] msg: stopping_app, app: emqx_auth_jwt
+2025-03-05T18:23:32.257804+00:00 [notice] Application: emqx_auth_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.258073+00:00 [debug] msg: stopping_app, app: emqx_prometheus
+2025-03-05T18:23:32.266512+00:00 [notice] Application: emqx_prometheus. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.266892+00:00 [debug] msg: stopping_app, app: emqx_auth_redis
+2025-03-05T18:23:32.276376+00:00 [notice] Application: emqx_auth_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.276690+00:00 [debug] msg: stopping_app, app: emqx_auth_mnesia
+2025-03-05T18:23:32.281898+00:00 [notice] Application: emqx_auth_mnesia. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.282151+00:00 [debug] msg: stopping_app, app: emqx_auth_ldap
+2025-03-05T18:23:32.286829+00:00 [notice] Application: emqx_auth_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.287069+00:00 [debug] msg: stopping_app, app: emqx_auth
+2025-03-05T18:23:32.292437+00:00 [notice] Application: emqx_auth. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.292720+00:00 [debug] msg: stopping_app, app: emqx_auto_subscribe
+2025-03-05T18:23:32.297448+00:00 [notice] Application: emqx_auto_subscribe. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.297708+00:00 [debug] msg: stopping_app, app: emqx_dashboard
+2025-03-05T18:23:32.308332+00:00 [notice] Application: emqx_dashboard. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.309099+00:00 [debug] msg: stopping_app, app: emqx_ldap
+2025-03-05T18:23:32.309379+00:00 [notice] Application: emqx_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.309706+00:00 [debug] msg: stopping_app, app: emqx_rule_engine
+2025-03-05T18:23:32.320632+00:00 [notice] Application: emqx_rule_engine. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.321009+00:00 [debug] msg: stopping_app, app: emqx_bridge
+2025-03-05T18:23:32.329438+00:00 [notice] Application: emqx_bridge. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.329687+00:00 [debug] msg: stopping_app, app: emqx_connector
+2025-03-05T18:23:32.335201+00:00 [notice] Application: emqx_connector. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.335468+00:00 [debug] msg: stopping_app, app: emqx_mongodb
+2025-03-05T18:23:32.335664+00:00 [notice] Application: emqx_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.335777+00:00 [debug] msg: stopping_app, app: emqx_exhook
+2025-03-05T18:23:32.336512+00:00 [info] msg: exhook_mgr_terminated, reason: shutdown, servers: #{}
+2025-03-05T18:23:32.342177+00:00 [notice] Application: emqx_exhook. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.342542+00:00 [debug] msg: stopping_app, app: emqx_modules
+2025-03-05T18:23:32.351584+00:00 [notice] Application: emqx_modules. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.351851+00:00 [debug] msg: stopping_app, app: emqx_management
+2025-03-05T18:23:32.357097+00:00 [notice] Application: emqx_management. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.357591+00:00 [debug] msg: stopping_app, app: emqx_postgresql
+2025-03-05T18:23:32.357767+00:00 [notice] Application: emqx_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.357867+00:00 [debug] msg: stopping_app, app: emqx_bridge_http
+2025-03-05T18:23:32.357972+00:00 [notice] Application: emqx_bridge_http. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.358066+00:00 [debug] msg: stopping_app, app: emqx_redis
+2025-03-05T18:23:32.358196+00:00 [notice] Application: emqx_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.358344+00:00 [debug] msg: stopping_app, app: emqx_bridge_mqtt
+2025-03-05T18:23:32.358503+00:00 [notice] Application: emqx_bridge_mqtt. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.358633+00:00 [debug] msg: stopping_app, app: emqx_resource
+2025-03-05T18:23:32.374363+00:00 [notice] Application: emqx_resource. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.374609+00:00 [debug] msg: stopping_app, app: emqx_retainer
+2025-03-05T18:23:32.388488+00:00 [notice] Application: emqx_retainer. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.388764+00:00 [debug] msg: stopping_app, app: emqx_plugins
+2025-03-05T18:23:32.394623+00:00 [notice] Application: emqx_plugins. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.394829+00:00 [debug] msg: stopping_app, app: emqx_slow_subs
+2025-03-05T18:23:32.398205+00:00 [notice] Application: emqx_slow_subs. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.398371+00:00 [debug] msg: stopping_app, app: emqx
+2025-03-05T18:23:32.399277+00:00 [notice] tcp:default stopped on 0.0.0.0:1883
+2025-03-05T18:23:32.400293+00:00 [notice] ssl:default stopped on 0.0.0.0:8883
+2025-03-05T18:23:32.451203+00:00 [notice] Application: emqx. Exited: stopped. Type: permanent.
+2025-03-05T18:23:32.451580+00:00 [debug] msg: stopping_app, app: emqx_ds_backends
+2025-03-05T18:23:32.451787+00:00 [notice] Application: emqx_ds_backends. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.452154+00:00 [debug] msg: stopping_app, app: emqx_durable_storage
+2025-03-05T18:23:32.466723+00:00 [notice] Application: emqx_durable_storage. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.466992+00:00 [debug] msg: stopping_app, app: emqx_utils
+2025-03-05T18:23:32.467326+00:00 [notice] Application: emqx_utils. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.467482+00:00 [debug] msg: stopping_app, app: cowboy
+2025-03-05T18:23:32.483831+00:00 [notice] Application: cowboy. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.484083+00:00 [debug] msg: stopping_app, app: ranch
+2025-03-05T18:23:32.496838+00:00 [notice] Application: ranch. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.497424+00:00 [debug] msg: stopping_app, app: bcrypt
+2025-03-05T18:23:32.514505+00:00 [notice] Application: bcrypt. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.517650+00:00 [debug] msg: stopping_app, app: emqx_http_lib
+2025-03-05T18:23:32.517909+00:00 [notice] Application: emqx_http_lib. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.519357+00:00 [debug] msg: stopping_app, app: gproc
+2025-03-05T18:23:32.537676+00:00 [notice] Application: gproc. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.537921+00:00 [debug] msg: stopping_app, app: esockd
+2025-03-05T18:23:32.553517+00:00 [notice] Application: esockd. Exited: stopped. Type: permanent.
+2025-03-05T18:23:32.553755+00:00 [debug] msg: stopping_app, app: emqx_conf
+2025-03-05T18:23:32.570431+00:00 [notice] Application: emqx_conf. Exited: stopped. Type: temporary.
+2025-03-05T18:23:32.716409+00:00 [debug] msg: Mria is preparing to stop
+2025-03-05T18:23:32.717110+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.717735+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.718435+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.719052+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.719631+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.720140+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.720676+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.721182+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.721551+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.721888+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.722198+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.723121+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.724515+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:23:32.727587+00:00 [debug] msg: mria_worker_terminate, process: mria_node_monitor, callback: terminate
+2025-03-05T18:23:32.729276+00:00 [debug] msg: mria_worker_terminate, process: mria_membership, callback: terminate
+2025-03-05T18:23:32.733420+00:00 [debug] msg: mria_worker_terminate, process: mria_status, callback: terminate
+2025-03-05T18:23:32.793322+00:00 [notice] msg: Mria is stopped
+2025-03-05T18:23:47.195407+00:00 [info] event=server_setup_successfully driver=tcp port=5369 socket="#Port<0.5>"
+2025-03-05T18:23:47.195897+00:00 [info] msg: gen_rpc_dispatcher_start
+2025-03-05T18:23:47.198818+00:00 [notice] msg: Starting mria
+2025-03-05T18:23:47.199862+00:00 [notice] msg: Starting mnesia
+2025-03-05T18:23:47.200135+00:00 [debug] msg: Ensure mnesia schema
+2025-03-05T18:23:47.203904+00:00 [notice] msg: Creating new mnesia schema, result: {error,{'emqx@172.19.0.2',{already_exists,'emqx@172.19.0.2'}}}
+2025-03-05T18:23:47.261668+00:00 [notice] msg: Starting shards
+2025-03-05T18:23:47.262510+00:00 [debug] msg: rlog_schema_init
+2025-03-05T18:23:47.310175+00:00 [info] msg: Setting RLOG shard config, tables: ['$mria_rlog_sync',mria_schema], shard: '$mria_meta_shard'
+2025-03-05T18:23:47.310613+00:00 [info] msg: Converging schema
+2025-03-05T18:23:47.311059+00:00 [info] msg: Setting RLOG shard config, tables: ['$mria_rlog_sync',mria_schema], shard: '$mria_meta_shard'
+2025-03-05T18:23:47.311774+00:00 [info] msg: starting_rlog_shard, shard: '$mria_meta_shard'
+2025-03-05T18:23:47.313137+00:00 [info] msg: Starting ekka
+2025-03-05T18:23:47.313581+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: '$mria_meta_shard'
+2025-03-05T18:23:47.313718+00:00 [notice] msg: Mria is running
+2025-03-05T18:23:47.313933+00:00 [info] msg: Starting ekka
+2025-03-05T18:23:47.314523+00:00 [info] msg: Ekka is running
+2025-03-05T18:23:47.314622+00:00 [info] msg: Ekka is running
+2025-03-05T18:23:47.314927+00:00 [notice] msg: (re)starting_emqx_apps
+2025-03-05T18:23:47.318082+00:00 [debug] msg: starting_app, app: emqx_conf
+2025-03-05T18:23:47.318479+00:00 [debug] msg: mria_mnesia_create_table, name: cluster_rpc_mfa, options: [{type,ordered_set},{rlog_shard,emqx_cluster_rpc_shard},{storage,disc_copies},{record_name,cluster_rpc_mfa},{attributes,[tnx_id,mfa,created_at,initiator]}]
+2025-03-05T18:23:47.319050+00:00 [info] msg: Adding table to a shard, table: cluster_rpc_mfa, shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.319336+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_mfa, '$span': start
+2025-03-05T18:23:47.319570+00:00 [info] msg: Setting RLOG shard config, tables: [cluster_rpc_mfa], shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.319884+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_mfa, '$span': {complete,true}
+2025-03-05T18:23:47.320049+00:00 [debug] msg: mria_mnesia_create_table, name: cluster_rpc_commit, options: [{type,set},{rlog_shard,emqx_cluster_rpc_shard},{storage,disc_copies},{record_name,cluster_rpc_commit},{attributes,[node,tnx_id]}]
+2025-03-05T18:23:47.320535+00:00 [info] msg: Adding table to a shard, table: cluster_rpc_commit, shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.320801+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_commit, '$span': start
+2025-03-05T18:23:47.321055+00:00 [info] msg: Setting RLOG shard config, tables: [cluster_rpc_commit,cluster_rpc_mfa], shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.321355+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_commit, '$span': {complete,true}
+2025-03-05T18:23:47.323646+00:00 [info] msg: starting_rlog_shard, shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.324599+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_cluster_rpc_shard
+2025-03-05T18:23:47.325075+00:00 [info] msg: wait_for_cluster_rpc_shard, result: ok
+2025-03-05T18:23:47.325355+00:00 [info] msg: wait_for_cluster_rpc_tables, result: ok
+2025-03-05T18:23:47.325995+00:00 [info] msg: skip_sync_cluster_conf, reason: This is a single node, or the first node in the cluster
+2025-03-05T18:23:47.331548+00:00 [warning] unknown_env_vars: ["EMQX_DASHBOARD__LISTENER__HTTP"]
+2025-03-05T18:23:47.388777+00:00 [debug] msg: started_apps, apps: [emqx_conf]
+2025-03-05T18:23:47.389008+00:00 [debug] msg: starting_app, app: esockd
+2025-03-05T18:23:47.389581+00:00 [debug] msg: started_apps, apps: [esockd]
+2025-03-05T18:23:47.389731+00:00 [debug] msg: starting_app, app: gproc
+2025-03-05T18:23:47.390542+00:00 [debug] msg: started_apps, apps: [gproc]
+2025-03-05T18:23:47.390791+00:00 [debug] msg: starting_app, app: emqx_http_lib
+2025-03-05T18:23:47.391225+00:00 [debug] msg: started_apps, apps: [emqx_http_lib]
+2025-03-05T18:23:47.391393+00:00 [debug] msg: starting_app, app: bcrypt
+2025-03-05T18:23:47.392443+00:00 [debug] msg: started_apps, apps: [bcrypt]
+2025-03-05T18:23:47.392618+00:00 [debug] msg: starting_app, app: ranch
+2025-03-05T18:23:47.393252+00:00 [debug] msg: started_apps, apps: [ranch]
+2025-03-05T18:23:47.393383+00:00 [debug] msg: starting_app, app: cowboy
+2025-03-05T18:23:47.393758+00:00 [debug] msg: started_apps, apps: [cowboy]
+2025-03-05T18:23:47.393888+00:00 [debug] msg: starting_app, app: emqx_utils
+2025-03-05T18:23:47.394180+00:00 [debug] msg: started_apps, apps: [jiffy,emqx_utils]
+2025-03-05T18:23:47.394308+00:00 [debug] msg: starting_app, app: emqx_durable_storage
+2025-03-05T18:23:47.394686+00:00 [debug] msg: started_apps, apps: [emqx_durable_storage]
+2025-03-05T18:23:47.394801+00:00 [debug] msg: starting_app, app: emqx_ds_backends
+2025-03-05T18:23:47.395076+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_ds_builtin_local_metadata_tab, options: [{local_content,true},{type,ordered_set},{storage,disc_copies},{record_name,emqx_ds_builtin_local_metadata_tab},{attributes,[db,db_props]}]
+2025-03-05T18:23:47.395552+00:00 [info] msg: Adding table to a shard, table: emqx_ds_builtin_local_metadata_tab, shard: undefined
+2025-03-05T18:23:47.395825+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_metadata_tab, '$span': start
+2025-03-05T18:23:47.396117+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_ds_builtin_local_metadata_tab], shard: undefined
+2025-03-05T18:23:47.396359+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_metadata_tab, '$span': {complete,true}
+2025-03-05T18:23:47.396519+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_ds_builtin_local_timestamp_tab, options: [{local_content,true},{type,set},{storage,disc_copies},{record_name,emqx_ds_builtin_local_timestamp_tab},{attributes,[id,latest]}]
+2025-03-05T18:23:47.397421+00:00 [info] msg: Adding table to a shard, table: emqx_ds_builtin_local_timestamp_tab, shard: undefined
+2025-03-05T18:23:47.397811+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_timestamp_tab, '$span': start
+2025-03-05T18:23:47.398180+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:23:47.398494+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_timestamp_tab, '$span': {complete,true}
+2025-03-05T18:23:47.400539+00:00 [debug] msg: started_apps, apps: [emqx_ds_builtin_local,emqx_ds_backends]
+2025-03-05T18:23:47.400713+00:00 [debug] msg: starting_app, app: emqx
+2025-03-05T18:23:47.404510+00:00 [notice] alarm_handler: {clear,lc_mem_alarm}
+2025-03-05T18:23:47.405063+00:00 [notice] alarm_handler: {clear,lc_runq_alarm}
+2025-03-05T18:23:47.405338+00:00 [debug] msg: skip_init_config_load, reason: Some application has set another config loader, loader: emqx_conf
+2025-03-05T18:23:47.405701+00:00 [debug] msg: mria_mnesia_create_table, name: bpapi, options: [{type,set},{storage,ram_copies},{attributes,[key,version]},{rlog_shard,emqx_common_shard}]
+2025-03-05T18:23:47.406202+00:00 [info] msg: Adding table to a shard, table: bpapi, shard: emqx_common_shard
+2025-03-05T18:23:47.406474+00:00 [debug] msg: ensure_local_table, table: bpapi, '$span': start
+2025-03-05T18:23:47.406869+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi], shard: emqx_common_shard
+2025-03-05T18:23:47.407145+00:00 [debug] msg: ensure_local_table, table: bpapi, '$span': {complete,true}
+2025-03-05T18:23:47.407307+00:00 [notice] alarm_handler: {set,{system_memory_high_watermark,[]}}
+2025-03-05T18:23:47.407543+00:00 [info] msg: starting_rlog_shard, shard: emqx_common_shard
+2025-03-05T18:23:47.408198+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_common_shard
+2025-03-05T18:23:47.413906+00:00 [debug] item: '_lc_flag_mem_', event: raise_flag, '$kind': lc_flag_man
+2025-03-05T18:23:47.414223+00:00 [notice] alarm_handler: {set,{lc_mem_alarm,#{node => 'emqx@172.19.0.2',mem_usage => 0.7813009054633582}}}
+2025-03-05T18:23:47.432499+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_trie, options: [{rlog_shard,route_shard},{record_name,emqx_trie},{attributes,[key,count]},{type,ordered_set},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.433296+00:00 [info] msg: Adding table to a shard, table: emqx_trie, shard: route_shard
+2025-03-05T18:23:47.433633+00:00 [debug] msg: ensure_local_table, table: emqx_trie, '$span': start
+2025-03-05T18:23:47.433864+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_trie], shard: route_shard
+2025-03-05T18:23:47.434168+00:00 [debug] msg: ensure_local_table, table: emqx_trie, '$span': {complete,true}
+2025-03-05T18:23:47.434421+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_route, options: [{type,bag},{rlog_shard,route_shard},{storage,ram_copies},{record_name,route},{attributes,[topic,dest]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.434942+00:00 [info] msg: Adding table to a shard, table: emqx_route, shard: route_shard
+2025-03-05T18:23:47.435295+00:00 [debug] msg: ensure_local_table, table: emqx_route, '$span': start
+2025-03-05T18:23:47.435567+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_trie], shard: route_shard
+2025-03-05T18:23:47.435836+00:00 [debug] msg: ensure_local_table, table: emqx_route, '$span': {complete,true}
+2025-03-05T18:23:47.436015+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_route_filters, options: [{type,ordered_set},{rlog_shard,route_shard},{storage,ram_copies},{record_name,routeidx},{attributes,[entry,unused]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true},{decentralized_counters,true}]}]}]
+2025-03-05T18:23:47.436510+00:00 [info] msg: Adding table to a shard, table: emqx_route_filters, shard: route_shard
+2025-03-05T18:23:47.436850+00:00 [debug] msg: ensure_local_table, table: emqx_route_filters, '$span': start
+2025-03-05T18:23:47.437196+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_route_filters,emqx_trie], shard: route_shard
+2025-03-05T18:23:47.438469+00:00 [debug] msg: ensure_local_table, table: emqx_route_filters, '$span': {complete,true}
+2025-03-05T18:23:47.438685+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_routing_node, options: [{type,set},{rlog_shard,route_shard},{storage,ram_copies},{record_name,routing_node},{attributes,[name,const]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:47.439210+00:00 [info] msg: Adding table to a shard, table: emqx_routing_node, shard: route_shard
+2025-03-05T18:23:47.439575+00:00 [debug] msg: ensure_local_table, table: emqx_routing_node, '$span': start
+2025-03-05T18:23:47.439902+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_route_filters,emqx_routing_node,emqx_trie], shard: route_shard
+2025-03-05T18:23:47.442979+00:00 [debug] msg: ensure_local_table, table: emqx_routing_node, '$span': {complete,true}
+2025-03-05T18:23:47.443377+00:00 [info] msg: starting_rlog_shard, shard: route_shard
+2025-03-05T18:23:47.444016+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: route_shard
+2025-03-05T18:23:47.445102+00:00 [info] msg: routing_schema_used, schema: v2
+2025-03-05T18:23:47.445989+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_shared_subscription, options: [{type,bag},{rlog_shard,emqx_shared_sub_shard},{storage,ram_copies},{record_name,emqx_shared_subscription},{attributes,[group,topic,subpid]}]
+2025-03-05T18:23:47.446464+00:00 [info] msg: Adding table to a shard, table: emqx_shared_subscription, shard: emqx_shared_sub_shard
+2025-03-05T18:23:47.446884+00:00 [debug] msg: ensure_local_table, table: emqx_shared_subscription, '$span': start
+2025-03-05T18:23:47.447351+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_shared_subscription], shard: emqx_shared_sub_shard
+2025-03-05T18:23:47.448225+00:00 [debug] msg: ensure_local_table, table: emqx_shared_subscription, '$span': {complete,true}
+2025-03-05T18:23:47.448620+00:00 [info] msg: starting_rlog_shard, shard: emqx_shared_sub_shard
+2025-03-05T18:23:47.449376+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_shared_sub_shard
+2025-03-05T18:23:47.451904+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_exclusive_subscription, options: [{rlog_shard,emqx_exclusive_shard},{type,set},{storage,ram_copies},{record_name,exclusive_subscription},{attributes,[topic,clientid]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.452764+00:00 [info] msg: Adding table to a shard, table: emqx_exclusive_subscription, shard: emqx_exclusive_shard
+2025-03-05T18:23:47.453102+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription, '$span': start
+2025-03-05T18:23:47.453441+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_exclusive_subscription], shard: emqx_exclusive_shard
+2025-03-05T18:23:47.453794+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription, '$span': {complete,true}
+2025-03-05T18:23:47.453960+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_exclusive_subscription_v2, options: [{rlog_shard,emqx_exclusive_shard},{type,set},{storage,ram_copies},{record_name,exclusive_subscription_v2},{attributes,[topic,clientid,node,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.454464+00:00 [info] msg: Adding table to a shard, table: emqx_exclusive_subscription_v2, shard: emqx_exclusive_shard
+2025-03-05T18:23:47.454787+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription_v2, '$span': start
+2025-03-05T18:23:47.455056+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_exclusive_subscription,emqx_exclusive_subscription_v2], shard: emqx_exclusive_shard
+2025-03-05T18:23:47.455356+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription_v2, '$span': {complete,true}
+2025-03-05T18:23:47.456923+00:00 [info] msg: starting_rlog_shard, shard: emqx_exclusive_shard
+2025-03-05T18:23:47.457496+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_exclusive_shard
+2025-03-05T18:23:47.457692+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_banned, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,banned},{attributes,[who,by,reason,at,until]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:47.458078+00:00 [info] msg: Adding table to a shard, table: emqx_banned, shard: emqx_common_shard
+2025-03-05T18:23:47.458356+00:00 [debug] msg: ensure_local_table, table: emqx_banned, '$span': start
+2025-03-05T18:23:47.458950+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_banned], shard: emqx_common_shard
+2025-03-05T18:23:47.460445+00:00 [notice] msg: Shard schema change, new_table: emqx_banned, shard: emqx_common_shard
+2025-03-05T18:23:47.460436+00:00 [debug] msg: ensure_local_table, table: emqx_banned, '$span': {complete,true}
+2025-03-05T18:23:47.460711+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_banned_rules, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,banned},{attributes,[who,by,reason,at,until]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:47.461332+00:00 [info] msg: Adding table to a shard, table: emqx_banned_rules, shard: emqx_common_shard
+2025-03-05T18:23:47.461685+00:00 [debug] msg: ensure_local_table, table: emqx_banned_rules, '$span': start
+2025-03-05T18:23:47.461985+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_banned,emqx_banned_rules], shard: emqx_common_shard
+2025-03-05T18:23:47.463307+00:00 [notice] msg: Shard schema change, new_table: emqx_banned_rules, shard: emqx_common_shard
+2025-03-05T18:23:47.463286+00:00 [debug] msg: ensure_local_table, table: emqx_banned_rules, '$span': {complete,true}
+2025-03-05T18:23:47.466022+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_channel_registry, options: [{type,bag},{rlog_shard,emqx_cm_shard},{storage,ram_copies},{record_name,channel},{attributes,[chid,pid]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.466734+00:00 [info] msg: Adding table to a shard, table: emqx_channel_registry, shard: emqx_cm_shard
+2025-03-05T18:23:47.467086+00:00 [debug] msg: ensure_local_table, table: emqx_channel_registry, '$span': start
+2025-03-05T18:23:47.467351+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_channel_registry], shard: emqx_cm_shard
+2025-03-05T18:23:47.468605+00:00 [debug] msg: ensure_local_table, table: emqx_channel_registry, '$span': {complete,true}
+2025-03-05T18:23:47.468884+00:00 [info] msg: starting_rlog_shard, shard: emqx_cm_shard
+2025-03-05T18:23:47.469545+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_cm_shard
+2025-03-05T18:23:47.469853+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_activated_alarm, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,activated_alarm},{attributes,[name,details,message,activate_at]}]
+2025-03-05T18:23:47.470639+00:00 [info] msg: Adding table to a shard, table: emqx_activated_alarm, shard: undefined
+2025-03-05T18:23:47.471042+00:00 [debug] msg: ensure_local_table, table: emqx_activated_alarm, '$span': start
+2025-03-05T18:23:47.471423+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:23:47.472314+00:00 [debug] msg: ensure_local_table, table: emqx_activated_alarm, '$span': {complete,true}
+2025-03-05T18:23:47.472536+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_deactivated_alarm, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,deactivated_alarm},{attributes,[activate_at,name,details,message,deactivate_at]}]
+2025-03-05T18:23:47.473064+00:00 [info] msg: Adding table to a shard, table: emqx_deactivated_alarm, shard: undefined
+2025-03-05T18:23:47.473347+00:00 [debug] msg: ensure_local_table, table: emqx_deactivated_alarm, '$span': start
+2025-03-05T18:23:47.473761+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_deactivated_alarm,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:23:47.475288+00:00 [debug] msg: ensure_local_table, table: emqx_deactivated_alarm, '$span': {complete,true}
+2025-03-05T18:23:47.490285+00:00 [warning] msg: alarm_is_activated, message: <<"78.13% mem usage">>, name: high_system_memory_usage
+2025-03-05T18:23:47.523697+00:00 [debug] msg: started_apps, apps: [os_mon,hocon,lc,emqx]
+2025-03-05T18:23:47.524032+00:00 [debug] msg: starting_app, app: emqx_slow_subs
+2025-03-05T18:23:47.526648+00:00 [debug] msg: started_apps, apps: [emqx_slow_subs]
+2025-03-05T18:23:47.526867+00:00 [debug] msg: starting_app, app: emqx_plugins
+2025-03-05T18:23:47.529504+00:00 [debug] msg: started_apps, apps: [jsone,snappyer,erlavro,emqx_plugins]
+2025-03-05T18:23:47.529839+00:00 [debug] msg: starting_app, app: emqx_retainer
+2025-03-05T18:23:47.530479+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_index_meta, options: [{type,set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_index_meta},{attributes,[key,read_indices,write_indices,reindexing,extra]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:23:47.531208+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_index_meta, shard: emqx_retainer_shard
+2025-03-05T18:23:47.531613+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index_meta, '$span': start
+2025-03-05T18:23:47.531915+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index_meta], shard: emqx_retainer_shard
+2025-03-05T18:23:47.532363+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index_meta, '$span': {complete,true}
+2025-03-05T18:23:47.532762+00:00 [info] msg: starting_rlog_shard, shard: emqx_retainer_shard
+2025-03-05T18:23:47.533560+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_retainer_shard
+2025-03-05T18:23:47.534011+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_message, options: [{type,ordered_set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_message},{attributes,[topic,msg,expiry_time]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:23:47.535013+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_message, shard: emqx_retainer_shard
+2025-03-05T18:23:47.535538+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_message, '$span': start
+2025-03-05T18:23:47.536170+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index_meta,emqx_retainer_message], shard: emqx_retainer_shard
+2025-03-05T18:23:47.536688+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_message, '$span': {complete,true}
+2025-03-05T18:23:47.536710+00:00 [notice] msg: Shard schema change, new_table: emqx_retainer_message, shard: emqx_retainer_shard
+2025-03-05T18:23:47.537072+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_index, options: [{type,ordered_set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_index},{attributes,[key,expiry_time]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:23:47.542678+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_index, shard: emqx_retainer_shard
+2025-03-05T18:23:47.543145+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index, '$span': start
+2025-03-05T18:23:47.543386+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index,emqx_retainer_index_meta,emqx_retainer_message], shard: emqx_retainer_shard
+2025-03-05T18:23:47.546382+00:00 [notice] msg: Shard schema change, new_table: emqx_retainer_index, shard: emqx_retainer_shard
+2025-03-05T18:23:47.546410+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index, '$span': {complete,true}
+2025-03-05T18:23:47.548764+00:00 [debug] msg: started_apps, apps: [emqx_retainer]
+2025-03-05T18:23:47.548997+00:00 [debug] msg: starting_app, app: emqx_resource
+2025-03-05T18:23:47.554545+00:00 [debug] msg: started_apps, apps: [jsx,ecpool,emqx_resource]
+2025-03-05T18:23:47.554881+00:00 [debug] msg: starting_app, app: emqx_bridge_mqtt
+2025-03-05T18:23:47.557574+00:00 [debug] msg: started_apps, apps: [emqtt,emqx_bridge_mqtt]
+2025-03-05T18:23:47.557854+00:00 [debug] msg: starting_app, app: emqx_redis
+2025-03-05T18:23:47.558782+00:00 [debug] msg: started_apps, apps: [eredis,eredis_cluster,emqx_redis]
+2025-03-05T18:23:47.559024+00:00 [debug] msg: starting_app, app: emqx_bridge_http
+2025-03-05T18:23:47.559783+00:00 [debug] msg: started_apps, apps: [ehttpc,emqx_bridge_http]
+2025-03-05T18:23:47.560020+00:00 [debug] msg: starting_app, app: emqx_postgresql
+2025-03-05T18:23:47.560481+00:00 [debug] msg: started_apps, apps: [emqx_postgresql]
+2025-03-05T18:23:47.560638+00:00 [debug] msg: starting_app, app: emqx_management
+2025-03-05T18:23:47.561562+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_app, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,emqx_app},{attributes,[name,api_key,api_secret_hash,enable,extra,expired_at,created_at]}]
+2025-03-05T18:23:47.562259+00:00 [info] msg: Adding table to a shard, table: emqx_app, shard: emqx_common_shard
+2025-03-05T18:23:47.562683+00:00 [debug] msg: ensure_local_table, table: emqx_app, '$span': start
+2025-03-05T18:23:47.563081+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_app,emqx_banned,emqx_banned_rules], shard: emqx_common_shard
+2025-03-05T18:23:47.563850+00:00 [notice] msg: Shard schema change, new_table: emqx_app, shard: emqx_common_shard
+2025-03-05T18:23:47.563803+00:00 [debug] msg: ensure_local_table, table: emqx_app, '$span': {complete,true}
+2025-03-05T18:23:47.565128+00:00 [debug] msg: init_bootstrap_api_keys_from_file, file: <<>>
+2025-03-05T18:23:47.565958+00:00 [debug] msg: started_apps, apps: [trails,cowboy_swagger,minirest,emqx_management]
+2025-03-05T18:23:47.566250+00:00 [debug] msg: starting_app, app: emqx_modules
+2025-03-05T18:23:47.566684+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_delayed, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,delayed_message},{attributes,[key,delayed,msg]}]
+2025-03-05T18:23:47.567313+00:00 [info] msg: Adding table to a shard, table: emqx_delayed, shard: undefined
+2025-03-05T18:23:47.568035+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_deactivated_alarm,emqx_delayed,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:23:47.568536+00:00 [debug] msg: ensure_local_table, table: emqx_delayed, '$span': start
+2025-03-05T18:23:47.571383+00:00 [debug] msg: ensure_local_table, table: emqx_delayed, '$span': {complete,true}
+2025-03-05T18:23:47.574770+00:00 [debug] msg: emqx_topic_metrics_started
+2025-03-05T18:23:47.575206+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_trace, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,emqx_trace},{attributes,[name,type,filter,enable,payload_encode,extra,start_at,end_at]}]
+2025-03-05T18:23:47.576009+00:00 [info] msg: Adding table to a shard, table: emqx_trace, shard: emqx_common_shard
+2025-03-05T18:23:47.576466+00:00 [debug] msg: ensure_local_table, table: emqx_trace, '$span': start
+2025-03-05T18:23:47.576799+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_app,emqx_banned,emqx_banned_rules,emqx_trace], shard: emqx_common_shard
+2025-03-05T18:23:47.581272+00:00 [notice] msg: Shard schema change, new_table: emqx_trace, shard: emqx_common_shard
+2025-03-05T18:23:47.581266+00:00 [debug] msg: ensure_local_table, table: emqx_trace, '$span': {complete,true}
+2025-03-05T18:23:47.584047+00:00 [debug] msg: started_apps, apps: [emqx_modules]
+2025-03-05T18:23:47.584314+00:00 [debug] msg: starting_app, app: emqx_exhook
+2025-03-05T18:23:47.585904+00:00 [debug] msg: started_apps, apps: [grpc,emqx_exhook]
+2025-03-05T18:23:47.586490+00:00 [debug] msg: starting_app, app: emqx_mongodb
+2025-03-05T18:23:47.588716+00:00 [debug] msg: started_apps, apps: [bson,poolboy,pbkdf2,mongodb,emqx_mongodb]
+2025-03-05T18:23:47.589526+00:00 [debug] msg: starting_app, app: emqx_connector
+2025-03-05T18:23:47.590868+00:00 [info] msg: wait_for_cluster_rpc_shard, result: ok
+2025-03-05T18:23:47.591232+00:00 [info] msg: wait_for_cluster_rpc_tables, result: ok
+2025-03-05T18:23:47.601873+00:00 [debug] msg: started_apps, apps: [jose,emqx_connector]
+2025-03-05T18:23:47.602213+00:00 [debug] msg: starting_app, app: emqx_bridge
+2025-03-05T18:23:47.604228+00:00 [debug] msg: started_apps, apps: [emqx_bridge]
+2025-03-05T18:23:47.604567+00:00 [debug] msg: starting_app, app: emqx_rule_engine
+2025-03-05T18:23:47.605843+00:00 [debug] msg: started_apps, apps: [rulesql,quickrand,uuid,emqx_rule_engine]
+2025-03-05T18:23:47.606039+00:00 [debug] msg: starting_app, app: emqx_ldap
+2025-03-05T18:23:47.606504+00:00 [debug] msg: started_apps, apps: [eldap,emqx_ldap]
+2025-03-05T18:23:47.606649+00:00 [debug] msg: starting_app, app: emqx_dashboard
+2025-03-05T18:23:47.606938+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_admin, options: [{type,set},{rlog_shard,emqx_dashboard_shard},{storage,disc_copies},{record_name,emqx_admin},{attributes,[username,pwdhash,description,role,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.607622+00:00 [info] msg: Adding table to a shard, table: emqx_admin, shard: emqx_dashboard_shard
+2025-03-05T18:23:47.607927+00:00 [debug] msg: ensure_local_table, table: emqx_admin, '$span': start
+2025-03-05T18:23:47.608139+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_admin], shard: emqx_dashboard_shard
+2025-03-05T18:23:47.608400+00:00 [debug] msg: ensure_local_table, table: emqx_admin, '$span': {complete,true}
+2025-03-05T18:23:47.608548+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_admin_jwt, options: [{type,set},{rlog_shard,emqx_dashboard_shard},{storage,disc_copies},{record_name,emqx_admin_jwt},{attributes,[token,username,exptime,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:23:47.609141+00:00 [info] msg: Adding table to a shard, table: emqx_admin_jwt, shard: emqx_dashboard_shard
+2025-03-05T18:23:47.609835+00:00 [debug] msg: ensure_local_table, table: emqx_admin_jwt, '$span': start
+2025-03-05T18:23:47.610209+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_admin,emqx_admin_jwt], shard: emqx_dashboard_shard
+2025-03-05T18:23:47.610607+00:00 [debug] msg: ensure_local_table, table: emqx_admin_jwt, '$span': {complete,true}
+2025-03-05T18:23:47.610863+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_dashboard_monitor, options: [{type,set},{local_content,true},{storage,disc_copies},{record_name,emqx_monit},{attributes,[time,data]}]
+2025-03-05T18:23:47.611877+00:00 [info] msg: Adding table to a shard, table: emqx_dashboard_monitor, shard: undefined
+2025-03-05T18:23:47.612445+00:00 [debug] msg: ensure_local_table, table: emqx_dashboard_monitor, '$span': start
+2025-03-05T18:23:47.613097+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_dashboard_monitor,emqx_deactivated_alarm,emqx_delayed,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:23:47.614583+00:00 [debug] msg: ensure_local_table, table: emqx_dashboard_monitor, '$span': {complete,true}
+2025-03-05T18:23:47.615505+00:00 [info] msg: starting_rlog_shard, shard: emqx_dashboard_shard
+2025-03-05T18:23:47.617036+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_dashboard_shard
+2025-03-05T18:23:47.618359+00:00 [info] msg: loading_desc, file: /opt/emqx/lib/emqx_dashboard-5.2.1/priv/desc.en.hocon
+2025-03-05T18:23:47.946455+00:00 [info] msg: loading_desc, file: /opt/emqx/lib/emqx_dashboard-5.2.1/priv/desc.zh.hocon
+2025-03-05T18:23:48.363476+00:00 [info] msg: started_listener_ok, name: 'http:dashboard', pid: <0.2921.0>, port: 18083
+2025-03-05T18:23:48.373390+00:00 [debug] msg: started_apps, apps: [emqx_dashboard]
+2025-03-05T18:23:48.373619+00:00 [debug] msg: starting_app, app: emqx_auto_subscribe
+2025-03-05T18:23:48.407218+00:00 [debug] msg: started_apps, apps: [emqx_auto_subscribe]
+2025-03-05T18:23:48.407750+00:00 [debug] msg: starting_app, app: emqx_auth
+2025-03-05T18:23:48.432348+00:00 [debug] msg: started_apps, apps: [emqx_auth]
+2025-03-05T18:23:48.432638+00:00 [debug] msg: starting_app, app: emqx_auth_ldap
+2025-03-05T18:23:48.436854+00:00 [debug] msg: started_apps, apps: [emqx_auth_ldap]
+2025-03-05T18:23:48.437120+00:00 [debug] msg: starting_app, app: emqx_auth_mnesia
+2025-03-05T18:23:48.438990+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_acl, options: [{type,ordered_set},{rlog_shard,emqx_acl_sharded},{storage,disc_copies},{attributes,[who,rules]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:48.439645+00:00 [info] msg: Adding table to a shard, table: emqx_acl, shard: emqx_acl_sharded
+2025-03-05T18:23:48.440212+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_acl], shard: emqx_acl_sharded
+2025-03-05T18:23:48.439944+00:00 [debug] msg: ensure_local_table, table: emqx_acl, '$span': start
+2025-03-05T18:23:48.442092+00:00 [debug] msg: ensure_local_table, table: emqx_acl, '$span': {complete,true}
+2025-03-05T18:23:48.442985+00:00 [info] msg: starting_rlog_shard, shard: emqx_acl_sharded
+2025-03-05T18:23:48.443827+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_authn_mnesia, options: [{rlog_shard,emqx_authn_shard},{type,ordered_set},{storage,disc_copies},{record_name,user_info},{attributes,[user_id,password_hash,salt,is_superuser]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:48.444087+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_acl_sharded
+2025-03-05T18:23:48.444736+00:00 [info] msg: Adding table to a shard, table: emqx_authn_mnesia, shard: emqx_authn_shard
+2025-03-05T18:23:48.445360+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_authn_mnesia], shard: emqx_authn_shard
+2025-03-05T18:23:48.445218+00:00 [debug] msg: ensure_local_table, table: emqx_authn_mnesia, '$span': start
+2025-03-05T18:23:48.447426+00:00 [debug] msg: ensure_local_table, table: emqx_authn_mnesia, '$span': {complete,true}
+2025-03-05T18:23:48.447852+00:00 [info] msg: starting_rlog_shard, shard: emqx_authn_shard
+2025-03-05T18:23:48.451252+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_authn_shard
+2025-03-05T18:23:48.451263+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_authn_scram_mnesia, options: [{rlog_shard,emqx_authn_shard},{type,ordered_set},{storage,disc_copies},{record_name,user_info},{attributes,[user_id,stored_key,server_key,salt,is_superuser]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:48.453910+00:00 [info] msg: Adding table to a shard, table: emqx_authn_scram_mnesia, shard: emqx_authn_shard
+2025-03-05T18:23:48.454429+00:00 [debug] msg: ensure_local_table, table: emqx_authn_scram_mnesia, '$span': start
+2025-03-05T18:23:48.454700+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_authn_mnesia,emqx_authn_scram_mnesia], shard: emqx_authn_shard
+2025-03-05T18:23:48.456017+00:00 [debug] msg: ensure_local_table, table: emqx_authn_scram_mnesia, '$span': {complete,true}
+2025-03-05T18:23:48.456477+00:00 [debug] msg: started_apps, apps: [sasl_auth,emqx_auth_mnesia]
+2025-03-05T18:23:48.456643+00:00 [debug] msg: starting_app, app: emqx_auth_redis
+2025-03-05T18:23:48.456599+00:00 [notice] msg: Shard schema change, new_table: emqx_authn_scram_mnesia, shard: emqx_authn_shard
+2025-03-05T18:23:48.457294+00:00 [debug] msg: started_apps, apps: [emqx_auth_redis]
+2025-03-05T18:23:48.457514+00:00 [debug] msg: starting_app, app: emqx_prometheus
+2025-03-05T18:23:48.472138+00:00 [debug] msg: started_apps, apps: [prometheus,emqx_prometheus]
+2025-03-05T18:23:48.472435+00:00 [debug] msg: starting_app, app: emqx_auth_jwt
+2025-03-05T18:23:48.473189+00:00 [debug] msg: started_apps, apps: [emqx_auth_jwt]
+2025-03-05T18:23:48.473518+00:00 [debug] msg: starting_app, app: emqx_auth_mongodb
+2025-03-05T18:23:48.474206+00:00 [debug] msg: started_apps, apps: [emqx_auth_mongodb]
+2025-03-05T18:23:48.474409+00:00 [debug] msg: starting_app, app: emqx_auth_postgresql
+2025-03-05T18:23:48.474866+00:00 [debug] msg: started_apps, apps: [emqx_auth_postgresql]
+2025-03-05T18:23:48.474990+00:00 [debug] msg: starting_app, app: emqx_auth_http
+2025-03-05T18:23:48.477612+00:00 [debug] msg: started_apps, apps: [emqx_auth_http]
+2025-03-05T18:23:48.478040+00:00 [debug] msg: starting_app, app: emqx_mysql
+2025-03-05T18:23:48.478780+00:00 [debug] msg: started_apps, apps: [mysql,emqx_mysql]
+2025-03-05T18:23:48.479131+00:00 [debug] msg: starting_app, app: emqx_auth_mysql
+2025-03-05T18:23:48.480229+00:00 [debug] msg: started_apps, apps: [emqx_auth_mysql]
+2025-03-05T18:23:48.481161+00:00 [debug] msg: starting_app, app: emqx_gateway
+2025-03-05T18:23:48.483421+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_coap
+2025-03-05T18:23:48.483830+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_exproto
+2025-03-05T18:23:48.484162+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_lwm2m
+2025-03-05T18:23:48.489030+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_mqttsn
+2025-03-05T18:23:48.489573+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_stomp
+2025-03-05T18:23:48.490083+00:00 [debug] msg: started_apps, apps: [emqx_gateway]
+2025-03-05T18:23:48.490361+00:00 [debug] msg: starting_app, app: emqx_gateway_stomp
+2025-03-05T18:23:48.491143+00:00 [debug] msg: started_apps, apps: [emqx_gateway_stomp]
+2025-03-05T18:23:48.491357+00:00 [debug] msg: starting_app, app: emqx_gateway_coap
+2025-03-05T18:23:48.491890+00:00 [debug] msg: started_apps, apps: [emqx_gateway_coap]
+2025-03-05T18:23:48.492234+00:00 [debug] msg: starting_app, app: emqx_gateway_lwm2m
+2025-03-05T18:23:48.492908+00:00 [debug] msg: started_apps, apps: [emqx_gateway_lwm2m]
+2025-03-05T18:23:48.493111+00:00 [debug] msg: starting_app, app: emqx_gateway_exproto
+2025-03-05T18:23:48.493537+00:00 [debug] msg: started_apps, apps: [emqx_gateway_exproto]
+2025-03-05T18:23:48.493711+00:00 [debug] msg: starting_app, app: emqx_gateway_mqttsn
+2025-03-05T18:23:48.494572+00:00 [debug] msg: started_apps, apps: [emqx_gateway_mqttsn]
+2025-03-05T18:23:48.494798+00:00 [debug] msg: starting_app, app: quicer
+2025-03-05T18:23:48.495936+00:00 [debug] msg: started_apps, apps: [quicer]
+2025-03-05T18:23:48.496167+00:00 [debug] msg: starting_app, app: emqx_connector_jwt
+2025-03-05T18:23:48.496882+00:00 [debug] msg: started_apps, apps: [emqx_connector_jwt]
+2025-03-05T18:23:48.497042+00:00 [debug] msg: starting_app, app: emqx_psk
+2025-03-05T18:23:48.497455+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_psk, options: [{rlog_shard,emqx_psk_shard},{type,ordered_set},{storage,disc_copies},{record_name,psk_entry},{attributes,[psk_id,shared_secret,extra]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:23:48.500015+00:00 [info] msg: Adding table to a shard, table: emqx_psk, shard: emqx_psk_shard
+2025-03-05T18:23:48.500706+00:00 [debug] msg: ensure_local_table, table: emqx_psk, '$span': start
+2025-03-05T18:23:48.501431+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_psk], shard: emqx_psk_shard
+2025-03-05T18:23:48.505186+00:00 [debug] msg: ensure_local_table, table: emqx_psk, '$span': {complete,true}
+2025-03-05T18:23:48.505740+00:00 [info] msg: starting_rlog_shard, shard: emqx_psk_shard
+2025-03-05T18:23:48.506891+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_psk_shard
+2025-03-05T18:23:48.519577+00:00 [info] msg: emqx_psk_disabled
+2025-03-05T18:23:48.521416+00:00 [debug] msg: started_apps, apps: [emqx_psk]
+2025-03-05T18:23:48.521646+00:00 [debug] msg: starting_app, app: emqx_telemetry
+2025-03-05T18:23:48.522212+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_telemetry, options: [{type,set},{storage,disc_copies},{rlog_shard,emqx_telemetry_shard},{record_name,telemetry},{attributes,[id,uuid]}]
+2025-03-05T18:23:48.522585+00:00 [debug] msg: started_apps, apps: [emqx_telemetry]
+2025-03-05T18:23:48.523203+00:00 [info] msg: Adding table to a shard, table: emqx_telemetry, shard: emqx_telemetry_shard
+2025-03-05T18:23:48.523677+00:00 [debug] msg: ensure_local_table, table: emqx_telemetry, '$span': start
+2025-03-05T18:23:48.524280+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_telemetry], shard: emqx_telemetry_shard
+2025-03-05T18:23:48.531013+00:00 [debug] msg: ensure_local_table, table: emqx_telemetry, '$span': {complete,true}
+2025-03-05T18:23:48.531615+00:00 [info] msg: starting_rlog_shard, shard: emqx_telemetry_shard
+2025-03-05T18:23:48.533056+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_telemetry_shard
+2025-03-05T18:23:50.882087+00:00 [info] msg: regenerate_minirest_dispatch, elapsed: 2517, listeners: ['http:dashboard'], i18n_lang: en
+2025-03-05T18:24:08.550397+00:00 [debug] msg: telemetry_data_reported
+2025-03-05T18:24:11.080801+00:00 [debug] tag: MQTT, msg: raw_bin_received, peername: 172.19.0.1:37688, size: 31, type: hex, bin: 101D00044D51545404C2003C0000000575736572310008636C617665313233
+2025-03-05T18:24:11.081609+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: CONNECT(Q0, R0, D0, ClientId=, ProtoName=MQTT, ProtoVsn=4, CleanStart=true, KeepAlive=60, Username=user1, Password=******)
+2025-03-05T18:24:11.083295+00:00 [debug] clientid: t6f82BAasFHdSMnr, msg: insert_channel_info, peername: 172.19.0.1:37688, username: user1
+2025-03-05T18:24:11.083709+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_sent, peername: 172.19.0.1:37688, username: user1, packet: CONNACK(Q0, R0, D0, AckFlags=0, ReasonCode=0)
+2025-03-05T18:24:11.084404+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 216, type: hex, bin: 3064003873656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6163656C65726F6D6574726F7B2278223A202D31332E3430372C202279223A202D31332E3430362C20227A223A202D31332E3430367D3070002F73656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6770737B22686F7261223A2022313832343131222C20226C617469747564223A2034302E3031303831392C20226C6F6E6769747564223A202D322E3938393138317D
+2025-03-05T18:24:11.084846+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, PacketId=undefined, Payload(text)={"x": -13.407, "y": -13.406, "z": -13.406})
+2025-03-05T18:24:11.085339+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_module_ignore, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:24:11.085882+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_matched_allow, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:24:11.086391+00:00 [info] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_permission_allowed, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:24:11.086764+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, payload: {"x": -13.407, "y": -13.406, "z": -13.406}, payload_encode: text
+2025-03-05T18:24:11.087120+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/gps, PacketId=undefined, Payload(text)={"hora": "182411", "latitud": 40.010819, "longitud": -2.989181})
+2025-03-05T18:24:11.087581+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_module_ignore, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/gps, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:24:11.087843+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_matched_allow, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/gps, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:24:11.088053+00:00 [info] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_permission_allowed, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/gps, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:24:11.088360+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/gps, payload: {"hora": "182411", "latitud": 40.010819, "longitud": -2.989181}, payload_encode: text
+2025-03-05T18:24:11.088652+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 106, type: hex, bin: 3068003673656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6769726F73636F70696F7B2278223A202D313637352E3734312C202279223A202D313637352E3732392C20227A223A202D313637352E3731397D
+2025-03-05T18:24:11.088862+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, PacketId=undefined, Payload(text)={"x": -1675.741, "y": -1675.729, "z": -1675.719})
+2025-03-05T18:24:11.089098+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_module_ignore, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:24:11.089361+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_matched_allow, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:24:11.089629+00:00 [info] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_permission_allowed, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:24:11.089815+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, payload: {"x": -1675.741, "y": -1675.729, "z": -1675.719}, payload_encode: text
+2025-03-05T18:24:11.090069+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 108, type: hex, bin: 306A003873656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6D61676E65746F6D6574726F7B2278223A202D343130352E3437392C202279223A202D343130352E3436332C20227A223A202D343130352E3434327D
+2025-03-05T18:24:11.090340+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, PacketId=undefined, Payload(text)={"x": -4105.479, "y": -4105.463, "z": -4105.442})
+2025-03-05T18:24:11.090601+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_module_ignore, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:24:11.090958+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_matched_allow, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:24:11.091265+00:00 [info] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_permission_allowed, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:24:11.091476+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, payload: {"x": -4105.479, "y": -4105.463, "z": -4105.442}, payload_encode: text
+2025-03-05T18:24:11.091727+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 76, type: hex, bin: 304A003573656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6261726F6D6574726F7B2270726573696F6E223A203334312E30387D
+2025-03-05T18:24:11.092018+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, PacketId=undefined, Payload(text)={"presion": 341.08})
+2025-03-05T18:24:11.092292+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_module_ignore, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:24:11.092512+00:00 [debug] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_matched_allow, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:24:11.092701+00:00 [info] tag: AUTHZ, clientid: t6f82BAasFHdSMnr, msg: authorization_permission_allowed, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:24:11.092875+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, payload: {"presion": 341.08}, payload_encode: text
+2025-03-05T18:24:12.085222+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 102, type: hex, bin: 3064003873656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6163656C65726F6D6574726F7B2278223A202D31332E3333352C202279223A202D31332E3333342C20227A223A202D31332E3333347D
+2025-03-05T18:24:12.085826+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, PacketId=undefined, Payload(text)={"x": -13.335, "y": -13.334, "z": -13.334})
+2025-03-05T18:24:12.086443+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/acelerometro, payload: {"x": -13.335, "y": -13.334, "z": -13.334}, payload_encode: text
+2025-03-05T18:24:12.125623+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: raw_bin_received, peername: 172.19.0.1:37688, username: user1, size: 291, type: hex, bin: 3068003673656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6769726F73636F70696F7B2278223A202D313636362E3638342C202279223A202D313636362E3637312C20227A223A202D313636362E3636327D306A003873656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6D61676E65746F6D6574726F7B2278223A202D343038332E3137352C202279223A202D343038332E3135322C20227A223A202D343038332E3133317D304B003573656E736F722F32313930366134652D316433332D346339372D396135632D3663633165383736313536362F6261726F6D6574726F7B2270726573696F6E223A203334332E3335387D
+2025-03-05T18:24:12.126023+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, PacketId=undefined, Payload(text)={"x": -1666.684, "y": -1666.671, "z": -1666.662})
+2025-03-05T18:24:12.126387+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/giroscopio, payload: {"x": -1666.684, "y": -1666.671, "z": -1666.662}, payload_encode: text
+2025-03-05T18:24:12.126635+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, PacketId=undefined, Payload(text)={"x": -4083.175, "y": -4083.152, "z": -4083.131})
+2025-03-05T18:24:12.126847+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/magnetometro, payload: {"x": -4083.175, "y": -4083.152, "z": -4083.131}, payload_encode: text
+2025-03-05T18:24:12.127046+00:00 [debug] tag: MQTT, clientid: t6f82BAasFHdSMnr, msg: mqtt_packet_received, peername: 172.19.0.1:37688, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, PacketId=undefined, Payload(text)={"presion": 343.358})
+2025-03-05T18:24:12.127331+00:00 [debug] tag: PUBLISH, clientid: t6f82BAasFHdSMnr, msg: publish_to, peername: 172.19.0.1:37688, username: user1, topic: sensor/21906a4e-1d33-4c97-9a5c-6cc1e8761566/barometro, payload: {"presion": 343.358}, payload_encode: text
+2025-03-05T18:24:13.019342+00:00 [debug] tag: SOCKET, clientid: t6f82BAasFHdSMnr, msg: emqx_connection_terminated, peername: 172.19.0.1:37688, username: user1, reason: {shutdown,tcp_closed}
+2025-03-05T18:24:13.019840+00:00 [info] clientid: t6f82BAasFHdSMnr, msg: terminate, peername: 172.19.0.1:37688, username: user1, reason: {shutdown,tcp_closed}
+2025-03-05T18:24:13.020546+00:00 [debug] msg: emqx_cm_clean_down, client_id: <<"t6f82BAasFHdSMnr">>
+2025-03-05T18:25:41.572928+00:00 [critical] msg: received_terminate_signal
+2025-03-05T18:25:41.574084+00:00 [debug] msg: stopping_app, app: os_mon
+2025-03-05T18:25:41.585214+00:00 [notice] Application: os_mon. Exited: stopped. Type: permanent.
+2025-03-05T18:25:41.588624+00:00 [debug] msg: stopping_app, app: jq
+2025-03-05T18:25:41.598330+00:00 [notice] Application: jq. Exited: stopped. Type: permanent.
+2025-03-05T18:25:41.598621+00:00 [notice] msg: stopping_emqx_apps
+2025-03-05T18:25:41.605096+00:00 [debug] msg: stopping_app, app: emqx_telemetry
+2025-03-05T18:25:41.612472+00:00 [notice] Application: emqx_telemetry. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.612759+00:00 [debug] msg: stopping_app, app: emqx_psk
+2025-03-05T18:25:41.623391+00:00 [notice] Application: emqx_psk. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.623694+00:00 [debug] msg: stopping_app, app: emqx_connector_jwt
+2025-03-05T18:25:41.631846+00:00 [notice] Application: emqx_connector_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.632408+00:00 [debug] msg: stopping_app, app: quicer
+2025-03-05T18:25:41.638035+00:00 [notice] Application: quicer. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.638297+00:00 [debug] msg: stopping_app, app: emqx_gateway_mqttsn
+2025-03-05T18:25:41.638547+00:00 [notice] Application: emqx_gateway_mqttsn. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.638672+00:00 [debug] msg: stopping_app, app: emqx_gateway_exproto
+2025-03-05T18:25:41.638828+00:00 [notice] Application: emqx_gateway_exproto. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.638937+00:00 [debug] msg: stopping_app, app: emqx_gateway_lwm2m
+2025-03-05T18:25:41.639054+00:00 [notice] Application: emqx_gateway_lwm2m. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.639158+00:00 [debug] msg: stopping_app, app: emqx_gateway_coap
+2025-03-05T18:25:41.639334+00:00 [notice] Application: emqx_gateway_coap. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.639554+00:00 [debug] msg: stopping_app, app: emqx_gateway_stomp
+2025-03-05T18:25:41.639761+00:00 [notice] Application: emqx_gateway_stomp. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.639876+00:00 [debug] msg: stopping_app, app: emqx_gateway
+2025-03-05T18:25:41.646578+00:00 [notice] Application: emqx_gateway. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.646847+00:00 [debug] msg: stopping_app, app: emqx_auth_mysql
+2025-03-05T18:25:41.652583+00:00 [notice] Application: emqx_auth_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.652865+00:00 [debug] msg: stopping_app, app: emqx_mysql
+2025-03-05T18:25:41.653111+00:00 [notice] Application: emqx_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.653255+00:00 [debug] msg: stopping_app, app: emqx_auth_http
+2025-03-05T18:25:41.659181+00:00 [notice] Application: emqx_auth_http. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.659425+00:00 [debug] msg: stopping_app, app: emqx_auth_postgresql
+2025-03-05T18:25:41.666070+00:00 [notice] Application: emqx_auth_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.666443+00:00 [debug] msg: stopping_app, app: emqx_auth_mongodb
+2025-03-05T18:25:41.673783+00:00 [notice] Application: emqx_auth_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.673984+00:00 [debug] msg: stopping_app, app: emqx_auth_jwt
+2025-03-05T18:25:41.678116+00:00 [notice] Application: emqx_auth_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.678324+00:00 [debug] msg: stopping_app, app: emqx_prometheus
+2025-03-05T18:25:41.687786+00:00 [notice] Application: emqx_prometheus. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.688064+00:00 [debug] msg: stopping_app, app: emqx_auth_redis
+2025-03-05T18:25:41.696014+00:00 [notice] Application: emqx_auth_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.697389+00:00 [debug] msg: stopping_app, app: emqx_auth_mnesia
+2025-03-05T18:25:41.703026+00:00 [notice] Application: emqx_auth_mnesia. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.703470+00:00 [debug] msg: stopping_app, app: emqx_auth_ldap
+2025-03-05T18:25:41.707689+00:00 [notice] Application: emqx_auth_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.707882+00:00 [debug] msg: stopping_app, app: emqx_auth
+2025-03-05T18:25:41.713196+00:00 [notice] Application: emqx_auth. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.713491+00:00 [debug] msg: stopping_app, app: emqx_auto_subscribe
+2025-03-05T18:25:41.718213+00:00 [notice] Application: emqx_auto_subscribe. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.718460+00:00 [debug] msg: stopping_app, app: emqx_dashboard
+2025-03-05T18:25:41.727857+00:00 [notice] Application: emqx_dashboard. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.728126+00:00 [debug] msg: stopping_app, app: emqx_ldap
+2025-03-05T18:25:41.728405+00:00 [notice] Application: emqx_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.728610+00:00 [debug] msg: stopping_app, app: emqx_rule_engine
+2025-03-05T18:25:41.750106+00:00 [notice] Application: emqx_rule_engine. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.752440+00:00 [debug] msg: stopping_app, app: emqx_bridge
+2025-03-05T18:25:41.767268+00:00 [notice] Application: emqx_bridge. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.767566+00:00 [debug] msg: stopping_app, app: emqx_connector
+2025-03-05T18:25:41.772144+00:00 [debug] item: '_lc_flag_mem_', event: remove_flag, '$kind': lc_flag_man
+2025-03-05T18:25:41.774411+00:00 [notice] alarm_handler: {clear,lc_mem_alarm}
+2025-03-05T18:25:41.774854+00:00 [notice] Application: emqx_connector. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.775022+00:00 [debug] msg: stopping_app, app: emqx_mongodb
+2025-03-05T18:25:41.775263+00:00 [notice] Application: emqx_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.775387+00:00 [debug] msg: stopping_app, app: emqx_exhook
+2025-03-05T18:25:41.775764+00:00 [info] msg: exhook_mgr_terminated, reason: shutdown, servers: #{}
+2025-03-05T18:25:41.781447+00:00 [notice] Application: emqx_exhook. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.781749+00:00 [debug] msg: stopping_app, app: emqx_modules
+2025-03-05T18:25:41.789188+00:00 [notice] Application: emqx_modules. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.789446+00:00 [debug] msg: stopping_app, app: emqx_management
+2025-03-05T18:25:41.793249+00:00 [notice] Application: emqx_management. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.793397+00:00 [debug] msg: stopping_app, app: emqx_postgresql
+2025-03-05T18:25:41.793532+00:00 [notice] Application: emqx_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.793618+00:00 [debug] msg: stopping_app, app: emqx_bridge_http
+2025-03-05T18:25:41.793717+00:00 [notice] Application: emqx_bridge_http. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.793796+00:00 [debug] msg: stopping_app, app: emqx_redis
+2025-03-05T18:25:41.793891+00:00 [notice] Application: emqx_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.793972+00:00 [debug] msg: stopping_app, app: emqx_bridge_mqtt
+2025-03-05T18:25:41.794069+00:00 [notice] Application: emqx_bridge_mqtt. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.794147+00:00 [debug] msg: stopping_app, app: emqx_resource
+2025-03-05T18:25:41.810979+00:00 [notice] Application: emqx_resource. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.811230+00:00 [debug] msg: stopping_app, app: emqx_retainer
+2025-03-05T18:25:41.829094+00:00 [notice] Application: emqx_retainer. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.829373+00:00 [debug] msg: stopping_app, app: emqx_plugins
+2025-03-05T18:25:41.834323+00:00 [notice] Application: emqx_plugins. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.834558+00:00 [debug] msg: stopping_app, app: emqx_slow_subs
+2025-03-05T18:25:41.839157+00:00 [notice] Application: emqx_slow_subs. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.839605+00:00 [debug] msg: stopping_app, app: emqx
+2025-03-05T18:25:41.841931+00:00 [notice] tcp:default stopped on 0.0.0.0:1883
+2025-03-05T18:25:41.843162+00:00 [notice] ssl:default stopped on 0.0.0.0:8883
+2025-03-05T18:25:41.896152+00:00 [notice] Application: emqx. Exited: stopped. Type: permanent.
+2025-03-05T18:25:41.896485+00:00 [debug] msg: stopping_app, app: emqx_ds_backends
+2025-03-05T18:25:41.896736+00:00 [notice] Application: emqx_ds_backends. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.896872+00:00 [debug] msg: stopping_app, app: emqx_durable_storage
+2025-03-05T18:25:41.911147+00:00 [notice] Application: emqx_durable_storage. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.911379+00:00 [debug] msg: stopping_app, app: emqx_utils
+2025-03-05T18:25:41.911605+00:00 [notice] Application: emqx_utils. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.911723+00:00 [debug] msg: stopping_app, app: cowboy
+2025-03-05T18:25:41.924742+00:00 [notice] Application: cowboy. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.925040+00:00 [debug] msg: stopping_app, app: ranch
+2025-03-05T18:25:41.940079+00:00 [notice] Application: ranch. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.940517+00:00 [debug] msg: stopping_app, app: bcrypt
+2025-03-05T18:25:41.956266+00:00 [notice] Application: bcrypt. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.956524+00:00 [debug] msg: stopping_app, app: emqx_http_lib
+2025-03-05T18:25:41.956758+00:00 [notice] Application: emqx_http_lib. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.956906+00:00 [debug] msg: stopping_app, app: gproc
+2025-03-05T18:25:41.970593+00:00 [notice] Application: gproc. Exited: stopped. Type: temporary.
+2025-03-05T18:25:41.970890+00:00 [debug] msg: stopping_app, app: esockd
+2025-03-05T18:25:41.981161+00:00 [notice] Application: esockd. Exited: stopped. Type: permanent.
+2025-03-05T18:25:41.981460+00:00 [debug] msg: stopping_app, app: emqx_conf
+2025-03-05T18:25:41.991648+00:00 [notice] Application: emqx_conf. Exited: stopped. Type: temporary.
+2025-03-05T18:25:42.147116+00:00 [debug] msg: Mria is preparing to stop
+2025-03-05T18:25:42.148460+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.148926+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.149307+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.149667+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.150008+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.151932+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.155037+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.155573+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.155905+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.156209+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.156591+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.156886+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.157199+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:25:42.157584+00:00 [debug] msg: mria_worker_terminate, process: mria_node_monitor, callback: terminate
+2025-03-05T18:25:42.158012+00:00 [debug] msg: mria_worker_terminate, process: mria_membership, callback: terminate
+2025-03-05T18:25:42.161021+00:00 [debug] msg: mria_worker_terminate, process: mria_status, callback: terminate
+2025-03-05T18:25:42.207722+00:00 [notice] msg: Mria is stopped
+2025-03-05T18:26:22.123816+00:00 [info] event=server_setup_successfully driver=tcp port=5369 socket="#Port<0.5>"
+2025-03-05T18:26:22.124422+00:00 [info] msg: gen_rpc_dispatcher_start
+2025-03-05T18:26:22.127128+00:00 [notice] msg: Starting mria
+2025-03-05T18:26:22.128038+00:00 [notice] msg: Starting mnesia
+2025-03-05T18:26:22.128216+00:00 [debug] msg: Ensure mnesia schema
+2025-03-05T18:26:22.132263+00:00 [notice] msg: Creating new mnesia schema, result: {error,{'emqx@172.19.0.2',{already_exists,'emqx@172.19.0.2'}}}
+2025-03-05T18:26:22.176290+00:00 [notice] msg: Starting shards
+2025-03-05T18:26:22.176984+00:00 [debug] msg: rlog_schema_init
+2025-03-05T18:26:22.201622+00:00 [info] msg: Setting RLOG shard config, tables: ['$mria_rlog_sync',mria_schema], shard: '$mria_meta_shard'
+2025-03-05T18:26:22.202091+00:00 [info] msg: Converging schema
+2025-03-05T18:26:22.202637+00:00 [info] msg: Setting RLOG shard config, tables: ['$mria_rlog_sync',mria_schema], shard: '$mria_meta_shard'
+2025-03-05T18:26:22.203446+00:00 [info] msg: starting_rlog_shard, shard: '$mria_meta_shard'
+2025-03-05T18:26:22.204620+00:00 [info] msg: Starting ekka
+2025-03-05T18:26:22.205218+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: '$mria_meta_shard'
+2025-03-05T18:26:22.205478+00:00 [notice] msg: Mria is running
+2025-03-05T18:26:22.205739+00:00 [info] msg: Starting ekka
+2025-03-05T18:26:22.206360+00:00 [info] msg: Ekka is running
+2025-03-05T18:26:22.206230+00:00 [info] msg: Ekka is running
+2025-03-05T18:26:22.206727+00:00 [notice] msg: (re)starting_emqx_apps
+2025-03-05T18:26:22.210226+00:00 [debug] msg: starting_app, app: emqx_conf
+2025-03-05T18:26:22.210697+00:00 [debug] msg: mria_mnesia_create_table, name: cluster_rpc_mfa, options: [{type,ordered_set},{rlog_shard,emqx_cluster_rpc_shard},{storage,disc_copies},{record_name,cluster_rpc_mfa},{attributes,[tnx_id,mfa,created_at,initiator]}]
+2025-03-05T18:26:22.211188+00:00 [info] msg: Adding table to a shard, table: cluster_rpc_mfa, shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.211484+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_mfa, '$span': start
+2025-03-05T18:26:22.211795+00:00 [info] msg: Setting RLOG shard config, tables: [cluster_rpc_mfa], shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.212025+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_mfa, '$span': {complete,true}
+2025-03-05T18:26:22.212217+00:00 [debug] msg: mria_mnesia_create_table, name: cluster_rpc_commit, options: [{type,set},{rlog_shard,emqx_cluster_rpc_shard},{storage,disc_copies},{record_name,cluster_rpc_commit},{attributes,[node,tnx_id]}]
+2025-03-05T18:26:22.212752+00:00 [info] msg: Adding table to a shard, table: cluster_rpc_commit, shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.213130+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_commit, '$span': start
+2025-03-05T18:26:22.213409+00:00 [info] msg: Setting RLOG shard config, tables: [cluster_rpc_commit,cluster_rpc_mfa], shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.213698+00:00 [debug] msg: ensure_local_table, table: cluster_rpc_commit, '$span': {complete,true}
+2025-03-05T18:26:22.214048+00:00 [info] msg: starting_rlog_shard, shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.215268+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_cluster_rpc_shard
+2025-03-05T18:26:22.216205+00:00 [info] msg: wait_for_cluster_rpc_shard, result: ok
+2025-03-05T18:26:22.216809+00:00 [info] msg: wait_for_cluster_rpc_tables, result: ok
+2025-03-05T18:26:22.217606+00:00 [info] msg: skip_sync_cluster_conf, reason: This is a single node, or the first node in the cluster
+2025-03-05T18:26:22.227365+00:00 [warning] unknown_env_vars: ["EMQX_DASHBOARD__LISTENER__HTTP"]
+2025-03-05T18:26:22.322017+00:00 [debug] msg: started_apps, apps: [emqx_conf]
+2025-03-05T18:26:22.322337+00:00 [debug] msg: starting_app, app: esockd
+2025-03-05T18:26:22.324092+00:00 [debug] msg: started_apps, apps: [esockd]
+2025-03-05T18:26:22.324580+00:00 [debug] msg: starting_app, app: gproc
+2025-03-05T18:26:22.327441+00:00 [debug] msg: started_apps, apps: [gproc]
+2025-03-05T18:26:22.328298+00:00 [debug] msg: starting_app, app: emqx_http_lib
+2025-03-05T18:26:22.328884+00:00 [debug] msg: started_apps, apps: [emqx_http_lib]
+2025-03-05T18:26:22.329025+00:00 [debug] msg: starting_app, app: bcrypt
+2025-03-05T18:26:22.331922+00:00 [debug] msg: started_apps, apps: [bcrypt]
+2025-03-05T18:26:22.332224+00:00 [debug] msg: starting_app, app: ranch
+2025-03-05T18:26:22.333016+00:00 [debug] msg: started_apps, apps: [ranch]
+2025-03-05T18:26:22.333336+00:00 [debug] msg: starting_app, app: cowboy
+2025-03-05T18:26:22.334691+00:00 [debug] msg: started_apps, apps: [cowboy]
+2025-03-05T18:26:22.334957+00:00 [debug] msg: starting_app, app: emqx_utils
+2025-03-05T18:26:22.335740+00:00 [debug] msg: started_apps, apps: [jiffy,emqx_utils]
+2025-03-05T18:26:22.335974+00:00 [debug] msg: starting_app, app: emqx_durable_storage
+2025-03-05T18:26:22.336680+00:00 [debug] msg: started_apps, apps: [emqx_durable_storage]
+2025-03-05T18:26:22.336817+00:00 [debug] msg: starting_app, app: emqx_ds_backends
+2025-03-05T18:26:22.337217+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_ds_builtin_local_metadata_tab, options: [{local_content,true},{type,ordered_set},{storage,disc_copies},{record_name,emqx_ds_builtin_local_metadata_tab},{attributes,[db,db_props]}]
+2025-03-05T18:26:22.337768+00:00 [info] msg: Adding table to a shard, table: emqx_ds_builtin_local_metadata_tab, shard: undefined
+2025-03-05T18:26:22.338191+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_metadata_tab, '$span': start
+2025-03-05T18:26:22.338717+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_ds_builtin_local_metadata_tab], shard: undefined
+2025-03-05T18:26:22.339032+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_metadata_tab, '$span': {complete,true}
+2025-03-05T18:26:22.339222+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_ds_builtin_local_timestamp_tab, options: [{local_content,true},{type,set},{storage,disc_copies},{record_name,emqx_ds_builtin_local_timestamp_tab},{attributes,[id,latest]}]
+2025-03-05T18:26:22.339813+00:00 [info] msg: Adding table to a shard, table: emqx_ds_builtin_local_timestamp_tab, shard: undefined
+2025-03-05T18:26:22.340139+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_timestamp_tab, '$span': start
+2025-03-05T18:26:22.340616+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:26:22.341908+00:00 [debug] msg: ensure_local_table, table: emqx_ds_builtin_local_timestamp_tab, '$span': {complete,true}
+2025-03-05T18:26:22.342620+00:00 [debug] msg: started_apps, apps: [emqx_ds_builtin_local,emqx_ds_backends]
+2025-03-05T18:26:22.342795+00:00 [debug] msg: starting_app, app: emqx
+2025-03-05T18:26:22.345318+00:00 [notice] alarm_handler: {clear,lc_mem_alarm}
+2025-03-05T18:26:22.350180+00:00 [debug] msg: skip_init_config_load, reason: Some application has set another config loader, loader: emqx_conf
+2025-03-05T18:26:22.350473+00:00 [notice] alarm_handler: {clear,lc_runq_alarm}
+2025-03-05T18:26:22.350732+00:00 [debug] msg: mria_mnesia_create_table, name: bpapi, options: [{type,set},{storage,ram_copies},{attributes,[key,version]},{rlog_shard,emqx_common_shard}]
+2025-03-05T18:26:22.351468+00:00 [info] msg: Adding table to a shard, table: bpapi, shard: emqx_common_shard
+2025-03-05T18:26:22.352345+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi], shard: emqx_common_shard
+2025-03-05T18:26:22.352612+00:00 [notice] alarm_handler: {set,{system_memory_high_watermark,[]}}
+2025-03-05T18:26:22.351965+00:00 [debug] msg: ensure_local_table, table: bpapi, '$span': start
+2025-03-05T18:26:22.354269+00:00 [debug] msg: ensure_local_table, table: bpapi, '$span': {complete,true}
+2025-03-05T18:26:22.354882+00:00 [info] msg: starting_rlog_shard, shard: emqx_common_shard
+2025-03-05T18:26:22.355948+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_common_shard
+2025-03-05T18:26:22.363404+00:00 [debug] item: '_lc_flag_mem_', event: raise_flag, '$kind': lc_flag_man
+2025-03-05T18:26:22.363808+00:00 [notice] alarm_handler: {set,{lc_mem_alarm,#{node => 'emqx@172.19.0.2',mem_usage => 0.8158884432752351}}}
+2025-03-05T18:26:22.388714+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_trie, options: [{rlog_shard,route_shard},{record_name,emqx_trie},{attributes,[key,count]},{type,ordered_set},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.389505+00:00 [info] msg: Adding table to a shard, table: emqx_trie, shard: route_shard
+2025-03-05T18:26:22.389873+00:00 [debug] msg: ensure_local_table, table: emqx_trie, '$span': start
+2025-03-05T18:26:22.390207+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_trie], shard: route_shard
+2025-03-05T18:26:22.390480+00:00 [debug] msg: ensure_local_table, table: emqx_trie, '$span': {complete,true}
+2025-03-05T18:26:22.390657+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_route, options: [{type,bag},{rlog_shard,route_shard},{storage,ram_copies},{record_name,route},{attributes,[topic,dest]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.391037+00:00 [info] msg: Adding table to a shard, table: emqx_route, shard: route_shard
+2025-03-05T18:26:22.391551+00:00 [debug] msg: ensure_local_table, table: emqx_route, '$span': start
+2025-03-05T18:26:22.392085+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_trie], shard: route_shard
+2025-03-05T18:26:22.392502+00:00 [debug] msg: ensure_local_table, table: emqx_route, '$span': {complete,true}
+2025-03-05T18:26:22.392709+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_route_filters, options: [{type,ordered_set},{rlog_shard,route_shard},{storage,ram_copies},{record_name,routeidx},{attributes,[entry,unused]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true},{decentralized_counters,true}]}]}]
+2025-03-05T18:26:22.393293+00:00 [info] msg: Adding table to a shard, table: emqx_route_filters, shard: route_shard
+2025-03-05T18:26:22.393677+00:00 [debug] msg: ensure_local_table, table: emqx_route_filters, '$span': start
+2025-03-05T18:26:22.394161+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_route_filters,emqx_trie], shard: route_shard
+2025-03-05T18:26:22.397166+00:00 [debug] msg: ensure_local_table, table: emqx_route_filters, '$span': {complete,true}
+2025-03-05T18:26:22.397499+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_routing_node, options: [{type,set},{rlog_shard,route_shard},{storage,ram_copies},{record_name,routing_node},{attributes,[name,const]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:22.398319+00:00 [info] msg: Adding table to a shard, table: emqx_routing_node, shard: route_shard
+2025-03-05T18:26:22.398977+00:00 [debug] msg: ensure_local_table, table: emqx_routing_node, '$span': start
+2025-03-05T18:26:22.402910+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_route,emqx_route_filters,emqx_routing_node,emqx_trie], shard: route_shard
+2025-03-05T18:26:22.403667+00:00 [debug] msg: ensure_local_table, table: emqx_routing_node, '$span': {complete,true}
+2025-03-05T18:26:22.404153+00:00 [info] msg: starting_rlog_shard, shard: route_shard
+2025-03-05T18:26:22.405111+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: route_shard
+2025-03-05T18:26:22.406180+00:00 [info] msg: routing_schema_used, schema: v2
+2025-03-05T18:26:22.409506+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_shared_subscription, options: [{type,bag},{rlog_shard,emqx_shared_sub_shard},{storage,ram_copies},{record_name,emqx_shared_subscription},{attributes,[group,topic,subpid]}]
+2025-03-05T18:26:22.410304+00:00 [info] msg: Adding table to a shard, table: emqx_shared_subscription, shard: emqx_shared_sub_shard
+2025-03-05T18:26:22.410721+00:00 [debug] msg: ensure_local_table, table: emqx_shared_subscription, '$span': start
+2025-03-05T18:26:22.410990+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_shared_subscription], shard: emqx_shared_sub_shard
+2025-03-05T18:26:22.412818+00:00 [debug] msg: ensure_local_table, table: emqx_shared_subscription, '$span': {complete,true}
+2025-03-05T18:26:22.413441+00:00 [info] msg: starting_rlog_shard, shard: emqx_shared_sub_shard
+2025-03-05T18:26:22.414356+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_shared_sub_shard
+2025-03-05T18:26:22.418908+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_exclusive_subscription, options: [{rlog_shard,emqx_exclusive_shard},{type,set},{storage,ram_copies},{record_name,exclusive_subscription},{attributes,[topic,clientid]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.419580+00:00 [info] msg: Adding table to a shard, table: emqx_exclusive_subscription, shard: emqx_exclusive_shard
+2025-03-05T18:26:22.419837+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription, '$span': start
+2025-03-05T18:26:22.420009+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_exclusive_subscription], shard: emqx_exclusive_shard
+2025-03-05T18:26:22.420409+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription, '$span': {complete,true}
+2025-03-05T18:26:22.420596+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_exclusive_subscription_v2, options: [{rlog_shard,emqx_exclusive_shard},{type,set},{storage,ram_copies},{record_name,exclusive_subscription_v2},{attributes,[topic,clientid,node,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.421012+00:00 [info] msg: Adding table to a shard, table: emqx_exclusive_subscription_v2, shard: emqx_exclusive_shard
+2025-03-05T18:26:22.421362+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription_v2, '$span': start
+2025-03-05T18:26:22.421476+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_exclusive_subscription,emqx_exclusive_subscription_v2], shard: emqx_exclusive_shard
+2025-03-05T18:26:22.421810+00:00 [debug] msg: ensure_local_table, table: emqx_exclusive_subscription_v2, '$span': {complete,true}
+2025-03-05T18:26:22.423076+00:00 [info] msg: starting_rlog_shard, shard: emqx_exclusive_shard
+2025-03-05T18:26:22.424009+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_exclusive_shard
+2025-03-05T18:26:22.424386+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_banned, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,banned},{attributes,[who,by,reason,at,until]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:22.427020+00:00 [info] msg: Adding table to a shard, table: emqx_banned, shard: emqx_common_shard
+2025-03-05T18:26:22.429644+00:00 [debug] msg: ensure_local_table, table: emqx_banned, '$span': start
+2025-03-05T18:26:22.430055+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_banned], shard: emqx_common_shard
+2025-03-05T18:26:22.435104+00:00 [debug] msg: ensure_local_table, table: emqx_banned, '$span': {complete,true}
+2025-03-05T18:26:22.435505+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_banned_rules, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,banned},{attributes,[who,by,reason,at,until]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:22.436139+00:00 [info] msg: Adding table to a shard, table: emqx_banned_rules, shard: emqx_common_shard
+2025-03-05T18:26:22.436189+00:00 [notice] msg: Shard schema change, new_table: emqx_banned, shard: emqx_common_shard
+2025-03-05T18:26:22.436478+00:00 [debug] msg: ensure_local_table, table: emqx_banned_rules, '$span': start
+2025-03-05T18:26:22.437059+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_banned,emqx_banned_rules], shard: emqx_common_shard
+2025-03-05T18:26:22.438381+00:00 [notice] msg: Shard schema change, new_table: emqx_banned_rules, shard: emqx_common_shard
+2025-03-05T18:26:22.438539+00:00 [debug] msg: ensure_local_table, table: emqx_banned_rules, '$span': {complete,true}
+2025-03-05T18:26:22.441314+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_channel_registry, options: [{type,bag},{rlog_shard,emqx_cm_shard},{storage,ram_copies},{record_name,channel},{attributes,[chid,pid]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.442178+00:00 [info] msg: Adding table to a shard, table: emqx_channel_registry, shard: emqx_cm_shard
+2025-03-05T18:26:22.442700+00:00 [debug] msg: ensure_local_table, table: emqx_channel_registry, '$span': start
+2025-03-05T18:26:22.442973+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_channel_registry], shard: emqx_cm_shard
+2025-03-05T18:26:22.444354+00:00 [debug] msg: ensure_local_table, table: emqx_channel_registry, '$span': {complete,true}
+2025-03-05T18:26:22.444834+00:00 [info] msg: starting_rlog_shard, shard: emqx_cm_shard
+2025-03-05T18:26:22.446393+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_cm_shard
+2025-03-05T18:26:22.447960+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_activated_alarm, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,activated_alarm},{attributes,[name,details,message,activate_at]}]
+2025-03-05T18:26:22.448689+00:00 [info] msg: Adding table to a shard, table: emqx_activated_alarm, shard: undefined
+2025-03-05T18:26:22.448992+00:00 [debug] msg: ensure_local_table, table: emqx_activated_alarm, '$span': start
+2025-03-05T18:26:22.449386+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:26:22.450674+00:00 [debug] msg: ensure_local_table, table: emqx_activated_alarm, '$span': {complete,true}
+2025-03-05T18:26:22.451035+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_deactivated_alarm, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,deactivated_alarm},{attributes,[activate_at,name,details,message,deactivate_at]}]
+2025-03-05T18:26:22.451786+00:00 [info] msg: Adding table to a shard, table: emqx_deactivated_alarm, shard: undefined
+2025-03-05T18:26:22.452297+00:00 [debug] msg: ensure_local_table, table: emqx_deactivated_alarm, '$span': start
+2025-03-05T18:26:22.452669+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_deactivated_alarm,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:26:22.453874+00:00 [debug] msg: ensure_local_table, table: emqx_deactivated_alarm, '$span': {complete,true}
+2025-03-05T18:26:22.465135+00:00 [warning] msg: alarm_is_activated, message: <<"81.58% mem usage">>, name: high_system_memory_usage
+2025-03-05T18:26:22.489076+00:00 [debug] msg: started_apps, apps: [os_mon,hocon,lc,emqx]
+2025-03-05T18:26:22.489401+00:00 [debug] msg: starting_app, app: emqx_slow_subs
+2025-03-05T18:26:22.490176+00:00 [debug] msg: started_apps, apps: [emqx_slow_subs]
+2025-03-05T18:26:22.490387+00:00 [debug] msg: starting_app, app: emqx_plugins
+2025-03-05T18:26:22.495662+00:00 [debug] msg: started_apps, apps: [jsone,snappyer,erlavro,emqx_plugins]
+2025-03-05T18:26:22.497043+00:00 [debug] msg: starting_app, app: emqx_retainer
+2025-03-05T18:26:22.497921+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_index_meta, options: [{type,set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_index_meta},{attributes,[key,read_indices,write_indices,reindexing,extra]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:26:22.502507+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_index_meta, shard: emqx_retainer_shard
+2025-03-05T18:26:22.503219+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index_meta, '$span': start
+2025-03-05T18:26:22.503501+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index_meta], shard: emqx_retainer_shard
+2025-03-05T18:26:22.503926+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index_meta, '$span': {complete,true}
+2025-03-05T18:26:22.504315+00:00 [info] msg: starting_rlog_shard, shard: emqx_retainer_shard
+2025-03-05T18:26:22.509536+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_retainer_shard
+2025-03-05T18:26:22.510260+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_message, options: [{type,ordered_set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_message},{attributes,[topic,msg,expiry_time]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:26:22.513743+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_message, shard: emqx_retainer_shard
+2025-03-05T18:26:22.515327+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_message, '$span': start
+2025-03-05T18:26:22.516904+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index_meta,emqx_retainer_message], shard: emqx_retainer_shard
+2025-03-05T18:26:22.519178+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_message, '$span': {complete,true}
+2025-03-05T18:26:22.519319+00:00 [notice] msg: Shard schema change, new_table: emqx_retainer_message, shard: emqx_retainer_shard
+2025-03-05T18:26:22.519990+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_retainer_index, options: [{type,ordered_set},{rlog_shard,emqx_retainer_shard},{storage,ram_copies},{record_name,retained_index},{attributes,[key,expiry_time]},{storage_properties,[{ets,[compressed,{read_concurrency,true},{write_concurrency,true}]},{dets,[{auto_save,1000}]}]}]
+2025-03-05T18:26:22.521958+00:00 [info] msg: Adding table to a shard, table: emqx_retainer_index, shard: emqx_retainer_shard
+2025-03-05T18:26:22.522673+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index, '$span': start
+2025-03-05T18:26:22.523503+00:00 [info] msg: wait_for_cluster_rpc_shard, result: ok
+2025-03-05T18:26:22.523580+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_retainer_index,emqx_retainer_index_meta,emqx_retainer_message], shard: emqx_retainer_shard
+2025-03-05T18:26:22.523988+00:00 [info] msg: wait_for_cluster_rpc_tables, result: ok
+2025-03-05T18:26:22.526483+00:00 [debug] msg: ensure_local_table, table: emqx_retainer_index, '$span': {complete,true}
+2025-03-05T18:26:22.526960+00:00 [notice] msg: Shard schema change, new_table: emqx_retainer_index, shard: emqx_retainer_shard
+2025-03-05T18:26:22.535905+00:00 [debug] msg: started_apps, apps: [emqx_retainer]
+2025-03-05T18:26:22.536185+00:00 [debug] msg: starting_app, app: emqx_resource
+2025-03-05T18:26:22.548050+00:00 [debug] msg: started_apps, apps: [jsx,ecpool,emqx_resource]
+2025-03-05T18:26:22.548397+00:00 [debug] msg: starting_app, app: emqx_bridge_mqtt
+2025-03-05T18:26:22.551322+00:00 [debug] msg: started_apps, apps: [emqtt,emqx_bridge_mqtt]
+2025-03-05T18:26:22.551656+00:00 [debug] msg: starting_app, app: emqx_redis
+2025-03-05T18:26:22.556642+00:00 [debug] msg: started_apps, apps: [eredis,eredis_cluster,emqx_redis]
+2025-03-05T18:26:22.557051+00:00 [debug] msg: starting_app, app: emqx_bridge_http
+2025-03-05T18:26:22.559259+00:00 [debug] msg: started_apps, apps: [ehttpc,emqx_bridge_http]
+2025-03-05T18:26:22.559764+00:00 [debug] msg: starting_app, app: emqx_postgresql
+2025-03-05T18:26:22.560578+00:00 [debug] msg: started_apps, apps: [emqx_postgresql]
+2025-03-05T18:26:22.560857+00:00 [debug] msg: starting_app, app: emqx_management
+2025-03-05T18:26:22.565625+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_app, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,emqx_app},{attributes,[name,api_key,api_secret_hash,enable,extra,expired_at,created_at]}]
+2025-03-05T18:26:22.569361+00:00 [info] msg: Adding table to a shard, table: emqx_app, shard: emqx_common_shard
+2025-03-05T18:26:22.570032+00:00 [debug] msg: ensure_local_table, table: emqx_app, '$span': start
+2025-03-05T18:26:22.571366+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_app,emqx_banned,emqx_banned_rules], shard: emqx_common_shard
+2025-03-05T18:26:22.572160+00:00 [notice] msg: Shard schema change, new_table: emqx_app, shard: emqx_common_shard
+2025-03-05T18:26:22.571913+00:00 [debug] msg: ensure_local_table, table: emqx_app, '$span': {complete,true}
+2025-03-05T18:26:22.575259+00:00 [debug] msg: init_bootstrap_api_keys_from_file, file: <<>>
+2025-03-05T18:26:22.576047+00:00 [debug] msg: started_apps, apps: [trails,cowboy_swagger,minirest,emqx_management]
+2025-03-05T18:26:22.576305+00:00 [debug] msg: starting_app, app: emqx_modules
+2025-03-05T18:26:22.576714+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_delayed, options: [{type,ordered_set},{storage,disc_copies},{local_content,true},{record_name,delayed_message},{attributes,[key,delayed,msg]}]
+2025-03-05T18:26:22.577418+00:00 [info] msg: Adding table to a shard, table: emqx_delayed, shard: undefined
+2025-03-05T18:26:22.580507+00:00 [debug] msg: ensure_local_table, table: emqx_delayed, '$span': start
+2025-03-05T18:26:22.582204+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_deactivated_alarm,emqx_delayed,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:26:22.583508+00:00 [debug] msg: ensure_local_table, table: emqx_delayed, '$span': {complete,true}
+2025-03-05T18:26:22.591895+00:00 [debug] msg: emqx_topic_metrics_started
+2025-03-05T18:26:22.592969+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_trace, options: [{type,set},{rlog_shard,emqx_common_shard},{storage,disc_copies},{record_name,emqx_trace},{attributes,[name,type,filter,enable,payload_encode,extra,start_at,end_at]}]
+2025-03-05T18:26:22.594133+00:00 [info] msg: Adding table to a shard, table: emqx_trace, shard: emqx_common_shard
+2025-03-05T18:26:22.597129+00:00 [debug] msg: ensure_local_table, table: emqx_trace, '$span': start
+2025-03-05T18:26:22.598681+00:00 [info] msg: Setting RLOG shard config, tables: [bpapi,emqx_app,emqx_banned,emqx_banned_rules,emqx_trace], shard: emqx_common_shard
+2025-03-05T18:26:22.608335+00:00 [notice] msg: Shard schema change, new_table: emqx_trace, shard: emqx_common_shard
+2025-03-05T18:26:22.608519+00:00 [debug] msg: ensure_local_table, table: emqx_trace, '$span': {complete,true}
+2025-03-05T18:26:22.614180+00:00 [debug] msg: started_apps, apps: [emqx_modules]
+2025-03-05T18:26:22.614647+00:00 [debug] msg: starting_app, app: emqx_exhook
+2025-03-05T18:26:22.616757+00:00 [debug] msg: started_apps, apps: [grpc,emqx_exhook]
+2025-03-05T18:26:22.617114+00:00 [debug] msg: starting_app, app: emqx_mongodb
+2025-03-05T18:26:22.623146+00:00 [debug] msg: started_apps, apps: [bson,poolboy,pbkdf2,mongodb,emqx_mongodb]
+2025-03-05T18:26:22.623473+00:00 [debug] msg: starting_app, app: emqx_connector
+2025-03-05T18:26:22.639288+00:00 [debug] msg: started_apps, apps: [jose,emqx_connector]
+2025-03-05T18:26:22.639687+00:00 [debug] msg: starting_app, app: emqx_bridge
+2025-03-05T18:26:22.641255+00:00 [debug] msg: started_apps, apps: [emqx_bridge]
+2025-03-05T18:26:22.641864+00:00 [debug] msg: starting_app, app: emqx_rule_engine
+2025-03-05T18:26:22.643692+00:00 [debug] msg: started_apps, apps: [rulesql,quickrand,uuid,emqx_rule_engine]
+2025-03-05T18:26:22.644041+00:00 [debug] msg: starting_app, app: emqx_ldap
+2025-03-05T18:26:22.644784+00:00 [debug] msg: started_apps, apps: [eldap,emqx_ldap]
+2025-03-05T18:26:22.645067+00:00 [debug] msg: starting_app, app: emqx_dashboard
+2025-03-05T18:26:22.645512+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_admin, options: [{type,set},{rlog_shard,emqx_dashboard_shard},{storage,disc_copies},{record_name,emqx_admin},{attributes,[username,pwdhash,description,role,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.646494+00:00 [info] msg: Adding table to a shard, table: emqx_admin, shard: emqx_dashboard_shard
+2025-03-05T18:26:22.647093+00:00 [debug] msg: ensure_local_table, table: emqx_admin, '$span': start
+2025-03-05T18:26:22.647561+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_admin], shard: emqx_dashboard_shard
+2025-03-05T18:26:22.648146+00:00 [debug] msg: ensure_local_table, table: emqx_admin, '$span': {complete,true}
+2025-03-05T18:26:22.648481+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_admin_jwt, options: [{type,set},{rlog_shard,emqx_dashboard_shard},{storage,disc_copies},{record_name,emqx_admin_jwt},{attributes,[token,username,exptime,extra]},{storage_properties,[{ets,[{read_concurrency,true},{write_concurrency,true}]}]}]
+2025-03-05T18:26:22.649417+00:00 [info] msg: Adding table to a shard, table: emqx_admin_jwt, shard: emqx_dashboard_shard
+2025-03-05T18:26:22.649827+00:00 [debug] msg: ensure_local_table, table: emqx_admin_jwt, '$span': start
+2025-03-05T18:26:22.650159+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_admin,emqx_admin_jwt], shard: emqx_dashboard_shard
+2025-03-05T18:26:22.650582+00:00 [debug] msg: ensure_local_table, table: emqx_admin_jwt, '$span': {complete,true}
+2025-03-05T18:26:22.650854+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_dashboard_monitor, options: [{type,set},{local_content,true},{storage,disc_copies},{record_name,emqx_monit},{attributes,[time,data]}]
+2025-03-05T18:26:22.653165+00:00 [info] msg: Adding table to a shard, table: emqx_dashboard_monitor, shard: undefined
+2025-03-05T18:26:22.653971+00:00 [debug] msg: ensure_local_table, table: emqx_dashboard_monitor, '$span': start
+2025-03-05T18:26:22.655311+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_activated_alarm,emqx_dashboard_monitor,emqx_deactivated_alarm,emqx_delayed,emqx_ds_builtin_local_metadata_tab,emqx_ds_builtin_local_timestamp_tab], shard: undefined
+2025-03-05T18:26:22.656575+00:00 [debug] msg: ensure_local_table, table: emqx_dashboard_monitor, '$span': {complete,true}
+2025-03-05T18:26:22.657002+00:00 [info] msg: starting_rlog_shard, shard: emqx_dashboard_shard
+2025-03-05T18:26:22.658141+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_dashboard_shard
+2025-03-05T18:26:22.660716+00:00 [info] msg: loading_desc, file: /opt/emqx/lib/emqx_dashboard-5.2.1/priv/desc.en.hocon
+2025-03-05T18:26:23.117621+00:00 [info] msg: loading_desc, file: /opt/emqx/lib/emqx_dashboard-5.2.1/priv/desc.zh.hocon
+2025-03-05T18:26:23.651012+00:00 [info] msg: started_listener_ok, name: 'http:dashboard', pid: <0.2901.0>, port: 18083
+2025-03-05T18:26:23.656606+00:00 [debug] msg: started_apps, apps: [emqx_dashboard]
+2025-03-05T18:26:23.658923+00:00 [debug] msg: starting_app, app: emqx_auto_subscribe
+2025-03-05T18:26:23.675058+00:00 [debug] msg: started_apps, apps: [emqx_auto_subscribe]
+2025-03-05T18:26:23.675698+00:00 [debug] msg: starting_app, app: emqx_auth
+2025-03-05T18:26:23.728690+00:00 [debug] msg: started_apps, apps: [emqx_auth]
+2025-03-05T18:26:23.729583+00:00 [debug] msg: starting_app, app: emqx_auth_ldap
+2025-03-05T18:26:23.738169+00:00 [debug] msg: started_apps, apps: [emqx_auth_ldap]
+2025-03-05T18:26:23.738853+00:00 [debug] msg: starting_app, app: emqx_auth_mnesia
+2025-03-05T18:26:23.744347+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_acl, options: [{type,ordered_set},{rlog_shard,emqx_acl_sharded},{storage,disc_copies},{attributes,[who,rules]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:23.747416+00:00 [info] msg: Adding table to a shard, table: emqx_acl, shard: emqx_acl_sharded
+2025-03-05T18:26:23.748498+00:00 [debug] msg: ensure_local_table, table: emqx_acl, '$span': start
+2025-03-05T18:26:23.751816+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_acl], shard: emqx_acl_sharded
+2025-03-05T18:26:23.757175+00:00 [debug] msg: ensure_local_table, table: emqx_acl, '$span': {complete,true}
+2025-03-05T18:26:23.759739+00:00 [info] msg: starting_rlog_shard, shard: emqx_acl_sharded
+2025-03-05T18:26:23.762631+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_acl_sharded
+2025-03-05T18:26:23.762908+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_authn_mnesia, options: [{rlog_shard,emqx_authn_shard},{type,ordered_set},{storage,disc_copies},{record_name,user_info},{attributes,[user_id,password_hash,salt,is_superuser]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:23.763700+00:00 [info] msg: Adding table to a shard, table: emqx_authn_mnesia, shard: emqx_authn_shard
+2025-03-05T18:26:23.767140+00:00 [debug] msg: ensure_local_table, table: emqx_authn_mnesia, '$span': start
+2025-03-05T18:26:23.772127+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_authn_mnesia], shard: emqx_authn_shard
+2025-03-05T18:26:23.780675+00:00 [debug] msg: ensure_local_table, table: emqx_authn_mnesia, '$span': {complete,true}
+2025-03-05T18:26:23.781390+00:00 [info] msg: starting_rlog_shard, shard: emqx_authn_shard
+2025-03-05T18:26:23.783112+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_authn_scram_mnesia, options: [{rlog_shard,emqx_authn_shard},{type,ordered_set},{storage,disc_copies},{record_name,user_info},{attributes,[user_id,stored_key,server_key,salt,is_superuser]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:23.783748+00:00 [info] msg: Adding table to a shard, table: emqx_authn_scram_mnesia, shard: emqx_authn_shard
+2025-03-05T18:26:23.783120+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_authn_shard
+2025-03-05T18:26:23.785667+00:00 [debug] msg: ensure_local_table, table: emqx_authn_scram_mnesia, '$span': start
+2025-03-05T18:26:23.785970+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_authn_mnesia,emqx_authn_scram_mnesia], shard: emqx_authn_shard
+2025-03-05T18:26:23.787541+00:00 [notice] msg: Shard schema change, new_table: emqx_authn_scram_mnesia, shard: emqx_authn_shard
+2025-03-05T18:26:23.787541+00:00 [debug] msg: ensure_local_table, table: emqx_authn_scram_mnesia, '$span': {complete,true}
+2025-03-05T18:26:23.788373+00:00 [debug] msg: started_apps, apps: [sasl_auth,emqx_auth_mnesia]
+2025-03-05T18:26:23.788590+00:00 [debug] msg: starting_app, app: emqx_auth_redis
+2025-03-05T18:26:23.789464+00:00 [debug] msg: started_apps, apps: [emqx_auth_redis]
+2025-03-05T18:26:23.789726+00:00 [debug] msg: starting_app, app: emqx_prometheus
+2025-03-05T18:26:23.814371+00:00 [debug] msg: started_apps, apps: [prometheus,emqx_prometheus]
+2025-03-05T18:26:23.814777+00:00 [debug] msg: starting_app, app: emqx_auth_jwt
+2025-03-05T18:26:23.817211+00:00 [debug] msg: started_apps, apps: [emqx_auth_jwt]
+2025-03-05T18:26:23.818452+00:00 [debug] msg: starting_app, app: emqx_auth_mongodb
+2025-03-05T18:26:23.819314+00:00 [debug] msg: started_apps, apps: [emqx_auth_mongodb]
+2025-03-05T18:26:23.819619+00:00 [debug] msg: starting_app, app: emqx_auth_postgresql
+2025-03-05T18:26:23.820705+00:00 [debug] msg: started_apps, apps: [emqx_auth_postgresql]
+2025-03-05T18:26:23.820956+00:00 [debug] msg: starting_app, app: emqx_auth_http
+2025-03-05T18:26:23.822168+00:00 [debug] msg: started_apps, apps: [emqx_auth_http]
+2025-03-05T18:26:23.825601+00:00 [debug] msg: starting_app, app: emqx_mysql
+2025-03-05T18:26:23.831656+00:00 [debug] msg: started_apps, apps: [mysql,emqx_mysql]
+2025-03-05T18:26:23.831984+00:00 [debug] msg: starting_app, app: emqx_auth_mysql
+2025-03-05T18:26:23.839710+00:00 [debug] msg: started_apps, apps: [emqx_auth_mysql]
+2025-03-05T18:26:23.840037+00:00 [debug] msg: starting_app, app: emqx_gateway
+2025-03-05T18:26:23.846727+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_coap
+2025-03-05T18:26:23.852296+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_exproto
+2025-03-05T18:26:23.852760+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_lwm2m
+2025-03-05T18:26:23.853264+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_mqttsn
+2025-03-05T18:26:23.853686+00:00 [debug] msg: register_gateway_succeed, callback_module: emqx_gateway_stomp
+2025-03-05T18:26:23.854850+00:00 [debug] msg: started_apps, apps: [emqx_gateway]
+2025-03-05T18:26:23.855483+00:00 [debug] msg: starting_app, app: emqx_gateway_stomp
+2025-03-05T18:26:23.861649+00:00 [debug] msg: started_apps, apps: [emqx_gateway_stomp]
+2025-03-05T18:26:23.861937+00:00 [debug] msg: starting_app, app: emqx_gateway_coap
+2025-03-05T18:26:23.863977+00:00 [debug] msg: started_apps, apps: [emqx_gateway_coap]
+2025-03-05T18:26:23.867808+00:00 [debug] msg: starting_app, app: emqx_gateway_lwm2m
+2025-03-05T18:26:23.869100+00:00 [debug] msg: started_apps, apps: [emqx_gateway_lwm2m]
+2025-03-05T18:26:23.869469+00:00 [debug] msg: starting_app, app: emqx_gateway_exproto
+2025-03-05T18:26:23.870178+00:00 [debug] msg: started_apps, apps: [emqx_gateway_exproto]
+2025-03-05T18:26:23.871867+00:00 [debug] msg: starting_app, app: emqx_gateway_mqttsn
+2025-03-05T18:26:23.872818+00:00 [debug] msg: started_apps, apps: [emqx_gateway_mqttsn]
+2025-03-05T18:26:23.873200+00:00 [debug] msg: starting_app, app: quicer
+2025-03-05T18:26:23.875757+00:00 [debug] msg: started_apps, apps: [quicer]
+2025-03-05T18:26:23.876055+00:00 [debug] msg: starting_app, app: emqx_connector_jwt
+2025-03-05T18:26:23.876850+00:00 [debug] msg: started_apps, apps: [emqx_connector_jwt]
+2025-03-05T18:26:23.877118+00:00 [debug] msg: starting_app, app: emqx_psk
+2025-03-05T18:26:23.877622+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_psk, options: [{rlog_shard,emqx_psk_shard},{type,ordered_set},{storage,disc_copies},{record_name,psk_entry},{attributes,[psk_id,shared_secret,extra]},{storage_properties,[{ets,[{read_concurrency,true}]}]}]
+2025-03-05T18:26:23.878737+00:00 [info] msg: Adding table to a shard, table: emqx_psk, shard: emqx_psk_shard
+2025-03-05T18:26:23.879349+00:00 [debug] msg: ensure_local_table, table: emqx_psk, '$span': start
+2025-03-05T18:26:23.880729+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_psk], shard: emqx_psk_shard
+2025-03-05T18:26:23.885626+00:00 [debug] msg: ensure_local_table, table: emqx_psk, '$span': {complete,true}
+2025-03-05T18:26:23.886141+00:00 [info] msg: starting_rlog_shard, shard: emqx_psk_shard
+2025-03-05T18:26:23.887054+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_psk_shard
+2025-03-05T18:26:23.888875+00:00 [info] msg: emqx_psk_disabled
+2025-03-05T18:26:23.889318+00:00 [debug] msg: started_apps, apps: [emqx_psk]
+2025-03-05T18:26:23.889540+00:00 [debug] msg: starting_app, app: emqx_telemetry
+2025-03-05T18:26:23.890131+00:00 [debug] msg: mria_mnesia_create_table, name: emqx_telemetry, options: [{type,set},{storage,disc_copies},{rlog_shard,emqx_telemetry_shard},{record_name,telemetry},{attributes,[id,uuid]}]
+2025-03-05T18:26:23.891164+00:00 [debug] msg: started_apps, apps: [emqx_telemetry]
+2025-03-05T18:26:23.893829+00:00 [info] msg: Adding table to a shard, table: emqx_telemetry, shard: emqx_telemetry_shard
+2025-03-05T18:26:23.895767+00:00 [info] msg: Setting RLOG shard config, tables: [emqx_telemetry], shard: emqx_telemetry_shard
+2025-03-05T18:26:23.894473+00:00 [debug] msg: ensure_local_table, table: emqx_telemetry, '$span': start
+2025-03-05T18:26:23.899207+00:00 [debug] msg: ensure_local_table, table: emqx_telemetry, '$span': {complete,true}
+2025-03-05T18:26:23.899732+00:00 [info] msg: starting_rlog_shard, shard: emqx_telemetry_shard
+2025-03-05T18:26:23.900855+00:00 [info] msg: Shard fully up, node: 'emqx@172.19.0.2', shard: emqx_telemetry_shard
+2025-03-05T18:26:27.876204+00:00 [info] msg: regenerate_minirest_dispatch, elapsed: 4224, listeners: ['http:dashboard'], i18n_lang: en
+2025-03-05T18:26:43.915751+00:00 [debug] msg: telemetry_data_reported
+2025-03-05T18:26:54.535674+00:00 [debug] tag: MQTT, msg: raw_bin_received, peername: 172.19.0.1:60354, size: 31, type: hex, bin: 101D00044D51545404C2003C0000000575736572310008636C617665313233
+2025-03-05T18:26:54.536375+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: CONNECT(Q0, R0, D0, ClientId=, ProtoName=MQTT, ProtoVsn=4, CleanStart=true, KeepAlive=60, Username=user1, Password=******)
+2025-03-05T18:26:54.537706+00:00 [debug] clientid: lIo42b4v0943LtQS, msg: insert_channel_info, peername: 172.19.0.1:60354, username: user1
+2025-03-05T18:26:54.538513+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_sent, peername: 172.19.0.1:60354, username: user1, packet: CONNACK(Q0, R0, D0, AckFlags=0, ReasonCode=0)
+2025-03-05T18:26:54.540044+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: raw_bin_received, peername: 172.19.0.1:60354, username: user1, size: 96, type: hex, bin: 305E003873656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6163656C65726F6D6574726F7B2278223A20312E3135352C202279223A20312E3135362C20227A223A20312E3135367D
+2025-03-05T18:26:54.541151+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, PacketId=undefined, Payload(text)={"x": 1.155, "y": 1.156, "z": 1.156})
+2025-03-05T18:26:54.541858+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_module_ignore, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:26:54.542460+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_matched_allow, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:26:54.542943+00:00 [info] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_permission_allowed, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:26:54.543413+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, payload: {"x": 1.155, "y": 1.156, "z": 1.156}, payload_encode: text
+2025-03-05T18:26:54.543959+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: raw_bin_received, peername: 172.19.0.1:60354, username: user1, size: 279, type: hex, bin: 3062003673656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6769726F73636F70696F7B2278223A203134342E3438362C202279223A203134342E3530332C20227A223A203134342E3531357D3064003873656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6D61676E65746F6D6574726F7B2278223A203335342E3039372C202279223A203335342E3132352C20227A223A203335342E3135317D304B003573656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6261726F6D6574726F7B2270726573696F6E223A203739362E3134327D
+2025-03-05T18:26:54.544423+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, PacketId=undefined, Payload(text)={"x": 144.486, "y": 144.503, "z": 144.515})
+2025-03-05T18:26:54.544844+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_module_ignore, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:26:54.545280+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_matched_allow, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:26:54.545600+00:00 [info] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_permission_allowed, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:26:54.545917+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, payload: {"x": 144.486, "y": 144.503, "z": 144.515}, payload_encode: text
+2025-03-05T18:26:54.546355+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, PacketId=undefined, Payload(text)={"x": 354.097, "y": 354.125, "z": 354.151})
+2025-03-05T18:26:54.546856+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_module_ignore, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:26:54.547711+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_matched_allow, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:26:54.548795+00:00 [info] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_permission_allowed, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:26:54.549213+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, payload: {"x": 354.097, "y": 354.125, "z": 354.151}, payload_encode: text
+2025-03-05T18:26:54.549625+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, PacketId=undefined, Payload(text)={"presion": 796.142})
+2025-03-05T18:26:54.550022+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_module_ignore, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:26:54.550493+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_matched_allow, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:26:54.550838+00:00 [info] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_permission_allowed, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:26:54.551141+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, payload: {"presion": 796.142}, payload_encode: text
+2025-03-05T18:26:54.551813+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: raw_bin_received, peername: 172.19.0.1:60354, username: user1, size: 112, type: hex, bin: 306E002F73656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6770737B22686F7261223A2022313832363534222C20226C617469747564223A2034302E3034353339392C20226C6F6E6769747564223A202D322E393534367D
+2025-03-05T18:26:54.552263+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/gps, PacketId=undefined, Payload(text)={"hora": "182654", "latitud": 40.045399, "longitud": -2.9546})
+2025-03-05T18:26:54.552774+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_module_ignore, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/gps, module: emqx_authz_client_info, action: PUBLISH(Q0,R0), authorize_type: client_info
+2025-03-05T18:26:54.553271+00:00 [debug] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_matched_allow, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/gps, module: emqx_authz_file, action: PUBLISH(Q0,R0), authorize_type: file
+2025-03-05T18:26:54.553675+00:00 [info] tag: AUTHZ, clientid: lIo42b4v0943LtQS, msg: authorization_permission_allowed, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/gps, action: PUBLISH(Q0,R0), source: file
+2025-03-05T18:26:54.554035+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/gps, payload: {"hora": "182654", "latitud": 40.045399, "longitud": -2.9546}, payload_encode: text
+2025-03-05T18:26:55.543288+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: raw_bin_received, peername: 172.19.0.1:60354, username: user1, size: 96, type: hex, bin: 305E003873656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6163656C65726F6D6574726F7B2278223A20312E3335342C202279223A20312E3335352C20227A223A20312E3335357D
+2025-03-05T18:26:55.543825+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, PacketId=undefined, Payload(text)={"x": 1.354, "y": 1.355, "z": 1.355})
+2025-03-05T18:26:55.544396+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/acelerometro, payload: {"x": 1.354, "y": 1.355, "z": 1.355}, payload_encode: text
+2025-03-05T18:26:55.544821+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: raw_bin_received, peername: 172.19.0.1:60354, username: user1, size: 279, type: hex, bin: 3062003673656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6769726F73636F70696F7B2278223A203136392E3431312C202279223A203136392E3432352C20227A223A203136392E3433367D3064003873656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6D61676E65746F6D6574726F7B2278223A203431352E3135322C202279223A203431352E3137332C20227A223A203431352E3230317D304B003573656E736F722F38393334303537632D383662652D343265362D616365382D6530376134326530643639352F6261726F6D6574726F7B2270726573696F6E223A203830322E3337327D
+2025-03-05T18:26:55.545135+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, PacketId=undefined, Payload(text)={"x": 169.411, "y": 169.425, "z": 169.436})
+2025-03-05T18:26:55.545528+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/giroscopio, payload: {"x": 169.411, "y": 169.425, "z": 169.436}, payload_encode: text
+2025-03-05T18:26:55.545815+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, PacketId=undefined, Payload(text)={"x": 415.152, "y": 415.173, "z": 415.201})
+2025-03-05T18:26:55.546148+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/magnetometro, payload: {"x": 415.152, "y": 415.173, "z": 415.201}, payload_encode: text
+2025-03-05T18:26:55.546527+00:00 [debug] tag: MQTT, clientid: lIo42b4v0943LtQS, msg: mqtt_packet_received, peername: 172.19.0.1:60354, username: user1, packet: PUBLISH(Q0, R0, D0, Topic=sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, PacketId=undefined, Payload(text)={"presion": 802.372})
+2025-03-05T18:26:55.547122+00:00 [debug] tag: PUBLISH, clientid: lIo42b4v0943LtQS, msg: publish_to, peername: 172.19.0.1:60354, username: user1, topic: sensor/8934057c-86be-42e6-ace8-e07a42e0d695/barometro, payload: {"presion": 802.372}, payload_encode: text
+2025-03-05T18:26:56.399718+00:00 [debug] tag: SOCKET, clientid: lIo42b4v0943LtQS, msg: emqx_connection_terminated, peername: 172.19.0.1:60354, username: user1, reason: {shutdown,tcp_closed}
+2025-03-05T18:26:56.400307+00:00 [info] clientid: lIo42b4v0943LtQS, msg: terminate, peername: 172.19.0.1:60354, username: user1, reason: {shutdown,tcp_closed}
+2025-03-05T18:26:56.400992+00:00 [debug] msg: emqx_cm_clean_down, client_id: <<"lIo42b4v0943LtQS">>
+2025-03-05T18:27:26.529456+00:00 [critical] msg: received_terminate_signal
+2025-03-05T18:27:26.532365+00:00 [debug] msg: stopping_app, app: os_mon
+2025-03-05T18:27:26.553375+00:00 [notice] Application: os_mon. Exited: stopped. Type: permanent.
+2025-03-05T18:27:26.554554+00:00 [debug] msg: stopping_app, app: jq
+2025-03-05T18:27:26.574419+00:00 [notice] Application: jq. Exited: stopped. Type: permanent.
+2025-03-05T18:27:26.574788+00:00 [notice] msg: stopping_emqx_apps
+2025-03-05T18:27:26.582635+00:00 [debug] msg: stopping_app, app: emqx_telemetry
+2025-03-05T18:27:26.595763+00:00 [notice] Application: emqx_telemetry. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.596108+00:00 [debug] msg: stopping_app, app: emqx_psk
+2025-03-05T18:27:26.606899+00:00 [debug] item: '_lc_flag_mem_', event: remove_flag, '$kind': lc_flag_man
+2025-03-05T18:27:26.608404+00:00 [notice] alarm_handler: {clear,lc_mem_alarm}
+2025-03-05T18:27:26.615999+00:00 [notice] Application: emqx_psk. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.616323+00:00 [debug] msg: stopping_app, app: emqx_connector_jwt
+2025-03-05T18:27:26.626400+00:00 [notice] Application: emqx_connector_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.626658+00:00 [debug] msg: stopping_app, app: quicer
+2025-03-05T18:27:26.631136+00:00 [notice] Application: quicer. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.631406+00:00 [debug] msg: stopping_app, app: emqx_gateway_mqttsn
+2025-03-05T18:27:26.631584+00:00 [notice] Application: emqx_gateway_mqttsn. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.631715+00:00 [debug] msg: stopping_app, app: emqx_gateway_exproto
+2025-03-05T18:27:26.631857+00:00 [notice] Application: emqx_gateway_exproto. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.631976+00:00 [debug] msg: stopping_app, app: emqx_gateway_lwm2m
+2025-03-05T18:27:26.632264+00:00 [notice] Application: emqx_gateway_lwm2m. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.632525+00:00 [debug] msg: stopping_app, app: emqx_gateway_coap
+2025-03-05T18:27:26.632775+00:00 [notice] Application: emqx_gateway_coap. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.632944+00:00 [debug] msg: stopping_app, app: emqx_gateway_stomp
+2025-03-05T18:27:26.634134+00:00 [notice] Application: emqx_gateway_stomp. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.634413+00:00 [debug] msg: stopping_app, app: emqx_gateway
+2025-03-05T18:27:26.645158+00:00 [notice] Application: emqx_gateway. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.645395+00:00 [debug] msg: stopping_app, app: emqx_auth_mysql
+2025-03-05T18:27:26.656393+00:00 [notice] Application: emqx_auth_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.656674+00:00 [debug] msg: stopping_app, app: emqx_mysql
+2025-03-05T18:27:26.656887+00:00 [notice] Application: emqx_mysql. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.656998+00:00 [debug] msg: stopping_app, app: emqx_auth_http
+2025-03-05T18:27:26.664510+00:00 [notice] Application: emqx_auth_http. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.664734+00:00 [debug] msg: stopping_app, app: emqx_auth_postgresql
+2025-03-05T18:27:26.669549+00:00 [notice] Application: emqx_auth_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.669947+00:00 [debug] msg: stopping_app, app: emqx_auth_mongodb
+2025-03-05T18:27:26.678981+00:00 [notice] Application: emqx_auth_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.679347+00:00 [debug] msg: stopping_app, app: emqx_auth_jwt
+2025-03-05T18:27:26.690739+00:00 [notice] Application: emqx_auth_jwt. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.691887+00:00 [debug] msg: stopping_app, app: emqx_prometheus
+2025-03-05T18:27:26.707150+00:00 [notice] Application: emqx_prometheus. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.710347+00:00 [debug] msg: stopping_app, app: emqx_auth_redis
+2025-03-05T18:27:26.725473+00:00 [notice] Application: emqx_auth_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.725823+00:00 [debug] msg: stopping_app, app: emqx_auth_mnesia
+2025-03-05T18:27:26.740005+00:00 [notice] Application: emqx_auth_mnesia. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.742690+00:00 [debug] msg: stopping_app, app: emqx_auth_ldap
+2025-03-05T18:27:26.758268+00:00 [notice] Application: emqx_auth_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.758636+00:00 [debug] msg: stopping_app, app: emqx_auth
+2025-03-05T18:27:26.765834+00:00 [notice] Application: emqx_auth. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.766154+00:00 [debug] msg: stopping_app, app: emqx_auto_subscribe
+2025-03-05T18:27:26.780260+00:00 [notice] Application: emqx_auto_subscribe. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.781463+00:00 [debug] msg: stopping_app, app: emqx_dashboard
+2025-03-05T18:27:26.804458+00:00 [notice] Application: emqx_dashboard. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.804880+00:00 [debug] msg: stopping_app, app: emqx_ldap
+2025-03-05T18:27:26.805158+00:00 [notice] Application: emqx_ldap. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.809214+00:00 [debug] msg: stopping_app, app: emqx_rule_engine
+2025-03-05T18:27:26.819588+00:00 [notice] Application: emqx_rule_engine. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.819907+00:00 [debug] msg: stopping_app, app: emqx_bridge
+2025-03-05T18:27:26.836201+00:00 [notice] Application: emqx_bridge. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.838114+00:00 [debug] msg: stopping_app, app: emqx_connector
+2025-03-05T18:27:26.858366+00:00 [notice] Application: emqx_connector. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.858756+00:00 [debug] msg: stopping_app, app: emqx_mongodb
+2025-03-05T18:27:26.859049+00:00 [notice] Application: emqx_mongodb. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.859289+00:00 [debug] msg: stopping_app, app: emqx_exhook
+2025-03-05T18:27:26.859779+00:00 [info] msg: exhook_mgr_terminated, reason: shutdown, servers: #{}
+2025-03-05T18:27:26.875761+00:00 [notice] Application: emqx_exhook. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.877861+00:00 [debug] msg: stopping_app, app: emqx_modules
+2025-03-05T18:27:26.898638+00:00 [notice] Application: emqx_modules. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.900305+00:00 [debug] msg: stopping_app, app: emqx_management
+2025-03-05T18:27:26.910516+00:00 [notice] Application: emqx_management. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.910858+00:00 [debug] msg: stopping_app, app: emqx_postgresql
+2025-03-05T18:27:26.911178+00:00 [notice] Application: emqx_postgresql. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.911402+00:00 [debug] msg: stopping_app, app: emqx_bridge_http
+2025-03-05T18:27:26.911602+00:00 [notice] Application: emqx_bridge_http. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.911757+00:00 [debug] msg: stopping_app, app: emqx_redis
+2025-03-05T18:27:26.911909+00:00 [notice] Application: emqx_redis. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.912036+00:00 [debug] msg: stopping_app, app: emqx_bridge_mqtt
+2025-03-05T18:27:26.912191+00:00 [notice] Application: emqx_bridge_mqtt. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.912359+00:00 [debug] msg: stopping_app, app: emqx_resource
+2025-03-05T18:27:26.944369+00:00 [notice] Application: emqx_resource. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.944736+00:00 [debug] msg: stopping_app, app: emqx_retainer
+2025-03-05T18:27:26.964179+00:00 [notice] Application: emqx_retainer. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.964566+00:00 [debug] msg: stopping_app, app: emqx_plugins
+2025-03-05T18:27:26.976598+00:00 [notice] Application: emqx_plugins. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.976873+00:00 [debug] msg: stopping_app, app: emqx_slow_subs
+2025-03-05T18:27:26.985147+00:00 [notice] Application: emqx_slow_subs. Exited: stopped. Type: temporary.
+2025-03-05T18:27:26.985434+00:00 [debug] msg: stopping_app, app: emqx
+2025-03-05T18:27:26.986713+00:00 [notice] tcp:default stopped on 0.0.0.0:1883
+2025-03-05T18:27:26.993273+00:00 [notice] ssl:default stopped on 0.0.0.0:8883
+2025-03-05T18:27:27.161133+00:00 [notice] Application: emqx. Exited: stopped. Type: permanent.
+2025-03-05T18:27:27.161510+00:00 [debug] msg: stopping_app, app: emqx_ds_backends
+2025-03-05T18:27:27.161750+00:00 [notice] Application: emqx_ds_backends. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.161881+00:00 [debug] msg: stopping_app, app: emqx_durable_storage
+2025-03-05T18:27:27.183961+00:00 [notice] Application: emqx_durable_storage. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.184290+00:00 [debug] msg: stopping_app, app: emqx_utils
+2025-03-05T18:27:27.184527+00:00 [notice] Application: emqx_utils. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.184667+00:00 [debug] msg: stopping_app, app: cowboy
+2025-03-05T18:27:27.206564+00:00 [notice] Application: cowboy. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.206879+00:00 [debug] msg: stopping_app, app: ranch
+2025-03-05T18:27:27.242379+00:00 [notice] Application: ranch. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.242665+00:00 [debug] msg: stopping_app, app: bcrypt
+2025-03-05T18:27:27.266381+00:00 [notice] Application: bcrypt. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.268997+00:00 [debug] msg: stopping_app, app: emqx_http_lib
+2025-03-05T18:27:27.269332+00:00 [notice] Application: emqx_http_lib. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.269548+00:00 [debug] msg: stopping_app, app: gproc
+2025-03-05T18:27:27.289713+00:00 [notice] Application: gproc. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.290012+00:00 [debug] msg: stopping_app, app: esockd
+2025-03-05T18:27:27.308245+00:00 [notice] Application: esockd. Exited: stopped. Type: permanent.
+2025-03-05T18:27:27.308565+00:00 [debug] msg: stopping_app, app: emqx_conf
+2025-03-05T18:27:27.328013+00:00 [notice] Application: emqx_conf. Exited: stopped. Type: temporary.
+2025-03-05T18:27:27.617474+00:00 [debug] msg: Mria is preparing to stop
+2025-03-05T18:27:27.624841+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.625692+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.630372+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.633508+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.634013+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.634477+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.634868+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.635265+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.635667+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.636048+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.636411+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.636745+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.637080+00:00 [debug] msg: mria_worker_terminate, process: mria_rlog_server, callback: terminate
+2025-03-05T18:27:27.653322+00:00 [debug] msg: mria_worker_terminate, process: mria_node_monitor, callback: terminate
+2025-03-05T18:27:27.656506+00:00 [debug] msg: mria_worker_terminate, process: mria_membership, callback: terminate
+2025-03-05T18:27:27.661966+00:00 [debug] msg: mria_worker_terminate, process: mria_status, callback: terminate
+2025-03-05T18:27:27.750597+00:00 [notice] msg: Mria is stopped
