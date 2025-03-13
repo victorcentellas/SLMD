@@ -31,6 +31,7 @@ services:
     ports:
       - '8126:8126'  # Expose the second Telegraf's StatsD port
     networks:
+      - emqx-network
       - monitoring  # Connect the second Telegraf container to the monitoring network
 
   nginx:
@@ -60,7 +61,7 @@ services:
     ports:
       - '8086:8086'  # Expose InfluxDB on port 8086
     volumes:
-      - influxdb_data:/var/lib/influxdb  # Mount the InfluxDB data directory
+      - influxdb_data:/var/lib/influxdb2  # Mount the InfluxDB data directory
     networks:
       - monitoring  # Connect the InfluxDB container to the monitoring network
 
@@ -73,12 +74,14 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-influxdb-flux-datasource
     links:
       - influxdb
     ports:
       - '3000:3000'  # Expose Grafana on port 3000
     volumes:
       - grafana_data:/var/lib/grafana  # Mount the Grafana data directory
+      - ./grafana/provisioning:/etc/grafana/provisioning
     networks:
       - monitoring  # Connect the Grafana container to the monitoring network
 

@@ -1,0 +1,15 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    isDefault: true
+    jsonData:
+      version: Flux
+      organization: "UCLM"
+      defaultBucket: "datos"
+      tlsSkipVerify: true
+    secureJsonData:
+      token: "hduhwW9XxZBtC9b9gXJCj8X8yPV4T345X9On4JgCHQAonMHfDz9odoh4Y-MTGJ4YFv28ViUxbTQG2OhjyguDLw=="
