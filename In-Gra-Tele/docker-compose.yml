@@ -75,16 +75,26 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_INSTALL_PLUGINS=grafana-influxdb-flux-datasource
+      - GF_DATABASE_TYPE=sqlite3
+      - GF_DATABASE_PATH=/var/lib/grafana/grafana.db
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_DASHBOARDS_DEFAULT_EDIT=true
+      - GF_DASHBOARDS_MIN_REFRESH_INTERVAL=5s
     links:
       - influxdb
     ports:
       - '3000:3000'  # Expose Grafana on port 3000
     volumes:
       - grafana_data:/var/lib/grafana  # Mount the Grafana data directory
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+
     networks:
       - monitoring  # Connect the Grafana container to the monitoring network
 
+  
+     
 volumes:
   grafana_data: {}  # Volume for Grafana data
   influxdb_data: {}  # Volume for InfluxDB data

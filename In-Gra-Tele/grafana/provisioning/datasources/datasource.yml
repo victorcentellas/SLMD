@@ -11,5 +11,7 @@ datasources:
       organization: "UCLM"
       defaultBucket: "datos"
       tlsSkipVerify: true
+      httpMode: GET
     secureJsonData:
-      token: "hduhwW9XxZBtC9b9gXJCj8X8yPV4T345X9On4JgCHQAonMHfDz9odoh4Y-MTGJ4YFv28ViUxbTQG2OhjyguDLw=="
+      token: "hQuGGvtteZvXhCdiTE_CcG1MCIOFe_D4o8HJUWonWKhOx2jyUqUsckGTJKeboN0hK83M1MWpjS-fvgyAWDw1hA=="
+    timeout: 60

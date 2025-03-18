@@ -57,6 +57,9 @@ def publish_data(client, topic, data):
 def publish_10DOF(client):
     while True:
         metricas_10DOF = {
+            "id": AGENT_ID,
+            "sensor": "10DOF",
+            "data":{
             "acelerometro_x": get_mock_accelerometer()["x"],
             "acelerometro_y": get_mock_accelerometer()["y"],
             "acelerometro_z": get_mock_accelerometer()["z"],
@@ -67,9 +70,12 @@ def publish_10DOF(client):
             "magnetometro_y": get_mock_magnetometer()["y"],
             "magnetometro_z": get_mock_magnetometer()["z"],
             "presion": get_mock_barometer()["presion"]
+            },
+            "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+            
         }
         
-        base_topic = f"sensor/{AGENT_ID}/10DOF"
+        base_topic = f"Si/{AGENT_ID}/10DOF"
         
         
         publish_data(client, base_topic, metricas_10DOF)
@@ -79,11 +85,16 @@ def publish_10DOF(client):
 def publish_GPS(client):
     while True:
         metricas_GPS =  {
-            "gps_hora":get_mock_gps()["hora"],
-            "gps_latitud":get_mock_gps()["latitud"],
-            "gps_longitud": get_mock_gps()["longitud"],
+            "id": AGENT_ID,
+            "sensor": "GPS",
+            "data":{
+            "hora":get_mock_gps()["hora"],
+            "latitud":get_mock_gps()["latitud"],
+            "longitud": get_mock_gps()["longitud"],
+            },
+            "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
         }
-        base_topic = f"sensor/{AGENT_ID}/GPS"
+        base_topic = f"Si/{AGENT_ID}/GPS"
         publish_data(client, base_topic, metricas_GPS)
         
         time.sleep(0.2)  # 5 veces por segundo

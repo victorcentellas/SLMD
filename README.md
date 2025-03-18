@@ -1,8 +1,8 @@
 ## 🔄 **Flujo de Datos || Hecho por el momento**
 1. **Telegraf** se conecta al broker MQTT (`emqx`) para obtener métricas y datos:  
    - Se conecta al broker MQTT (`tcp://emqx:1883`) y escucha las siguientes rutas:  
-     - `sensor/+/10DOF` – Sensores de 10 grados de libertad.  
-     - `sensor/+/GPS` – Datos de posición GPS.  
+     - `Si/+/10DOF` – Sensores de 10 grados de libertad.  
+     - `Si/+/GPS` – Datos de posición GPS.  
   
 2. Telegraf procesa los datos en formato JSON y los envía a **InfluxDB** usando el plugin `outputs.influxdb_v2`:
    - URL: `http://influxdb:8086`  
@@ -20,7 +20,7 @@
 Para publicar datos en **MQTT**, se debe seguir la siguiente estructura de tópico:
 
 ```plaintext
-sensor/ID/METRICA
+Si/ID/METRICA
 ```
 
 Donde:
@@ -48,7 +48,10 @@ Los datos se deben enviar en formato **JSON**, de la siguiente manera:
 
 ```json
 
-  "10DOF": {
+  "Si/id/10DOF": {
+    "id" = "28c40769-1919-420a-8eb1-7449d56a0a7f",
+    "sensor" = "10DOF",
+    "data":{
   "acelerometro_x": 3.5,  
   "acelerometro_y": 0.2, 
   "acelerometro_z": -9.8, 
@@ -58,17 +61,31 @@ Los datos se deben enviar en formato **JSON**, de la siguiente manera:
   "magnetometro_x": 12.5, 
   "magnetometro_y": -5.6,
   "magnetometro_z": 42.1, 
-  "presion": 1013.25       
+  "presion": 1013.25 
+    },
+    "timestamp":"2025-03-18T12:30:45Z"
 
 }
-  "GPS": {
+  "Si/id/GPS": {
+    "id" = "28c40769-1919-420a-8eb1-7449d56a0a7f",
+    "sensor" = "GPS",
+    "data":{
     "hora": "210401",
     "latitud": 40.012421,
     "longitud": -2.987579
+    },
+    "timestamp":"2025-03-18T12:30:45Z"
   }
 
 ```
-##  **Factores a tener en cuenta*
+##  **Factores a tener en cuenta**
 ## Ejecución de Agentes
-Después de hacer un build, tendras que ejecutar dicho contenedor con la opcion de network: emqx-network para que se pueda conectar a emqx y asi publicar dichos datos.
+Después de hacer un build :
+```
+docker build -t "nombre" .
+```
+Para ejecutar dicho contenedor con la opcion de network: emqx-network para que se pueda conectar a emqx y asi publicar dichos datos 
+```
+docker run --name "sensor1" --network "nombre-network" "nombre"
+```
 
