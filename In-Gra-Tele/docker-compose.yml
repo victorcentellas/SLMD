@@ -61,7 +61,8 @@ services:
     ports:
       - '8086:8086'  # Expose InfluxDB on port 8086
     volumes:
-      - influxdb_data:/var/lib/influxdb2  # Mount the InfluxDB data directory
+      - influxdb_data:/var/lib/influxdb2  
+      
     networks:
       - monitoring  # Connect the InfluxDB container to the monitoring network
 
