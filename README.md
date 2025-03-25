@@ -8,13 +8,13 @@
 2.**EMQX**:
    - Está dockerizado.
    - Está configurado de manera que solo se permitan realizar acciones a través de usuarios.
-     
+
 3. **Telegraf** se conecta al broker MQTT (`emqx`) para obtener métricas y datos:  
    - Se conecta al broker MQTT (`tcp://emqx:1883`) y escucha las siguientes rutas:  
      - `Si/+/10DOF` – Sensores de 10 grados de libertad.  
      - `Si/+/GPS` – Datos de posición GPS.  
   
-4. Telegraf procesa los datos en formato JSON y los envía a **InfluxDB** usando el plugin `outputs.influxdb_v2`:
+4. **Telegraf** procesa los datos en formato JSON y los envía a **InfluxDB** usando el plugin `outputs.influxdb_v2`:
    - URL: `http://influxdb:8086`  
    - Bucket: `datos`  
    - Organización: `UCLM`  
