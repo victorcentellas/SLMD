@@ -1,13 +1,15 @@
 ## 🔄 **Flujo de Datos || Hecho por el momento**
 1.**Agente.py**:
-      - Estos agentes publicarán los datos en los tópicos de manera simultanea.
-      - Esta realizado con docker para que se escale horizontalmente.
-      - Estos datos serán por el momento fabricados.
-      - Se conecta al broker MQTT (`emqx`) y pública dichos datos.
+ - Estos agentes publicarán los datos en los tópicos de manera simultanea.
+ - Esta realizado con docker para que se escale horizontalmente.
+ - Estos datos serán por el momento fabricados.
+ - Se conecta al broker MQTT (`emqx`) y pública dichos datos.
+
 
 2.**EMQX**:
-      - Está dockerizado.
-      - Está configurado de manera que solo se permitan realizar acciones a través de usuarios.
+ - Está dockerizado.
+ - Está configurado de manera que solo se permitan realizar acciones a través de usuarios.
+
 
 3. **Telegraf** se conecta al broker MQTT (`emqx`) para obtener métricas y datos:  
    - Se conecta al broker MQTT (`tcp://emqx:1883`) y escucha las siguientes rutas:  
