@@ -4,6 +4,7 @@
    - Esta realizado con docker para que se escale horizontalmente.
    - Estos datos serán por el momento fabricados.
    - Se conecta al broker MQTT (`emqx`) y pública dichos datos.
+
 2.**EMQX**:
    - Está dockerizado.
    - Está configurado de manera que solo se permitan realizar acciones a través de usuarios.
