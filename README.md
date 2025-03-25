@@ -1,19 +1,35 @@
 ## 🔄 **Flujo de Datos || Hecho por el momento**
-1. **Telegraf** se conecta al broker MQTT (`emqx`) para obtener métricas y datos:  
+1.**Agente.py**:
+   - Estos agentes publicarán los datos en los tópicos de manera simultanea.
+   - Esta realizado con docker para que se escale horizontalmente.
+   - Estos datos serán por el momento fabricados.
+   - Se conecta al broker MQTT (`emqx`) y pública dichos datos.
+2.**EMQX**:
+   - Está dockerizado.
+   - Está configurado de manera que solo se permitan realizar acciones a través de usuarios.
+     
+3. **Telegraf** se conecta al broker MQTT (`emqx`) para obtener métricas y datos:  
    - Se conecta al broker MQTT (`tcp://emqx:1883`) y escucha las siguientes rutas:  
      - `Si/+/10DOF` – Sensores de 10 grados de libertad.  
      - `Si/+/GPS` – Datos de posición GPS.  
   
-2. Telegraf procesa los datos en formato JSON y los envía a **InfluxDB** usando el plugin `outputs.influxdb_v2`:
+4. Telegraf procesa los datos en formato JSON y los envía a **InfluxDB** usando el plugin `outputs.influxdb_v2`:
    - URL: `http://influxdb:8086`  
    - Bucket: `datos`  
    - Organización: `UCLM`  
    - Token para autenticación.  
 
-3. **InfluxDB** almacena los datos como series temporales.  
+5. **InfluxDB** almacena los datos como series temporales.  
    - La estructura de los datos incluye etiquetas (`tags`) y valores (`fields`).  
    - Las consultas pueden realizarse mediante HTTP o desde Grafana.
 
+6. **Automatizacion/Grafana**:
+   - A través de un script se conectará con influxDB y se comprobará si hay nuevos sensores disponibles.
+   - Se procederá a realizar consultas con Flux para recoger los sensores junto a sus métricas.
+   - Se crearán automaticamente tantos dashboards como métricas haya en un sensor.
+
+## **Infraestractura del sistema**
+![Diagrama de la Infraestructura](https://raw.githubusercontent.com/victorcentellas/SLMD/refs/heads/Pruebas/Infraestructura-SLMD.drawio)
 
 ##  **Publicación de datos en MQTT**
 ## Formato del tópico de publicación
