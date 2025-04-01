@@ -9,12 +9,12 @@ import threading
 import random
 
 # Configuración del broker MQTT
-BROKER = "emqx"
+BROKER = "192.168.192.154"
 PORT = 1883
-USERNAME = "user1"
-PASSWORD = "clave123"
+USERNAME = "root"
+PASSWORD = "tfg-2425"
 
-AGENT_ID = str(uuid.uuid4())
+AGENT_ID = str(uuid.uuid4())[:8]
 
 # ======== SENSORES =========
 def get_mock_accelerometer():
@@ -105,7 +105,7 @@ def main():
     client.username_pw_set(USERNAME, PASSWORD)
     client.connect(BROKER, PORT, 60)
     client.loop_start()
-    
+
     thread_10DOF = threading.Thread(target=publish_10DOF, args=(client,), daemon=True)
     thread_GPS = threading.Thread(target=publish_GPS, args=(client,), daemon=True)
     
