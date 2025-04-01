@@ -19,9 +19,12 @@ services:
       - EMQX_AUTH__USER__1__PASSWORD=clave123
       - EMQX_ALLOW_ANONYMOUS=false
       - EMQX_MAX_CLIENTS=10000
+
     volumes:
       - ./data:/opt/emqx/data
       - ./log:/opt/emqx/log
+      - ./emqx_auth_mnesia.conf:/opt/emqx/etc/plugins/emqx_auth_mnesia.conf  # Archivo de autenticación
+
     networks:
       - emqx-network
       
