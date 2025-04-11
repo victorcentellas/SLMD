@@ -7,11 +7,11 @@ import time
 import re
 from influxdb_client import InfluxDBClient
 
-INFLUXDB_URL = "http://172.21.0.3:8086"
+INFLUXDB_URL = "http://192.168.192.156:8086"
 INFLUXDB_TOKEN = "hQuGGvtteZvXhCdiTE_CcG1MCIOFe_D4o8HJUWonWKhOx2jyUqUsckGTJKeboN0hK83M1MWpjS-fvgyAWDw1hA=="
 INFLUXDB_ORG = "UCLM"
 INFLUXDB_BUCKET = "datos"
-DASHBOARD_PATH = "../grafana/dashboards"
+DASHBOARD_PATH = "./grafana/dashboards"
 
 def get_uuids():
     try:
@@ -32,14 +32,11 @@ def get_uuids():
 
         return uuids
     except Exception as e:
-        print(f"❌ Error general: {e}")
+        print(f" Error general: {e}")
         return []
 
 def create_dashboard(uuid):
-    # Limpia el valor existente de uuid (sin llamar a uuid.uuid4())
-    uuid_clean = re.sub(r'[^a-zA-Z0-9-]', '', str(uuid))
-    uuid_clean = uuid_clean[:8]
-        
+    # Limpia el valor existente de uuid (sin llamar a uuid.uuid4())     
     dashboard = {
         "annotations": {
             "list": [
@@ -209,7 +206,7 @@ def create_dashboard(uuid):
     with open(file_path, 'w') as f:
         json.dump(dashboard, f, indent=4)
 
-    print(f"✅ Dashboard creado: {file_path}")
+    print(f" Dashboard creado: {file_path}")
 
 def main():
     existing_uuids = set()

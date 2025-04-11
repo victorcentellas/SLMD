@@ -93,8 +93,30 @@ services:
 
     networks:
       - monitoring  # Connect the Grafana container to the monitoring network
-
   
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data:/data
+    networks:
+      - monitoring
+
+  detect_uuids:
+    build:
+      context: ./scripts
+      dockerfile: Dockerfile
+    container_name: detect_uiids
+
+    volumes:
+      - ./grafana/dashboards:/app/grafana/dashboards
+    depends_on:
+      - influxdb
+    restart: always
+    networks:
+      - monitoring
      
 volumes:
   grafana_data: {}  # Volume for Grafana data
