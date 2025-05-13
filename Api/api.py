@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from influxdb_client import InfluxDBClient, client
+import subprocess
 import redis
 
 # Configuración de conexión a Redis
@@ -42,6 +43,32 @@ def listar_sensores():
         })
     
     return {"sensores": sensores}
+
+@app.post("/crear_sensor/{sensor_name}")
+def crear_sensor(sensor_name: str):
+    # Verificar si el sensor ya existe en Redis
+    if redis_client.get(f"id:{sensor_name}"):
+        raise HTTPException(status_code=400, detail="El sensor ya existe")
+
+    # Ejecutar el comando docker para crear el contenedor con el sensor
+    try:
+        result = subprocess.run(
+            [
+                "docker", "run", "-d", "--rm", "--name", sensor_name, 
+                "--network", "emqx-network", "-e", f"AGENT_NAME={sensor_name}", 
+                "agente-sensor"
+            ],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+
+        return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": result.stdout.decode("utf-8")}
+    
+    except subprocess.CalledProcessError as e:
+        raise HTTPException(status_code=500, detail=f"Error al crear el sensor: {e.stderr.decode('utf-8')}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/sensor/{sensor_name}/info")
 def listar_informacion(sensor_name: str):

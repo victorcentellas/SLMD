@@ -2,4 +2,3 @@ redis
 fastapi
 uvicorn
 influxdb-client
-
