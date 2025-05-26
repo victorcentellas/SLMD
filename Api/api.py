@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from influxdb_client import InfluxDBClient, client
 import subprocess
 import redis
+import docker
+
 
 # Configuración de conexión a Redis
 REDIS_HOST = "192.168.192.156"
@@ -16,6 +18,10 @@ INFLUXDB_BUCKET = "datos"
 influx_client = InfluxDBClient(url=INFLUXDB_URL, token=INFLUXDB_TOKEN)
 write_api = influx_client.write_api(write_options=client.write_api.SYNCHRONOUS)
 query_api = influx_client.query_api()
+
+
+# Cliente Docker
+docker_client = docker.from_env()
 
 # FastAPI app
 app = FastAPI()
@@ -46,27 +52,22 @@ def listar_sensores():
 
 @app.post("/crear_sensor/{sensor_name}")
 def crear_sensor(sensor_name: str):
-    # Verificar si el sensor ya existe en Redis
+     # Verificar si el sensor ya existe en Redis
     if redis_client.get(f"id:{sensor_name}"):
         raise HTTPException(status_code=400, detail="El sensor ya existe")
 
-    # Ejecutar el comando docker para crear el contenedor con el sensor
     try:
-        result = subprocess.run(
-            [
-                "docker", "run", "-d", "--rm", "--name", sensor_name, 
-                "--network", "emqx-network", "-e", f"AGENT_NAME={sensor_name}", 
-                "agente-sensor"
-            ],
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+        container = docker_client.containers.run(
+            "agente-sensor", 
+            detach=True, 
+            #remove=True, 
+            name=sensor_name, 
+            network="emqx-network", 
+            environment={"AGENT_NAME": sensor_name}
         )
 
-        return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": result.stdout.decode("utf-8")}
+        return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": container.id}
     
-    except subprocess.CalledProcessError as e:
-        raise HTTPException(status_code=500, detail=f"Error al crear el sensor: {e.stderr.decode('utf-8')}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -123,3 +124,38 @@ def listar_campos(sensor_name: str):
     if not result:
         raise HTTPException(status_code=404, detail="Datos del sensor no encontrados en InfluxDB")
     return {"fields" : fields}
+
+@app.post("/sensor/{sensor_name}/start")
+def start_sensor(sensor_name: str):
+    try:
+        container = docker_client.containers.get(sensor_name)
+        container.start()
+        return {"message": f"Sensor {sensor_name} iniciado."}
+    except docker.errors.NotFound:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/sensor/{sensor_name}/stop")
+def stop_sensor(sensor_name: str):
+    try:
+        container = docker_client.containers.get(sensor_name)
+        container.stop()
+        return {"message": f"Sensor {sensor_name} detenido."}
+    except docker.errors.NotFound:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/sensor/{sensor_name}")
+def delete_sensor(sensor_name: str):
+    try:
+        container = docker_client.containers.get(sensor_name)
+        container.remove(force=True)
+        redis_client.delete(f"id:{sensor_name}")
+        return {"message": f"Sensor {sensor_name} eliminado."}
+    except docker.errors.NotFound:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
