@@ -1,0 +1,619 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "datasource",
+                    "uid": "grafana"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "refresh": "5s",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-30m",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Dashboard 2e90a032",
+    "version": 66,
+    "weekStart": "",
+    "panels": [
+        {
+            "id": 1,
+            "title": "Accelerometer (IMU) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/IMU\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_accelerometer_x\" or r[\"_field\"] == \"data_accelerometer_y\" or r[\"_field\"] == \"data_accelerometer_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Gyroscope (IMU) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 10,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/IMU\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_gyroscope_x\" or r[\"_field\"] == \"data_gyroscope_y\" or r[\"_field\"] == \"data_gyroscope_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Magnetometer (IMU) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 20,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/IMU\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_magnetometer_x\" or r[\"_field\"] == \"data_magnetometer_y\" or r[\"_field\"] == \"data_magnetometer_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Quaternion (IMU) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 30,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/IMU\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_quaternion_w\" or r[\"_field\"] == \"data_quaternion_x\" or r[\"_field\"] == \"data_quaternion_y\" or r[\"_field\"] == \"data_quaternion_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "latitud (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 40,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_latitud\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "longitud (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 50,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_longitud\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "altitud (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 60,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_altitud\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "speed (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 70,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_speed\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "satellites (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 80,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_satellites\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "hdop (GPS) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 90,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/GPS\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_hdop\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "temperature (ENV) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 100,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/ENV\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_temperature\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "title": "pressure (ENV) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 110,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/ENV\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_pressure\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "title": "humidity (ENV) - UUID: 2e90a032",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 120,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/2e90a032/ENV\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_humidity\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        }
+    ]
+}
