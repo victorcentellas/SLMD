@@ -3,6 +3,8 @@ from influxdb_client import InfluxDBClient, client
 import subprocess
 import redis
 import docker
+import uuid
+
 
 
 # Configuración de conexión a Redis
@@ -53,8 +55,11 @@ def listar_sensores():
 @app.post("/crear_sensor/{sensor_name}")
 def crear_sensor(sensor_name: str):
      # Verificar si el sensor ya existe en Redis
+
     if redis_client.get(f"id:{sensor_name}"):
         raise HTTPException(status_code=400, detail="El sensor ya existe")
+    # Generar un UUID único para el sensor
+    sensor_id = str(uuid.uuid4())[:8]
 
     try:
         container = docker_client.containers.run(
@@ -63,10 +68,10 @@ def crear_sensor(sensor_name: str):
             #remove=True, 
             name=sensor_name, 
             network="emqx-network", 
-            environment={"AGENT_NAME": sensor_name}
+            environment={"AGENT_NAME": sensor_name, "AGENT_ID":sensor_id },
         )
 
-        return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": container.id}
+        return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": sensor_id}
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
