@@ -52,6 +52,55 @@ def listar_sensores():
     
     return {"sensores": sensores}
 
+@app.get("/sensores/activos")
+def listar_sensores_activos():
+    sensor_keys = redis_client.keys("id:*")
+    activos = []
+    for key in sensor_keys:
+        sensor_name = key.split("id:")[-1]
+        try:
+            container = docker_client.containers.get(sensor_name)
+            container.reload()
+            if container.status == "running":
+                activos.append({
+                    "sensor": sensor_name,
+                    "sensor_id": redis_client.get(key)
+                })
+        except docker.errors.NotFound:
+            continue
+        except Exception:
+            continue
+    if not activos:
+        raise HTTPException(status_code=404, detail="No se encontraron sensores activos")
+    return {"sensores_activos": activos}
+
+@app.get("/sensores/inactivos")
+def listar_sensores_inactivos():
+    sensor_keys = redis_client.keys("id:*")
+    inactivos = []
+    for key in sensor_keys:
+        sensor_name = key.split("id:")[-1]
+        try:
+            container = docker_client.containers.get(sensor_name)
+            container.reload()
+            if container.status != "running":
+                inactivos.append({
+                    "sensor": sensor_name,
+                    "sensor_id": redis_client.get(key)
+                })
+        except docker.errors.NotFound:
+            inactivos.append({
+                "sensor": sensor_name,
+                "sensor_id": redis_client.get(key)
+            })
+        except Exception:
+            continue
+    if not inactivos:
+        raise HTTPException(status_code=404, detail="No se encontraron sensores inactivos")
+    return {"sensores_inactivos": inactivos}
+
+
+
 @app.post("/crear_sensor/{sensor_name}")
 def crear_sensor(sensor_name: str):
      # Verificar si el sensor ya existe en Redis
@@ -76,59 +125,134 @@ def crear_sensor(sensor_name: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/sensor/{sensor_name}/info")
-def listar_informacion(sensor_name: str):
+@app.get("/sensor/{sensor_name}/variable/{var_name}/{start}/{stop}")
+def obtener_variable(sensor_name: str, var_name: str, start: str , stop: str ):
     sensor_id = redis_client.get(f"id:{sensor_name}")
-
     if not sensor_id:
-        raise HTTPException(status_code=404, detail="No se encontró ese sensor")
-    # Si el UUID existe, consultar los datos en InfluxDB
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    
     query = f'''
-         from(bucket: "{INFLUXDB_BUCKET}")
-            |> range(start: -1d)  
-            |> filter(fn: (r) => r["topic"] == "Si/{sensor_id}/10DOF" or r["topic"] == "Si/{sensor_id}/GPS")
-            |> filter(fn: (r) => r["_field"] == "id" or
-                                  r["_field"] == "sensor" or
-                                  r["_field"] == "tipo")
-            |> last()  
-
-        '''
+        from(bucket: "{INFLUXDB_BUCKET}")
+            |> range(start: {start}, stop: {stop})
+            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/IMU" or r.topic == "Si/{sensor_id}/GPS" or r.topic == "Si/{sensor_id}/ENV")
+            |> filter(fn: (r) => r._field == "{var_name}")
+            |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
+            |> yield(name: "last")    
+            '''
     result = query_api.query(query, org=INFLUXDB_ORG)
+    datos = [
+        {"value": record.get_value(), "timestamp": record.get_time().isoformat()}
+        for table in result for record in table.records
+    ]
+    
+    if not datos:
+        raise HTTPException(status_code=404, detail=f"No se encontraron datos para la variable {var_name}")
+    
+    return {"variable": var_name, "datos": datos}
+@app.get("/sensor/{sensor_name}/metricas_interval/{start}/{stop}")
+def listar_metricas_interval(sensor_name: str, start: str, stop: str):
+    sensor_id = redis_client.get(f"id:{sensor_name}")
+    if not sensor_id:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
 
-    if not result:
-        raise HTTPException(status_code=404, detail="Datos del sensor no encontrados en InfluxDB")
-    # Obtener los campos (_field) de la respuesta
-    fields = [{"field": record.get_field(), "value": record.get_value()} for table in result for record in table.records]
+    metricas = {}
+    for metrica in ["IMU", "GPS", "ENV"]:
+        query = f'''
+            from(bucket: "{INFLUXDB_BUCKET}")
+                |> range(start: {start}, stop: {stop})
+                |> filter(fn: (r) => r.topic == "Si/{sensor_id}/{metrica}")
+                |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
+                |> yield(name: "last")
+        '''
+        result = query_api.query(query, org=INFLUXDB_ORG)
+        campos = [
+            {"field": record.get_field(), "value": record.get_value(),"timestamp": record.get_time().isoformat()}
+            for table in result for record in table.records
+            if record.get_field() not in ["agent_name", "device_id"]
 
-    # Verificación si no se encuentran datos
-    if not fields:
-        raise HTTPException(status_code=404, detail="Datos del sensor no encontrados en InfluxDB")
+        ]   
+        metricas[metrica] = campos if campos else []
+    
+    return {"metricas": metricas}
 
-    # Retornar los resultados
-    return {"Informacion": fields}
+@app.get("/sensor/{sensor_name}/metricas/{tipo_sensor}")
+def listar_metrica_sensor(sensor_name: str, metrica: str):
+    sensor_id = redis_client.get(f"id:{sensor_name}")
+    if not sensor_id:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    if metrica not in ["IMU", "GPS", "ENV"]:
+        raise HTTPException(status_code=400, detail="Métrica inválida. Use 'IMU', 'GPS' o 'ENV'")
+    
+    query = f'''
+        from(bucket: "{INFLUXDB_BUCKET}")
+            |> range(start: -1d)
+            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/{metrica}")
+            |> last()
+    '''
+    result = query_api.query(query, org=INFLUXDB_ORG)
+    campos = [{"field": record.get_field(), "value": record.get_value()} 
+              for table in result for record in table.records]
+    if not campos:
+        raise HTTPException(status_code=404, detail="No se encontraron datos para la métrica")
+    return {"metrica": metrica, "datos": campos}
+
+
 
 @app.get("/sensor/{sensor_name}/campos")
-def listar_campos(sensor_name: str):
+def listar_variables_interes(sensor_name: str):
     sensor_id = redis_client.get(f"id:{sensor_name}")
-
     if not sensor_id:
-        raise HTTPException(status_code=404, detail="No se encontró ese sensor")
-    print(f"{sensor_id}")
-    # Si el UUID existe, consultar los datos en InfluxDB
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    
     query = f'''
         import "influxdata/influxdb/schema"
         schema.fieldKeys(
-        bucket: "{INFLUXDB_BUCKET}",
-        predicate: (r) => r.topic == "Si/{sensor_id}/GPS" or r.topic == "Si/{sensor_id}/10DOF" ,
-        start: -1d
+            bucket: "{INFLUXDB_BUCKET}",
+            predicate: (r) => r.topic == "Si/{sensor_id}/IMU" or r.topic == "Si/{sensor_id}/GPS" or r.topic == "Si/{sensor_id}/ENV",
+            start: -1d
         )
-        '''
+    '''
     result = query_api.query(query, org=INFLUXDB_ORG)
-    fields = [record.get_value() for table in result for record in table.records]
-    print("Campos (_field) encontrados:", fields)
-    if not result:
-        raise HTTPException(status_code=404, detail="Datos del sensor no encontrados en InfluxDB")
-    return {"fields" : fields}
+    variables = [record.get_value() for table in result for record in table.records]
+    if not variables:
+        raise HTTPException(status_code=404, detail="No se encontraron variables de interés")
+    return {"variables": variables}
+
+
+@app.get("/sensor/{sensor_name}/grupo/{grupo}/{start}/{stop}")
+def obtener_medidas_grupo(sensor_name: str, grupo: str, start: str, stop: str):
+    sensor_id = redis_client.get(f"id:{sensor_name}")
+    if not sensor_id:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+        
+    query = f'''
+        import "strings"
+        from(bucket: "{INFLUXDB_BUCKET}")
+            |> range(start: {start}, stop: {stop})
+            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/IMU")
+            |> filter(fn: (r) => strings.containsStr(v: r._field, substr: "{grupo}"))
+            |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
+            |> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
+            |> yield(name: "last")
+    '''
+    result = query_api.query(query, org=INFLUXDB_ORG)
+    datos = []
+    for table in result:
+        for record in table.records:
+            # Se filtran claves internas que no interesan
+            values = { key: record.values[key]
+                       for key in record.values 
+                       if key not in ["_time", "result", "table", "_start", "_stop", "_measurement", "host", "topic"] }
+            datos.append({
+                "timestamp": record.get_time().isoformat(),
+                "values": values
+            })
+    
+    if not datos:
+        raise HTTPException(status_code=404, detail=f"No se encontraron registros para el grupo {grupo}")
+    
+    return {"grupo": grupo, "datos": datos}
+
 
 @app.post("/sensor/{sensor_name}/start")
 def start_sensor(sensor_name: str):
@@ -163,4 +287,5 @@ def delete_sensor(sensor_name: str):
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 

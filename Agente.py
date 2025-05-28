@@ -99,17 +99,12 @@ def publish_imu(client):
         mag = get_mock_magnetometer()
         quat = get_mock_quaternion()
 
-        imu_csv = f"{timestamp},{accel['x']},{accel['y']},{accel['z']}," \
-                  f"{gyro['x']},{gyro['y']},{gyro['z']}," \
-                  f"{mag['x']},{mag['y']},{mag['z']}," \
-                  f"{quat['w']},{quat['x']},{quat['y']},{quat['z']}"
-        
+       
         imu_payload = {
             "device_id": AGENT_ID,
             "agent_name": AGENT_NAME,
             "timestamp": timestamp,
             "data": {
-                "csv" :imu_csv,
                 "accelerometer_x": accel['x'],
                 "accelerometer_y": accel['y'],
                 "accelerometer_z": accel['z'],
@@ -132,15 +127,12 @@ def publish_gps(client):
     while True:
         timestamp = int(time.time() * 1000)
         gps_data = get_mock_gps()
-        gps_csv = f"{timestamp},{gps_data['latitud']},{gps_data['longitud']}," \
-                  f"{gps_data['altitud']},{gps_data['speed']}," \
-                  f"{gps_data['satellites']},{gps_data['hdop']}"
+    
         gps_payload = {
             "device_id": AGENT_ID,
             "agent_name": AGENT_NAME,
             "timestamp": timestamp,
             "data": {
-                "csv": gps_csv,
                 "latitud": gps_data['latitud'],
                 "longitud": gps_data['longitud'],
                 "altitud": gps_data['altitud'],
@@ -156,13 +148,11 @@ def publish_env(client):
     while True:
         timestamp = int(time.time() * 1000)
         env = get_mock_environment()
-        env_csv = f"{timestamp},{env['temp']},{env['pressure']},{env['humidity']}"
         env_payload = {
             "device_id": AGENT_ID,
             "agent_name": AGENT_NAME,
             "timestamp": timestamp,
             "data": {
-                "csv" :env_csv,
                 "temperature": env['temp'],
                 "pressure": env['pressure'],
                 "humidity": env['humidity']
