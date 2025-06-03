@@ -28,11 +28,9 @@ else:
     AGENT_ID = env_agent_id
     redis_client.set(redis_key, AGENT_ID)
 
-
 redis_client.sadd("agents_active", AGENT_ID)
 
-
-# ============ MQTT CONFIG =============
+# ============ MQTT CONFIG ============
 BROKER = "192.168.192.154"
 PORT = 1883
 USERNAME = "root"
@@ -87,7 +85,6 @@ def get_mock_quaternion():
             "y": round(y/norm, 3),
             "z": round(z/norm, 3)}
 
-
 def publish_data(client, topic, data):
     client.publish(topic, json.dumps(data))
 
@@ -98,7 +95,6 @@ def publish_imu(client):
         gyro = get_mock_gyroscope()
         mag = get_mock_magnetometer()
         quat = get_mock_quaternion()
-
        
         imu_payload = {
             "device_id": AGENT_ID,
@@ -121,7 +117,7 @@ def publish_imu(client):
             }
         }
         publish_data(client, f"Si/{AGENT_ID}/IMU", imu_payload)
-        time.sleep(0.2)  # Publica IMU cada 0.5 segundos
+        time.sleep(0.2)  # Publica IMU cada 0.2 segundos
 
 def publish_gps(client):
     while True:
@@ -142,7 +138,7 @@ def publish_gps(client):
             }
         }
         publish_data(client, f"Si/{AGENT_ID}/GPS", gps_payload)
-        time.sleep(0.3)  # Publica GPS cada 1 segundo
+        time.sleep(0.3)  # Publica GPS cada 0.3 segundos
 
 def publish_env(client):
     while True:
@@ -159,7 +155,7 @@ def publish_env(client):
             }
         }
         publish_data(client, f"Si/{AGENT_ID}/ENV", env_payload)
-        time.sleep(0.5)  # Publica datos ambientales cada 2 segundos
+        time.sleep(0.5)  # Publica datos ambientales cada 0.5 segundos
 
 def main():
     client = mqtt.Client()
@@ -167,9 +163,16 @@ def main():
     client.connect(BROKER, PORT, 60)
     client.loop_start()
 
-    threading.Thread(target=publish_imu, args=(client,), daemon=True).start()
-    threading.Thread(target=publish_gps, args=(client,), daemon=True).start()
-    threading.Thread(target=publish_env, args=(client,), daemon=True).start()
+    # Selección de sensores vía variables de entorno
+    sensors = os.getenv("SENSORS", "imu,gps,env")
+    sensor_list = [s.strip().lower() for s in sensors.split(",")]
+
+    if "imu" in sensor_list:
+        threading.Thread(target=publish_imu, args=(client,), daemon=True).start()
+    if "gps" in sensor_list:
+        threading.Thread(target=publish_gps, args=(client,), daemon=True).start()
+    if "env" in sensor_list:
+        threading.Thread(target=publish_env, args=(client,), daemon=True).start()
 
     while True:
         time.sleep(1)
