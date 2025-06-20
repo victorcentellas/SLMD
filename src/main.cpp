@@ -59,7 +59,7 @@ void connectToMqtt() {
   Serial.println("Intentando conectar a MQTT...");
   mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
   mqttClient.setCredentials(user_mqtt, password_mqtt);
-  mqttClient.setKeepAlive(60); 
+  mqttClient.setKeepAlive(120); 
   mqttClient.setClientId("ESP32-Gateway");
   
   // Registra callbacks que se mantendrán
@@ -139,6 +139,7 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
             strncpy(imuCopy, imuPayload->imu, sizeof(imuCopy));
             imuCopy[sizeof(imuCopy)-1] = '\0';
 
+            
             float values[14];
             int idx = 0;
             char* token = strtok(imuCopy, ",");
@@ -146,6 +147,7 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 values[idx++] = atof(token);
                 token = strtok(NULL, ",");
             }
+            
             if(idx != 14) {
                 Serial.println("Error al parsear los datos IMU");
                 break;
