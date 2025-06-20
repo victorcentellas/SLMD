@@ -36,6 +36,7 @@ PORT = 1883
 USERNAME = "root"
 PASSWORD = "tfg-2425"
 
+
 # ============ SENSORES MOCK ============
 def get_mock_accelerometer():
     return {"x": round(random.uniform(-15, 15), 3),
@@ -158,7 +159,7 @@ def publish_env(client):
         time.sleep(0.5)  # Publica datos ambientales cada 0.5 segundos
 
 def main():
-    client = mqtt.Client()
+    client = mqtt.Client(client_id=AGENT_ID)
     client.username_pw_set(USERNAME, PASSWORD)
     client.connect(BROKER, PORT, 60)
     client.loop_start()
