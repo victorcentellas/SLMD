@@ -44,7 +44,15 @@ def get_docker_client() -> docker.DockerClient:
 def get_topic_key(sensor_name: str, topic_type: str) -> str:
     return f"topic:{sensor_name}:{topic_type.upper()}"
 
+def get_emqx_connection() -> requests.Session:
+    session = requests.Session()
+    creds = f"{API_KEY}:{SECRET_KEY}"
+    token = base64.b64encode(creds.encode()).decode()
+    session.headers.update({"Authorization": f"Basic {token}"})
+    return session
+
 def get_emqx_clients(page=1, node=None, limit=50, ip_address=None, fields="all"):
+    session = get_emqx_connection()
     url = f"{EMQX_API}/clients"
     params = {
         "page": page,
@@ -56,14 +64,7 @@ def get_emqx_clients(page=1, node=None, limit=50, ip_address=None, fields="all")
     if ip_address:
         params["ip_address"] = ip_address
     
-    # Construye el token para autenticación Basic usando el usuario y contraseña
-    creds = f"{API_KEY}:{SECRET_KEY}"
-    token = base64.b64encode(creds.encode()).decode()
-    headers = {
-        "Authorization": f"Basic {token}"
-    }
-    
-    response = requests.get(url, headers=headers, params=params)
+    response = session.get(url, params=params)
     response.raise_for_status()
     return response.json()
 
@@ -106,12 +107,17 @@ class TopicIn(BaseModel):
     sensor_name: str
     topic_type: str
 
+def get_sensor_id_by_name(redis_client: redis.Redis, sensor_name: str) -> str:
+    sensor_id = redis_client.get(f"sensor:{sensor_name}")
+    if not sensor_id:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    return sensor_id
 # ---------------------
 # Endpoints de Sensores
 # ---------------------
 @app.get("/sensores/", tags=["Sensores"], response_model=SensorList, summary="Listar todos los sensores")
 def listar_sensores(redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_keys = redis_client.keys("id:sensor*")
+    sensor_keys = redis_client.keys("sensor:sensor*")
     if not sensor_keys:
         raise HTTPException(status_code=404, detail="No se encontraron sensores")
     sensores = []
@@ -123,13 +129,14 @@ def listar_sensores(redis_client: redis.Redis = Depends(get_redis_client)):
 
 @app.get("/sensores/activos", tags=["Sensores"], summary="Listar sensores activos")
 def listar_sensores_activos(redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_keys = redis_client.keys("id:sensor*")
+    sensor_keys = redis_client.keys("sensor:sensor*")
     if not sensor_keys:
         raise HTTPException(status_code=404, detail="No se encontraron sensores")
         
-    emqx_response = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.92")
-    emqx_clients = emqx_response.get("data", [])    
-    emqx_response = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.202")
+    emqx_response_dummys = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.92")
+    emqx_clients = emqx_response_dummys.get("data", [])    
+    emqx_response_gateway = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.202")
+    emqx_clients += emqx_response_gateway.get("data", [])
     # Se asume que el clientid retornado por EMQX es igual al valor de la clave id:sensor
     clientes_activos = {client.get("clientid") for client in emqx_clients}
     
@@ -149,34 +156,10 @@ def listar_sensores_activos(redis_client: redis.Redis = Depends(get_redis_client
     return {"sensores_activos": activos}
 
 
-# @app.get("/sensores/activos", tags=["Sensores"], summary="Listar sensores activos")
-# def listar_sensores_activos(
-#     redis_client: redis.Redis = Depends(get_redis_client),
-#     docker_client: docker.DockerClient = Depends(get_docker_client)
-# ):
-#     sensor_keys = redis_client.keys("id:*")
-#     activos = []
-#     for key in sensor_keys:
-#         sensor_name = key.split("id:")[-1]
-#         try:
-#             container = docker_client.containers.get(sensor_name)
-#             container.reload()
-#             if container.status == "running":
-#                 activos.append({
-#                     "sensor": sensor_name,
-#                     "sensor_id": redis_client.get(key)
-#                 })
-#         except docker.errors.NotFound:
-#             continue
-#         except Exception:
-#             continue
-#     if not activos:
-#         raise HTTPException(status_code=404, detail="No se encontraron sensores activos")
-#     return {"sensores_activos": activos}
 
 @app.get("/sensores/inactivos", tags=["Sensores"], summary="Listar sensores inactivos")
 def listar_sensores_inactivos(redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_keys = redis_client.keys("id:sensor*")
+    sensor_keys = redis_client.keys("sensor:sensor*")
     if not sensor_keys:
         raise HTTPException(status_code=404, detail="No se encontraron sensores")
 
@@ -184,15 +167,16 @@ def listar_sensores_inactivos(redis_client: redis.Redis = Depends(get_redis_clie
     emqx_response = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.92")
     emqx_clients = emqx_response.get("data", [])
     emqx_response = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.202")
+    emqx_clients += emqx_response.get("data", [])
 
     # Se asume que el clientid retornado por EMQX es igual al valor de la clave id:sensor
-    clientes_activos = {client.get("clientid") for client in emqx_clients}
+    clientes_inactivos = {client.get("clientid") for client in emqx_clients}
 
     inactivos = []
     for key in sensor_keys:
         sensor_id = redis_client.get(key)
         sensor_name = key.split("id:")[-1]
-        if sensor_id not in clientes_activos:
+        if sensor_id not in clientes_inactivos:
             inactivos.append({
                 "sensor": sensor_name,
                 "sensor_id": sensor_id
@@ -206,20 +190,69 @@ def listar_sensores_inactivos(redis_client: redis.Redis = Depends(get_redis_clie
 def crear_sensor(sensor_name: str, sensors: str,
                  redis_client: redis.Redis = Depends(get_redis_client),
                  docker_client: docker.DockerClient = Depends(get_docker_client)):
-    if redis_client.get(f"id:{sensor_name}"):
+    # Evita duplicados comprobando la existencia del sensor_name
+    if redis_client.exists(f"sensor:{sensor_name}"):
         raise HTTPException(status_code=400, detail="El sensor ya existe")
+    
     sensor_id = str(uuid.uuid4())[:8]
+    
     try:
         container = docker_client.containers.run(
             "agente-sensor", 
             detach=True, 
             name=sensor_name, 
             network="emqx-network", 
-            environment={"AGENT_NAME": sensor_name, "AGENT_ID": sensor_id,"SENSORS": sensors},
+            environment={"AGENT_NAME": sensor_name, "AGENT_ID": sensor_id, "SENSORS": sensors},
         )
+        # Almacena la relación en dos claves:
+        # Clave "id:<sensor_id>" → sensor_name
+        # Clave "sensor:<sensor_name>" → sensor_id
+        redis_client.set(f"id:{sensor_id}", sensor_name)
+        redis_client.set(f"sensor:{sensor_name}", sensor_id)
+        
         return {"message": f"Sensor {sensor_name} creado con éxito", "sensor_id": sensor_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
+@app.post("/vincular_sensor/{sensor_name}/", tags=["Gestión de Sensores"], summary="Vincular sensor")
+def vincular_sensor(sensor_name: str, redis_client: redis.Redis = Depends(get_redis_client)):
+    # Comprueba que el sensor no se haya vinculado previamente (por sensor_name)
+    if redis_client.exists(f"sensor:{sensor_name}"):
+        raise HTTPException(status_code=400, detail=f"El {sensor_name} ya existe")
+    
+    emqx_response = get_emqx_clients(page=1, node="emqx@172.18.0.2", ip_address="192.168.192.202")
+    emqx_clients = emqx_response.get("data", [])
+    sensor_keys = redis_client.keys("id:*")
+
+    
+    for client in emqx_clients:
+        candidate = client.get("clientid", "").lower()
+        print(f"Buscando vincular sensor {sensor_name} con clientid {candidate}")
+        for key in sensor_keys:
+            # Extrae el clientid de la clave, que es el valor después de "id:"
+            key_parts = key.split(":")
+            if len(key_parts) < 2:
+                continue
+        # Se asume que el clientid se iguala (ignorando mayúsculas) a sensor_name
+            print(f"Comparando {candidate} con {key_parts[1].lower()}")
+            if candidate == key_parts[1].lower():
+                # Si la clave "id:{candidate}" ya existe, continúa con el siguiente
+                if redis_client.exists(f"id:{candidate}"):
+                    raise HTTPException(status_code=400, detail=f"El {candidate} ya existe")
+
+            matched_client_id = candidate
+            break
+            
+    if not matched_client_id:
+        raise HTTPException(status_code=404, detail="No se encontró ningún clientid disponible para vincular")
+    
+    # Almacena la relación en Redis utilizando el client id real
+    redis_client.set(f"id:{matched_client_id}", sensor_name)
+    redis_client.set(f"sensor:{sensor_name}", matched_client_id)
+    
+    return {"message": f"Sensor {sensor_name} vinculado exitosamente", "sensor_id": matched_client_id}
 
 @app.post("/sensor/{sensor_name}/start", tags=["Gestión de Sensores"], summary="Iniciar sensor")
 def start_sensor(sensor_name: str,
@@ -249,16 +282,20 @@ def stop_sensor(sensor_name: str,
 def delete_sensor(sensor_name: str,
                   redis_client: redis.Redis = Depends(get_redis_client),
                   docker_client: docker.DockerClient = Depends(get_docker_client)):
+    # Obtiene sensor_id usando la clave "sensor:<sensor_name>"
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
+    
     try:
         container = docker_client.containers.get(sensor_name)
         container.remove(force=True)
-        redis_client.delete(f"id:{sensor_name}")
+        # Elimina ambas claves para mantener la unicidad
+        redis_client.delete(f"sensor:{sensor_name}")
+        redis_client.delete(f"id:{sensor_id}")
         return {"message": f"Sensor {sensor_name} eliminado."}
     except docker.errors.NotFound:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
 # --------------------------
 # Endpoints de Consultas
 # --------------------------
@@ -267,7 +304,7 @@ def delete_sensor(sensor_name: str,
     tags=["Variables"],
     response_model=VariableResponse,
     summary="Obtener variable por intervalo",
-    description="Consulta una variable publicada en cualquiera de los tópicos: IMU, GPS o ENV"
+    description="Consulta una variable publicada en los tópicos: IMU, GPS o ENV"
 )
 def obtener_variable(
     sensor_name: str,
@@ -277,9 +314,8 @@ def obtener_variable(
     redis_client: redis.Redis = Depends(get_redis_client),
     query_api = Depends(get_influx_query_api)
 ):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
-    if not sensor_id:
-        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    # Obtiene el sensor_id a partir del sensor_name
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     query = f'''
         from(bucket: "{INFLUXDB_BUCKET}")
             |> range(start: {start}, stop: {stop})
@@ -297,6 +333,7 @@ def obtener_variable(
         raise HTTPException(status_code=404, detail=f"No se encontraron datos para la variable {var_name}")
     return {"variable": var_name, "datos": datos}
 
+
 @app.get(
     "/sensor/{sensor_name}/grupo/{tipo_sensor}/{start}/{stop}",
     tags=["Grupos de Medidas"],
@@ -312,7 +349,7 @@ def obtener_medidas_grupo_por_tipo(
     redis_client: redis.Redis = Depends(get_redis_client),
     query_api = Depends(get_influx_query_api)
 ):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     if tipo_sensor not in ["IMU", "GPS", "ENV"]:
@@ -361,7 +398,7 @@ def obtener_medidas_grupo(
     redis_client: redis.Redis = Depends(get_redis_client),
     query_api = Depends(get_influx_query_api)
 ):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     query = f'''
@@ -405,7 +442,7 @@ def listar_variables_interes(
     redis_client: redis.Redis = Depends(get_redis_client),
     query_api = Depends(get_influx_query_api)
 ):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     query = f'''
@@ -429,7 +466,7 @@ def listar_variables_interes(
 @app.post("/topic/{sensor_name}/{topics}", tags=["Topics"], summary="Crear topic")
 def crear_topic(sensor_name: str, topics: str, redis_client: redis.Redis = Depends(get_redis_client)):
     # Recupera el identificador real del sensor (UUID de 8 dígitos) desde Redis
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     # Aquí usaremos el sensor_id (por ejemplo, "c0ae15ea") como clave de un set en Redis
@@ -451,7 +488,7 @@ def crear_topic(sensor_name: str, topics: str, redis_client: redis.Redis = Depen
 # Listar todos los topics
 @app.get("/topic/{sensor_name}/{topic_type}", tags=["Topics"], response_model=Topic, summary="Obtener topic")
 def obtener_topic(sensor_name: str, topic_type: str, redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     # Construir el topic completo según el formato usado en la creación
@@ -465,7 +502,7 @@ def obtener_topic(sensor_name: str, topic_type: str, redis_client: redis.Redis =
 
 @app.get("/topics/{sensor_name}", tags=["Topics"], response_model=Topics, summary="Obtener topics por sensor")
 def obtener_topics_por_sensor(sensor_name: str, redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     topics_set = redis_client.smembers(sensor_id)
@@ -479,24 +516,10 @@ def obtener_topics_por_sensor(sensor_name: str, redis_client: redis.Redis = Depe
         topics_list.append(Topic(sensor_name=sensor_name, topic_type=topic_type, complete_topic=topic))
     return {"sensor_name": sensor_name, "topics": topics_list}
 
-
-# Obtener un topic en particular
-@app.get("/topic/{sensor_name}/{topic_type}", tags=["Topics"], response_model=Topic, summary="Obtener topic")
-def obtener_topic(sensor_name: str, topic_type: str, redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
-    if not sensor_id:
-        raise HTTPException(status_code=404, detail="Sensor no encontrado")
-    # Construye la clave usando el sensor_id
-    key = f"topic:Si/{sensor_id}/{topic_type.upper()}"
-    data = redis_client.get(key)
-    if not data:
-        raise HTTPException(status_code=404, detail="Topic no encontrado")
-    return Topic.parse_raw(data)
-
 # Eliminar todos los topics asociados a un sensor
 @app.delete("/topics/{sensor_name}", tags=["Topics"], summary="Eliminar topics por sensor")
 def eliminar_topics_por_sensor(sensor_name: str, redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     topics_set = redis_client.smembers(sensor_id)
@@ -511,7 +534,7 @@ def eliminar_topics_por_sensor(sensor_name: str, redis_client: redis.Redis = Dep
 
 @app.delete("/topic/{sensor_name}/{topic_type}", tags=["Topics"], summary="Eliminar topic")
 def eliminar_topic(sensor_name: str, topic_type: str, redis_client: redis.Redis = Depends(get_redis_client)):
-    sensor_id = redis_client.get(f"id:{sensor_name}")
+    sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
     complete_topic = f"Si/{sensor_id}/{topic_type.upper()}"
