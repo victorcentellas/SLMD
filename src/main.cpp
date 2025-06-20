@@ -55,12 +55,15 @@ void sincronicePeers(const uint8_t *mac) {
   }
 
 
-void connectToMqtt() {
+void connectToMqtt(const char * device_id) {
+    if (device_id == NULL){
+        device_id = "ESP32-Gateway"; 
+        }
   Serial.println("Intentando conectar a MQTT...");
   mqttClient.setServer(MQTT_BROKER, MQTT_PORT);
   mqttClient.setCredentials(user_mqtt, password_mqtt);
-  mqttClient.setKeepAlive(120); 
-  mqttClient.setClientId("ESP32-Gateway");
+  mqttClient.setKeepAlive(60); 
+  mqttClient.setClientId(device_id);
   
   // Registra callbacks que se mantendrán
   mqttClient.onMessage([](char* topic, char* payload, AsyncMqttClientMessageProperties properties,
@@ -139,6 +142,8 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
             strncpy(imuCopy, imuPayload->imu, sizeof(imuCopy));
             imuCopy[sizeof(imuCopy)-1] = '\0';
 
+            Serial.println("Datos IMU recibidos:");
+            Serial.println(imuCopy);
             
             float values[14];
             int idx = 0;
@@ -148,7 +153,7 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 token = strtok(NULL, ",");
             }
             
-            if(idx != 14) {
+            if(idx != 14 && idx != 13) {
                 Serial.println("Error al parsear los datos IMU");
                 break;
             }
@@ -183,8 +188,10 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicIMU);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                connectToMqtt();
-            }
+                char clientId[10];  // espacio para el terminador nulo
+                strncpy(clientId, imuPayload->device_id, 9);
+                clientId[9] = '\0';  // se asegura la terminación nula
+                connectToMqtt(clientId);            }
             
             break;
         }
@@ -234,8 +241,10 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicGPS);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                connectToMqtt();
-            }
+                char clientId[10];  // espacio para el terminador nulo
+                strncpy(clientId, gpsPayload->device_id, 9);
+                clientId[9] = '\0';  // se asegura la terminación nula
+                connectToMqtt(clientId);            }
            
             break;
         }
@@ -294,8 +303,10 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicENV);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                connectToMqtt();
-            }
+                char clientId[10];  // espacio para el terminador nulo
+                strncpy(clientId, envPayload->device_id, 9);
+                clientId[9] = '\0';  // se asegura la terminación nula
+                connectToMqtt(clientId);               }
             
             break;
         }
@@ -340,7 +351,7 @@ void setup() {
   // Registrar callbacks MQTT
   mqttClient.onDisconnect(onMqttDisconnect);
   mqttClient.onConnect(onMqttConnect);
-  connectToMqtt();
+  
 
   // Inicializar ESP-NOW
   if (esp_now_init() != ESP_OK) {
@@ -358,6 +369,6 @@ void loop() {
     if (!mqttClient.connected() && shouldReconnect && (now - lastReconnectAttempt > MQTT_RECONNECT_INTERVAL)) {
         lastReconnectAttempt = now;
         Serial.println("Intentando reconectar MQTT desde loop...");
-        connectToMqtt();
+        connectToMqtt(NULL);
     }
 }
