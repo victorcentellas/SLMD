@@ -18,10 +18,12 @@ const char* user_mqtt = "root";
 const char* password_mqtt = "tfg-2425";
 
 AsyncMqttClient mqttClient;
-bool shouldReconnect = false;
 
 const char* mqtt_topic = "Si/";
 int32_t peerChannel = 0;
+
+char clientId[10];  
+
 
 int32_t getWiFiChannel(const char *ssid)
 {
@@ -81,13 +83,11 @@ void connectToMqtt(const char * device_id) {
 
 void onMqttConnect(bool sessionPresent) {
   Serial.println("MQTT conectado exitosamente!");
-  shouldReconnect = false;
 }
 
 void onMqttDisconnect(AsyncMqttClientDisconnectReason reason) {
   Serial.println("Desconectado de MQTT. Se intentará reconectar...");
   Serial.print("Razón de desconexión: ");
-  shouldReconnect = true;
 
   switch(reason) {
       case AsyncMqttClientDisconnectReason::TCP_DISCONNECTED:
@@ -188,7 +188,6 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicIMU);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                char clientId[10];  // espacio para el terminador nulo
                 strncpy(clientId, imuPayload->device_id, 9);
                 clientId[9] = '\0';  // se asegura la terminación nula
                 connectToMqtt(clientId);            }
@@ -241,7 +240,6 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicGPS);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                char clientId[10];  // espacio para el terminador nulo
                 strncpy(clientId, gpsPayload->device_id, 9);
                 clientId[9] = '\0';  // se asegura la terminación nula
                 connectToMqtt(clientId);            }
@@ -303,7 +301,6 @@ void onDataReceive(const uint8_t *mac, const uint8_t *data, int len) {
                 Serial.println(topicENV);
             } else {
                 Serial.println("MQTT no conectado, intentando reconectar...");
-                char clientId[10];  // espacio para el terminador nulo
                 strncpy(clientId, envPayload->device_id, 9);
                 clientId[9] = '\0';  // se asegura la terminación nula
                 connectToMqtt(clientId);               }
@@ -365,10 +362,5 @@ void setup() {
 }
 
 void loop() {
-    unsigned long now = millis();
-    if (!mqttClient.connected() && shouldReconnect && (now - lastReconnectAttempt > MQTT_RECONNECT_INTERVAL)) {
-        lastReconnectAttempt = now;
-        Serial.println("Intentando reconectar MQTT desde loop...");
-        connectToMqtt(NULL);
-    }
+    
 }
