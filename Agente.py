@@ -6,10 +6,11 @@ import json
 import uuid
 import redis
 import os
-from datetime import datetime
-import threading
-import random
 import math
+import random
+import threading
+from datetime import datetime
+import abc
 
 # ============ REDIS =============
 REDIS_HOST = "192.168.192.156"  
@@ -35,7 +36,6 @@ BROKER = "192.168.192.154"
 PORT = 1883
 USERNAME = "root"
 PASSWORD = "tfg-2425"
-
 
 # ============ SENSORES MOCK ============
 def get_mock_accelerometer():
@@ -75,7 +75,6 @@ def get_mock_environment():
     }
 
 def get_mock_quaternion():
-    # Generamos valores aleatorios y normalizamos
     w = random.uniform(0, 1)
     x = random.uniform(0, 1)
     y = random.uniform(0, 1)
@@ -89,74 +88,97 @@ def get_mock_quaternion():
 def publish_data(client, topic, data):
     client.publish(topic, json.dumps(data))
 
-def publish_imu(client):
-    while True:
-        timestamp = int(time.time() * 1000)
-        accel = get_mock_accelerometer()
-        gyro = get_mock_gyroscope()
-        mag = get_mock_magnetometer()
-        quat = get_mock_quaternion()
-       
-        imu_payload = {
-            "device_id": AGENT_ID,
-            "agent_name": AGENT_NAME,
-            "timestamp": timestamp,
-            "data": {
-                "accelerometer_x": accel['x'],
-                "accelerometer_y": accel['y'],
-                "accelerometer_z": accel['z'],
-                "gyroscope_x": gyro['x'],
-                "gyroscope_y": gyro['y'],
-                "gyroscope_z": gyro['z'],
-                "magnetometer_x": mag['x'],
-                "magnetometer_y": mag['y'],
-                "magnetometer_z": mag['z'],
-                "quaternion_w": quat['w'],
-                "quaternion_x": quat['x'],
-                "quaternion_y": quat['y'],
-                "quaternion_z": quat['z']
-            }
-        }
-        publish_data(client, f"Si/{AGENT_ID}/IMU", imu_payload)
-        time.sleep(0.2)  # Publica IMU cada 0.2 segundos
+# ============ AGENTES POR SENSOR CON PATRÓN FACTORÍA ============
+class SensorAgent(abc.ABC):
+    def __init__(self, client):
+        self.client = client
 
-def publish_gps(client):
-    while True:
-        timestamp = int(time.time() * 1000)
-        gps_data = get_mock_gps()
-    
-        gps_payload = {
-            "device_id": AGENT_ID,
-            "agent_name": AGENT_NAME,
-            "timestamp": timestamp,
-            "data": {
-                "latitud": gps_data['latitud'],
-                "longitud": gps_data['longitud'],
-                "altitud": gps_data['altitud'],
-                "speed": gps_data['speed'],
-                "satellites": gps_data['satellites'],
-                "hdop": gps_data['hdop']
-            }
-        }
-        publish_data(client, f"Si/{AGENT_ID}/GPS", gps_payload)
-        time.sleep(0.3)  # Publica GPS cada 0.3 segundos
+    @abc.abstractmethod
+    def run(self):
+        pass
 
-def publish_env(client):
-    while True:
-        timestamp = int(time.time() * 1000)
-        env = get_mock_environment()
-        env_payload = {
-            "device_id": AGENT_ID,
-            "agent_name": AGENT_NAME,
-            "timestamp": timestamp,
-            "data": {
-                "temperature": env['temp'],
-                "pressure": env['pressure'],
-                "humidity": env['humidity']
+class ImuAgent(SensorAgent):
+    def run(self):
+        while True:
+            timestamp = int(time.time() * 1000)
+            accel = get_mock_accelerometer()
+            gyro = get_mock_gyroscope()
+            mag = get_mock_magnetometer()
+            quat = get_mock_quaternion()
+
+            imu_payload = {
+                "device_id": AGENT_ID,
+                "agent_name": AGENT_NAME,
+                "timestamp": timestamp,
+                "data": {
+                    "accelerometer_x": accel['x'],
+                    "accelerometer_y": accel['y'],
+                    "accelerometer_z": accel['z'],
+                    "gyroscope_x": gyro['x'],
+                    "gyroscope_y": gyro['y'],
+                    "gyroscope_z": gyro['z'],
+                    "magnetometer_x": mag['x'],
+                    "magnetometer_y": mag['y'],
+                    "magnetometer_z": mag['z'],
+                    "quaternion_w": quat['w'],
+                    "quaternion_x": quat['x'],
+                    "quaternion_y": quat['y'],
+                    "quaternion_z": quat['z']
+                }
             }
-        }
-        publish_data(client, f"Si/{AGENT_ID}/ENV", env_payload)
-        time.sleep(0.5)  # Publica datos ambientales cada 0.5 segundos
+            publish_data(self.client, f"Si/{AGENT_ID}/IMU", imu_payload)
+            time.sleep(0.2)
+
+class GpsAgent(SensorAgent):
+    def run(self):
+        while True:
+            timestamp = int(time.time() * 1000)
+            gps_data = get_mock_gps()
+
+            gps_payload = {
+                "device_id": AGENT_ID,
+                "agent_name": AGENT_NAME,
+                "timestamp": timestamp,
+                "data": {
+                    "latitud": gps_data['latitud'],
+                    "longitud": gps_data['longitud'],
+                    "altitud": gps_data['altitud'],
+                    "speed": gps_data['speed'],
+                    "satellites": gps_data['satellites'],
+                    "hdop": gps_data['hdop']
+                }
+            }
+            publish_data(self.client, f"Si/{AGENT_ID}/GPS", gps_payload)
+            time.sleep(0.3)
+
+class EnvAgent(SensorAgent):
+    def run(self):
+        while True:
+            timestamp = int(time.time() * 1000)
+            env = get_mock_environment()
+            env_payload = {
+                "device_id": AGENT_ID,
+                "agent_name": AGENT_NAME,
+                "timestamp": timestamp,
+                "data": {
+                    "temperature": env['temp'],
+                    "pressure": env['pressure'],
+                    "humidity": env['humidity']
+                }
+            }
+            publish_data(self.client, f"Si/{AGENT_ID}/ENV", env_payload)
+            time.sleep(0.5)
+
+def sensor_agent_factory(sensor_type, client):
+    sensor_type = sensor_type.lower()
+    if sensor_type == "imu":
+        return ImuAgent(client)
+    elif sensor_type == "gps":
+        return GpsAgent(client)
+    elif sensor_type == "env":
+        return EnvAgent(client)
+    else:
+        raise ValueError(f"Sensor type {sensor_type} no soportado.")
 
 def main():
     client = mqtt.Client(client_id=AGENT_ID)
@@ -164,16 +186,20 @@ def main():
     client.connect(BROKER, PORT, 60)
     client.loop_start()
 
-    # Selección de sensores vía variables de entorno
+    # Selección de sensores vía variables de entorno, p.ej. "imu,gps,env"
     sensors = os.getenv("SENSORS", "imu,gps,env")
-    sensor_list = [s.strip().lower() for s in sensors.split(",")]
+    sensor_list = [s.strip() for s in sensors.split(",")]
 
-    if "imu" in sensor_list:
-        threading.Thread(target=publish_imu, args=(client,), daemon=True).start()
-    if "gps" in sensor_list:
-        threading.Thread(target=publish_gps, args=(client,), daemon=True).start()
-    if "env" in sensor_list:
-        threading.Thread(target=publish_env, args=(client,), daemon=True).start()
+    agents = []
+    for sensor in sensor_list:
+        try:
+            agent = sensor_agent_factory(sensor, client)
+            agents.append(agent)
+        except ValueError as e:
+            print(e)
+
+    for agent in agents:
+        threading.Thread(target=agent.run, daemon=True).start()
 
     while True:
         time.sleep(1)
