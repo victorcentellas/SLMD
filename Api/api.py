@@ -316,10 +316,20 @@ def obtener_variable(
 ):
     # Obtiene el sensor_id a partir del sensor_name
     sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
+    if not sensor_id:
+        raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    # Recupera el set de topics asociados al sensor
+    topics_available = redis_client.smembers(sensor_id)
+    if not topics_available:
+        raise HTTPException(status_code=404, detail="No se encontraron topics para este sensor")
+    
+    # Construye la condición de filtro uniendo todos los topics disponibles
+    filter_conditions = " or ".join([f'r.topic == "{topic}"' for topic in topics_available])
+    
     query = f'''
         from(bucket: "{INFLUXDB_BUCKET}")
             |> range(start: {start}, stop: {stop})
-            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/IMU" or r.topic == "Si/{sensor_id}/GPS" or r.topic == "Si/{sensor_id}/ENV")
+            |> filter(fn: (r) => {filter_conditions})
             |> filter(fn: (r) => r._field == "{var_name}")
             |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
             |> yield(name: "last")
@@ -355,10 +365,15 @@ def obtener_medidas_grupo_por_tipo(
     if tipo_sensor not in ["IMU", "GPS", "ENV"]:
         raise HTTPException(status_code=400, detail="Tipo de sensor inválido. Use 'IMU', 'GPS' o 'ENV'")
     
+    # Verifica que el topic correspondiente exista en Redis
+    complete_topic = f"Si/{sensor_id}/{tipo_sensor}"
+    if not redis_client.sismember(sensor_id, complete_topic):
+        raise HTTPException(status_code=404, detail=f"El topic {complete_topic} no se encontró en la base de datos")
+    
     query = f'''
         from(bucket: "{INFLUXDB_BUCKET}")
             |> range(start: {start}, stop: {stop})
-            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/{tipo_sensor}")
+            |> filter(fn: (r) => r.topic == "{complete_topic}")
             |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
             |> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
             |> yield(name: "last")
@@ -401,16 +416,30 @@ def obtener_medidas_grupo(
     sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    # Recupera todos los topics asociados al sensor
+    topics_available = redis_client.smembers(sensor_id)
+    if not topics_available:
+        raise HTTPException(status_code=404, detail="No se encontraron topics para este sensor")
+    
+    # Filtrar aquellos topics que sean del tipo "IMU"
+    imu_topics = [topic for topic in topics_available if topic.endswith("/IMU")]
+    if not imu_topics:
+        raise HTTPException(status_code=404, detail="No se encontró topic de tipo IMU para este sensor")
+    
+    # Si hay más de un topic IMU, genera una condición OR para cada uno
+    filter_condition = " or ".join([f'r.topic == "{topic}"' for topic in imu_topics])
+    
     query = f'''
         import "strings"
         from(bucket: "{INFLUXDB_BUCKET}")
             |> range(start: {start}, stop: {stop})
-            |> filter(fn: (r) => r.topic == "Si/{sensor_id}/IMU")
+            |> filter(fn: (r) => {filter_condition})
             |> filter(fn: (r) => strings.containsStr(v: r._field, substr: "{grupo}"))
             |> aggregateWindow(every: 1s, fn: last, createEmpty: false)
             |> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
             |> yield(name: "last")
     '''
+    
     result = query_api.query(query, org=INFLUXDB_ORG)
     datos = []
     for table in result:
