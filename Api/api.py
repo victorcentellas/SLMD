@@ -480,16 +480,17 @@ def listar_variables_interes(
         raise HTTPException(status_code=404, detail="No se encontraron topics para este sensor")
     
     
-    filter_condition = " or ".join([f'"{topic}"' for topic in topics_set])
+    filter_condition = " or ".join([f'r.topic == "{topic}"' for topic in topics_set])
 
     query = f'''
         import "influxdata/influxdb/schema"
         schema.fieldKeys(
             bucket: "{INFLUXDB_BUCKET}",
-            predicate: (r) => r.topic == "Si/{sensor_id}/IMU" or r.topic == "Si/{sensor_id}/GPS" or r.topic == "Si/{sensor_id}/ENV",
+            predicate: (r) => {filter_condition},
             start: -1d
         )
     '''
+    print(f"Ejecutando consulta para listar variables de interés: {query}")
     result = query_api.query(query, org=INFLUXDB_ORG)
     variables = [record.get_value() for table in result for record in table.records]
     if not variables:
