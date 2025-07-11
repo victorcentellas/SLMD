@@ -362,6 +362,7 @@ def obtener_medidas_grupo_por_tipo(
     sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    tipo_sensor = tipo_sensor.upper()
     if tipo_sensor not in ["IMU", "GPS", "ENV"]:
         raise HTTPException(status_code=400, detail="Tipo de sensor inválido. Use 'IMU', 'GPS' o 'ENV'")
     
@@ -474,6 +475,13 @@ def listar_variables_interes(
     sensor_id = get_sensor_id_by_name(redis_client, sensor_name)
     if not sensor_id:
         raise HTTPException(status_code=404, detail="Sensor no encontrado")
+    topics_set = redis_client.smembers(sensor_id)
+    if not topics_set:
+        raise HTTPException(status_code=404, detail="No se encontraron topics para este sensor")
+    
+    
+    filter_condition = " or ".join([f'"{topic}"' for topic in topics_set])
+
     query = f'''
         import "influxdata/influxdb/schema"
         schema.fieldKeys(
