@@ -34,6 +34,21 @@ class SensorRepository:
         self.redis.delete(f"id:{sensor_id}")
         return sensor_id
 
+    def find_and_link_sensor(self, sensor_name: str, client_ids: list[str]):
+        """
+        Busca un client_id disponible en Redis y vincula el sensor_name a ese client_id.
+        Devuelve el client_id vinculado o None si no hay disponible.
+        """
+        if self.sensor_exists(sensor_name):
+            raise ValueError(f"El {sensor_name} ya existe")
+
+        for candidate in client_ids:
+            if not self.redis.exists(f"id:{candidate}"):
+                # Vincula el sensor
+                self.save_sensor(sensor_name, candidate)
+                return candidate
+        return None
+
     def _decode(self, value):
         if isinstance(value, bytes):
             return value.decode()
