@@ -22,6 +22,7 @@ services:
     volumes:
       - ./data:/opt/emqx/data
       - ./log:/opt/emqx/log
+      - ./emqx_auth_mnesia.conf:/opt/emqx/etc/plugins/emqx_auth_mnesia.conf
     networks:
       - emqx-network
       
