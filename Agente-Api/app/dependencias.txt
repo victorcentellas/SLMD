@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+redis
+influxdb-client
+docker
+uuid
+pydantic
+requests
+typing
