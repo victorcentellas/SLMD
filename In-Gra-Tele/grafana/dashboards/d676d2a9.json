@@ -1,0 +1,221 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "datasource",
+                    "uid": "grafana"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "refresh": "5s",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-30m",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Dashboard d676d2a9",
+    "version": 66,
+    "weekStart": "",
+    "panels": [
+        {
+            "id": 1,
+            "title": "Acelerometro UUID: d676d2a9",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 0,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/d676d2a9/10DOF\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_acelerometro_x\" or r[\"_field\"] == \"data_acelerometro_y\" or r[\"_field\"] == \"data_acelerometro_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Giroscopio UUID: d676d2a9",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 10,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/d676d2a9/10DOF\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_giroscopio_x\" or r[\"_field\"] == \"data_giroscopio_y\" or r[\"_field\"] == \"data_giroscopio_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Magnetometro UUID: d676d2a9",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 20,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 1,
+                        "fillOpacity": 20,
+                        "pointSize": 5,
+                        "showPoints": "auto",
+                        "spanNulls": true
+                    },
+                    "color": {
+                        "mode": "palette-classic"
+                    }
+                },
+                "overrides": []
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                    from(bucket: \"datos\")\n                    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                    |> filter(fn: (r) => r[\"topic\"] == \"Si/d676d2a9/10DOF\")\n                    |> filter(fn: (r) => r[\"_field\"] == \"data_magnetometro_x\" or r[\"_field\"] == \"data_magnetometro_y\" or r[\"_field\"] == \"data_magnetometro_z\")\n                    |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                    |> yield(name: \"mean\")\n                    "
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Presion UUID: d676d2a9",
+            "type": "timeseries",
+            "datasource": "InfluxDB",
+            "gridPos": {
+                "x": 0,
+                "y": 30,
+                "w": 24,
+                "h": 9
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {
+                        "drawStyle": "line",
+                        "lineWidth": 2,
+                        "fillOpacity": 30,
+                        "pointSize": 4,
+                        "showPoints": "always"
+                    },
+                    "color": {
+                        "mode": "continuous-GrYlRd"
+                    }
+                }
+            },
+            "options": {
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "legend": {
+                    "showLegend": true,
+                    "displayMode": "list",
+                    "placement": "bottom"
+                }
+            },
+            "targets": [
+                {
+                    "query": "\n                from(bucket: \"datos\")\n                |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n                |> filter(fn: (r) => r[\"topic\"] == \"Si/d676d2a9/10DOF\")\n                |> filter(fn: (r) => r[\"_field\"] == \"data_presion\")\n                |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n                |> yield(name: \"mean\")\n                "
+                }
+            ]
+        }
+    ]
+}

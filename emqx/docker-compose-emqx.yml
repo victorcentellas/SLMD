@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  emqx:
+    image: emqx/emqx:latest
+    container_name: emqx
+    restart: always
+    ports:
+      - "1883:1883"  # Puerto MQTT
+      - "8083:8083"  # WebSockets MQTT
+      - "18083:18083" # Dashboard web de EMQX
+    environment:
+      - EMQX_NAME=emqx
+      - EMQX_LISTENER__TCP__EXTERNAL=1883
+      - EMQX_LISTENER__WS__EXTERNAL=8083
+      - EMQX_DASHBOARD__LISTENER__HTTP=18083
+      - EMQX_LOADED_PLUGINS="emqx_auth_user,emqx_management"
+      - EMQX_AUTH__USER__1__USERNAME=user1
+      - EMQX_AUTH__USER__1__PASSWORD=clave123
+      - EMQX_ALLOW_ANONYMOUS=false
+      - EMQX_MAX_CLIENTS=10000
+    volumes:
+      - ./data:/opt/emqx/data
+      - ./log:/opt/emqx/log
+    networks:
+      - emqx-network
+      
+
+networks:
+  emqx-network:
+    name: emqx-network
+    driver: bridge
